@@ -1,0 +1,66 @@
+.previrewPost {
+    width: 45%;
+    min-width: 270px;
+    max-width: 1000px;
+    flex-wrap: wrap;
+    justify-content: left;
+    background: white;
+    box-sizing: content-box;
+}
+.previrewPost:active {
+    box-shadow: 0 0 0  2px var(--color-primary);
+}
+.previrewPost .avatar {
+    background-image: url("https://pickaface.net/gallery/avatar/demo.webmaster541295de29059.png");
+}
+.previrewPost .infoAuthor {
+    text-align: left;
+}
+.previrewPost .right {
+    flex-direction: column;
+    justify-content: space-around;
+}
+.previrewPost .right p:first-child {
+    font-size: 14px;
+    line-height: 17.5px;
+    /* font-weight: 500 */
+}
+.previrewPost .right p:last-child {
+    font-size: 12px;
+    color: var(--color-text);
+    font-weight: 300;
+    line-height: 15px;
+}
+.previrewPost .body{
+    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 70px;
+}
+.previrewPost .body h1{
+    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+.previrewPost .bottom{
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.previrewPost .reaction, .comment{
+    align-items: center;
+}
+
+@media only screen and (max-width: 1200px) {
+    .previrewPost{
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .previrewPost{
+        width: 90%;
+        font-size: 14px
+    }
+}
