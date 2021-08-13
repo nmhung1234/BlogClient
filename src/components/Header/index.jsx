@@ -5,26 +5,35 @@ import bellIcon from "./../../assets/icons/bell.svg";
 import connectIcon from "./../../assets/icons/share-2.svg";
 import searchIcon from "./../../assets/icons/search.svg";
 // import PropTypes from 'prop-types'
+import { Link } from "react-router-dom";
 
 function Header(props) {
     return (
         <>
-            <div className="nav">
+            <div className="nav pd-5">
                 <div className="left">
-                    <img src={logoIcon} alt="Dev Việt Nam" />
+                    <Link to="/" className="pd-0 mg-0">
+                        <img src={logoIcon} alt="Dev Việt Nam" />
+                    </Link>
                     <div className="df search">
                         <input
-                            className="bd-radius-5 bd-primary nav-search"
+                            className="input nav-search"
                             type="text"
                             placeholder="Search..."
                         />
-                        <img className="nav-icon hover-secondary-bg" src={searchIcon} alt="" />
+                        <img
+                            className="nav-icon hover-secondary-bg"
+                            src={searchIcon}
+                            alt=""
+                        />
                     </div>
                 </div>
                 <div className="right">
-                    <div className="button-lg hover-button mgr-10">
-                        Đăng bài
-                    </div>
+                    <Link to={"/new"}>
+                        <div className="button-lg hover-button mgr-10">
+                            Đăng bài
+                        </div>
+                    </Link>
                     <div className="nav-icon hover-secondary-bg">
                         <img src={connectIcon} alt="" />
                     </div>
@@ -33,9 +42,7 @@ function Header(props) {
                     </div>
                     <div className="avatar bd-primary">
                         <div className="user-popup cursor-pointer">
-                            <div
-                                className="name bdb-2"
-                            >
+                            <div className="name bdb-2">
                                 <div className="pd-10 bd-radius-5 hover-secondary-bg mg-5">
                                     <h4 className="displayName pdl-10">
                                         Nguyen Hung

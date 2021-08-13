@@ -50,11 +50,12 @@
 :root {
     --color-primary: #4d59db;
     --color-secondary: #b5bdc4;
-    --color-text: #202428;
+    --color-text: #08090A;
+    --color-text-gray: #64707D;
     --border-radius: 5px;
     --border-color: #b5bdc4;
     font-family: "SegoeUI", Tahoma, Geneva, Verdana, sans-serif;
-    background: #eef0f1;
+    background-color: #eef0f1;
 }
 @font-face {
     font-family: "SegoeUI";
@@ -63,9 +64,12 @@
 .avatar {
     width: 40px;
     height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     border-radius: 35px;
     margin: 0 10px;
     background-size: contain;
+    background-image: url("https://picsum.photos/800/600");
 }
 .button-lg {
     background-color: var(--color-primary);
@@ -110,18 +114,49 @@
 .cursor-pointer {
     cursor: pointer;
 }
+.input{
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    outline: none;
+    color: var(--color-text);
+}
+.input:focus{
+    box-shadow: 2px 2px var(--color-primary);
+    border-color: var(--color-primary);
+    transition: box-shadow 0.3s;
+}
+.bg-w{
+    background-color: white;
+}
 /* .bs-sm{
   
 } */
 
-a{
+a {
     color: inherit;
     text-decoration: inherit;
 }
 /* class nesscesary */
-
 .df {
     display: flex;
+}
+.justify-c {
+    justify-content: center;
+}
+.justify-fs{
+    justify-content: flex-start;
+}
+.align-c {
+    align-items: center;
+}
+.align-fs {
+    align-items: flex-start;
+}
+.fd-c{
+    flex-direction: column;
+}
+.pd-0{
+    padding: 0;
 }
 .pd-5 {
     padding: 5px;
@@ -153,12 +188,51 @@ a{
 .pdb-10 {
     padding-bottom: 10px;
 }
+.pd-20 {
+    padding: 20px;
+}
+.pdl-20 {
+    padding-left: 20px;
+}
+.pdr-20 {
+    padding-right: 20px;
+}
+.pdt-20 {
+    padding-top: 20px;
+}
+.pdb-20 {
+    padding-bottom: 20px;
+}
 
 .mg-0 {
     margin: 0;
 }
+.mgl-0 {
+    margin-left: 0;
+}
+.mgr-0 {
+    margin-right: 0;
+}
+.mgt-0 {
+    margin-top: 0;
+}
+.mgb-0 {
+    margin-bottom: 0;
+}
 .mg-5 {
     margin: 5px;
+}
+.mgl-5 {
+    margin-left: 5px;
+}
+.mgr-5 {
+    margin-right: 5px;
+}
+.mgt-5 {
+    margin-top: 5px;
+}
+.mgb-5 {
+    margin-bottom: 5px;
 }
 .mg-10 {
     margin: 10px;
@@ -191,6 +265,10 @@ a{
 }
 .mgb-10 {
     margin-bottom: 10px;
+}
+
+.mg-20 {
+    margin: 20px;
 }
 .mgl-20 {
     margin-left: 20px;

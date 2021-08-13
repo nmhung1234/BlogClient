@@ -6,7 +6,7 @@ import PostPreview from "../../components/PostPreview";
 import "./style.css";
 
 import { getListPostRequest } from "./../../action";
-import Slider from "../../components/slider";
+import Slider from "../../components/Slider";
 
 function Home(props) {
     const { listPost, getListPost } = props;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./style.css";
@@ -58,7 +58,7 @@ function PostPreview(props) {
                 <h1 className=" mgb-10 cursor-pointer hover-primary">
                     {data.postData.title}
                 </h1>
-                <div className="df">
+                <div>
                     {data.tags?.map((tag, index) => {
                         return <Tag key={index} tag={tag} />;
                     })}

@@ -1,15 +1,15 @@
 import React from "react";
-// import PropTypes from 'prop-types'
-
+import PropTypes from 'prop-types'
+import './style.css'
 function Tag(props) {
-    const {tag} = props
+    const { tag } = props;
     return (
         <p
             className="tag bd-radius-5 pdl-5 pdr-5 mg-5"
             style={{
                 backgroundColor: `${tag.colorBG}`,
                 color: `${tag.colorText}`,
-                paddingBottom: "3px"
+                paddingBottom: "3px",
             }}
         >
             {`${tag.name}`}
@@ -17,8 +17,20 @@ function Tag(props) {
     );
 }
 
-// Tag.propTypes = {
+Tag.propTypes = {
+    tag: PropTypes.shape({
+        colorBG: PropTypes.string.isRequired,
+        colorText: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+    }),
+};
 
-// }
+Tag.defaultProps = {
+    tag: {
+        colorBG: "#37c2ec",
+        colorText: "#4e4e4ee",
+        name: "#demotag"
+    }
+};
 
 export default Tag;
