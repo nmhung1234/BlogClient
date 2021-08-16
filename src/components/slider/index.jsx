@@ -1,54 +1,30 @@
 import React from "react";
-// import PropTypes from "prop-types";
-
-function Slider() {
+import PropTypes from "prop-types";
+import "./style.css";
+function Slider(props) {
+    const { data, title, getAction } = props;
     const [offsetLeft, setOffsetLeft] = React.useState();
     const [clientWidth, setClientWidth] = React.useState();
     const handleClick = (e) => {
         setOffsetLeft(e.target.offsetLeft);
         setClientWidth(e.target.clientWidth);
+        let nameAction = e.target.innerText;
+        getAction(nameAction)
     };
     return (
         <div className="category df">
-            <div className="left mgt-10">Bài viết</div>
+            <div className="left mgt-10">{title}</div>
             <div className="right df">
                 <div className="select df">
-                    <p
-                        className="bd-radius-5 hover-secondary-bg mgt-10 active"
-                        onClick={handleClick}
-                    >
-                        Bảng tin
-                    </p>
-                    <p
-                        className="bd-radius-5 hover-secondary-bg mgt-10"
-                        onClick={handleClick}
-                    >
-                        Tuần
-                    </p>
-                    <p
-                        className="bd-radius-5 hover-secondary-bg mgt-10"
-                        onClick={handleClick}
-                    >
-                        Tháng
-                    </p>
-                    <p
-                        className="bd-radius-5 hover-secondary-bg mgt-10"
-                        onClick={handleClick}
-                    >
-                        Năm
-                    </p>
-                    <p
-                        className="bd-radius-5 hover-secondary-bg mgt-10"
-                        onClick={handleClick}
-                    >
-                        Mới nhất
-                    </p>
-                    <p
-                        className="bd-radius-5 hover-secondary-bg mgt-10"
-                        onClick={handleClick}
-                    >
-                        Khám phá
-                    </p>
+                    {data?.map((ele, index) => (
+                        <p
+                            key={index}
+                            className="bd-radius-5 hover-secondary-bg mgt-10 active"
+                            onClick={handleClick}
+                        >
+                            {ele}
+                        </p>
+                    ))}
                 </div>
                 <div
                     className="slider bd-radius-5"
@@ -61,9 +37,10 @@ function Slider() {
     );
 }
 
-// Slider.propTypes = {
-
-
-// }
+Slider.propTypes = {
+    data: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
+    getAction: PropTypes.func.isRequired,
+};
 
 export default Slider;

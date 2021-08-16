@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import UpPost from "../../components/UpPost";
+import UpPost from "../../pages/UpPost";
 
 // import PropTypes from 'prop-types'
 

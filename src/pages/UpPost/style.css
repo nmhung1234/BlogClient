@@ -1,0 +1,87 @@
+.nav-uppost {
+    justify-content: space-around;
+}
+.uppost {
+    width: 100%;
+}
+.uppost .write-container {
+    width: 70%;
+    margin: 0 auto;
+}
+.uppost .write-space {
+    width: 80%;
+    max-width: 900px;
+    /* margin: 0 auto; */
+    margin-top: 30px;
+    padding: 30px 50px;
+    align-items: flex-start;
+}
+.uppost .tutorial {
+    width: 20%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.write-space .title-post {
+    border: none;
+    outline: none;
+    padding: 20px;
+    font-size: 50px;
+    width: 100%;
+    font-weight: bold;
+    resize: none;
+    overflow: hidden;
+}
+.write-space .uploadButton {
+    width: 100%;
+    padding: 20px 0;
+    padding-left: 20px;
+    background-color: #ececec;
+    height: fit-content;
+}
+.write-space .uploadButton .input {
+    padding-left: 20px;
+    width: 50%;
+}
+
+.write-space .content-post {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    resize: none;
+}
+.nav-uppost .editor {
+    min-width: 100% !important;
+    height: fit-content !important;
+}
+.previewpost{
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 50px;
+
+}
+/* for markdown editor */
+
+.w-md-editor {
+    box-shadow: none !important;
+}
+.w-md-editor-show-edit {
+    min-height: 200px;
+    height: fit-content !important;
+}
+.w-md-editor-content {
+    height: fit-content !important;
+}
+.w-md-editor-aree {
+    overflow: unset !important;
+}
+.w-md-editor-text {
+    font-size: 20px !important;
+    line-height: 30px !important;
+    overflow: unset !important;
+    height: fit-content !important;
+}

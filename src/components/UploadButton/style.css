@@ -1870,6 +1870,29 @@ a.ant-btn-sm {
   margin-right: 8px;
   margin-left: 0;
 }
+.ant-upload {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  outline: 0;
+}
+.ant-upload p {
+  margin: 0;
+}
+.ant-upload-btn {
+  display: block;
+  width: 100%;
+  outline: none;
+}
+.ant-upload input[type='file'] {
+  cursor: pointer;
+}
 .ant-upload.ant-upload-select {
   display: inline-block;
 }
@@ -1902,35 +1925,77 @@ a.ant-btn-sm {
 .ant-upload-disabled.ant-upload.ant-upload-select-picture-card:hover {
   border-color: #d9d9d9;
 }
-
-[ant-click-animating='true'],
-[ant-click-animating-without-extra-node='true'] {
+.ant-upload.ant-upload-drag {
   position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #fafafa;
+  border: 1px dashed #d9d9d9;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.3s;
 }
-html {
-  --antd-wave-shadow-color: #1890ff;
-  --scroll-bar: 0;
+.ant-upload.ant-upload-drag .ant-upload {
+  padding: 16px 0;
 }
-[ant-click-animating-without-extra-node='true']::after,
-.ant-click-animating-node {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  border-radius: inherit;
-  box-shadow: 0 0 0 0 #1890ff;
-  box-shadow: 0 0 0 0 var(--antd-wave-shadow-color);
-  opacity: 0.2;
-  -webkit-animation: fadeEffect 2s cubic-bezier(0.08, 0.82, 0.17, 1), waveEffect 0.4s cubic-bezier(0.08, 0.82, 0.17, 1);
-          animation: fadeEffect 2s cubic-bezier(0.08, 0.82, 0.17, 1), waveEffect 0.4s cubic-bezier(0.08, 0.82, 0.17, 1);
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+.ant-upload.ant-upload-drag.ant-upload-drag-hover:not(.ant-upload-disabled) {
+  border-color: #096dd9;
+}
+.ant-upload.ant-upload-drag.ant-upload-disabled {
+  cursor: not-allowed;
+}
+.ant-upload.ant-upload-drag .ant-upload-btn {
+  display: table;
+  height: 100%;
+}
+.ant-upload.ant-upload-drag .ant-upload-drag-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+.ant-upload.ant-upload-drag:not(.ant-upload-disabled):hover {
+  border-color: #40a9ff;
+}
+.ant-upload.ant-upload-drag p.ant-upload-drag-icon {
+  margin-bottom: 20px;
+}
+.ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon {
+  color: #40a9ff;
+  font-size: 48px;
+}
+.ant-upload.ant-upload-drag p.ant-upload-text {
+  margin: 0 0 4px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 16px;
+}
+.ant-upload.ant-upload-drag p.ant-upload-hint {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+}
+.ant-upload.ant-upload-drag .anticon-plus {
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 30px;
+  transition: all 0.3s;
+}
+.ant-upload.ant-upload-drag .anticon-plus:hover {
+  color: rgba(0, 0, 0, 0.45);
+}
+.ant-upload.ant-upload-drag:hover .anticon-plus {
+  color: rgba(0, 0, 0, 0.45);
+}
+.ant-upload-picture-card-wrapper {
+  display: inline-block;
+  width: 100%;
+}
+.ant-upload-picture-card-wrapper::before {
+  display: table;
   content: '';
-  pointer-events: none;
 }
-
+.ant-upload-picture-card-wrapper::after {
+  display: table;
+  clear: both;
+  content: '';
+}
 .ant-upload-list {
   box-sizing: border-box;
   margin: 0;
@@ -2441,6 +2506,7 @@ html {
   margin: 8px 0 0;
   padding: 0;
 }
+
 .ant-tooltip-arrow {
   position: absolute;
   display: block;
@@ -2968,4 +3034,92 @@ html {
 }
 .ant-tooltip-rtl .ant-tooltip-inner {
   text-align: right;
+}
+.ant-message {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  position: fixed;
+  top: 8px;
+  left: 0;
+  z-index: 1010;
+  width: 100%;
+  pointer-events: none;
+}
+.ant-message-notice {
+  padding: 8px;
+  text-align: center;
+}
+.ant-message-notice-content {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  pointer-events: all;
+}
+.ant-message-success .anticon {
+  color: #52c41a;
+}
+.ant-message-error .anticon {
+  color: #ff4d4f;
+}
+.ant-message-warning .anticon {
+  color: #faad14;
+}
+.ant-message-info .anticon,
+.ant-message-loading .anticon {
+  color: #1890ff;
+}
+.ant-message .anticon {
+  position: relative;
+  top: 1px;
+  margin-right: 8px;
+  font-size: 16px;
+}
+.ant-message-notice.ant-move-up-leave.ant-move-up-leave-active {
+  -webkit-animation-name: MessageMoveOut;
+          animation-name: MessageMoveOut;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+}
+@-webkit-keyframes MessageMoveOut {
+  0% {
+    max-height: 150px;
+    padding: 8px;
+    opacity: 1;
+  }
+  100% {
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+@keyframes MessageMoveOut {
+  0% {
+    max-height: 150px;
+    padding: 8px;
+    opacity: 1;
+  }
+  100% {
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+.ant-message-rtl {
+  direction: rtl;
+}
+.ant-message-rtl span {
+  direction: rtl;
+}
+.ant-message-rtl .anticon {
+  margin-right: 0;
+  margin-left: 8px;
 }
