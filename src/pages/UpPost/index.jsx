@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import MDEditor from "@uiw/react-md-editor";
 import { Link } from "react-router-dom";
-import "./style.css";
+import { Select } from "antd";
 import logoIcon from "./../../logo.svg";
 import xIcon from "./../../assets/icons/x.svg";
 import copyIcon from "./../../assets/icons/copy.svg";
@@ -11,12 +11,32 @@ import UploadButton from "../../components/UploadButton";
 import PostDetail from "./../../components/PostDetail";
 import Slider from "./../../components/Slider";
 
+import { getAllTagRequest } from "../../action";
+
+import "./style.css";
+import "./ant.css";
+
 export const UpPost = (props) => {
+    const { getAllTags, tagStore } = props;
     const [action, setAction] = React.useState("Chỉnh sửa");
     const [linkImgCover, setLinkImgCover] = React.useState("");
     const [titlePost, setTitlePost] = React.useState("");
     const [value, setValue] = React.useState("Nhập nội dung...");
     const [linkImg, setLinkImg] = React.useState("");
+    const [selectedItems, setSelectedItems] = React.useState([]);
+    const [tagState, setTagState] = React.useState([]);
+
+    React.useEffect(() => {
+        setTagState(tagStore);
+    }, [tagStore]);
+
+    React.useEffect(() => {
+        getAllTags();
+    }, []);
+
+    const handleChange = (selectedItems) => {
+        setSelectedItems(selectedItems);
+    };
     const getAction = (action) => {
         setAction(action);
     };
@@ -29,6 +49,8 @@ export const UpPost = (props) => {
             }
         }
     };
+    const OPTIONS = tagState.map((ele) => ele.name);
+    const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
     return (
         <>
             <div>
@@ -75,7 +97,22 @@ export const UpPost = (props) => {
                                 value={titlePost}
                                 onChange={(e) => setTitlePost(e.target.value)}
                             ></textarea>
-
+                            <Select
+                                mode="multiple"
+                                placeholder="#Hastag cho bài viết"
+                                value={selectedItems}
+                                onChange={handleChange}
+                                style={{
+                                    width: "100%",
+                                    marginBottom: "50px",
+                                }}
+                            >
+                                {filteredOptions.map((item) => (
+                                    <Select.Option key={item} value={item}>
+                                        {item}
+                                    </Select.Option>
+                                ))}
+                            </Select>
                             {/* lấy link ảnh */}
                             <div className="uploadButton df bd-radius-5">
                                 <UploadButton
@@ -164,13 +201,19 @@ export const UpPost = (props) => {
 //     props: PropTypes
 // }
 
-// const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+    return {
+        tagStore: state.tag,
+    };
+};
 
-// })
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getAllTags: () => {
+            dispatch(getAllTagRequest());
+        },
+    };
+};
 
-// const mapDispatchToProps = {
-
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(UpPost)
-export default UpPost;
+export default connect(mapStateToProps, mapDispatchToProps)(UpPost);
+// export default UpPost;

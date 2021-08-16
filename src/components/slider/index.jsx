@@ -8,7 +8,7 @@ function Slider(props) {
     const handleClick = (e) => {
         setOffsetLeft(e.target.offsetLeft);
         setClientWidth(e.target.clientWidth);
-        let nameAction = e.target.innerText;
+        const nameAction = e.target.innerText;
         getAction(nameAction)
     };
     return (

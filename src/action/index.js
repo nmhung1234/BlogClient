@@ -8,9 +8,22 @@ export const getListPostRequest = () => {
         })
     }
 }
+export const getAllTagRequest = () => {
+    return (dispatch) => {
+        return axios.get('/upload/tag').then((res) => {
+            dispatch(getAllTag(res));
+        })
+    }
+}
 export const getListPost = (response) => {
     return {
         type: Types.GET_HOME_POST,
+        response
+    }
+}
+export const getAllTag = (response) => {
+    return {
+        type: Types.GET_ALL_TAG,
         response
     }
 }
