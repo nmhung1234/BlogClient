@@ -31,7 +31,7 @@ function PostPreview(props) {
     return (
         <Link
             to={`${slug(data.ownerData.name)}/${slug(data.postData.title)}`}
-            className="previrewPost df bd-primary bd-radius-5 mg-10"
+            className="previrewPost df fd-c bd-primary bd-radius-5 mg-10"
         >
             {key2 == 0 ? (
                 <div
@@ -39,7 +39,7 @@ function PostPreview(props) {
                         width: "100%",
                         height: "200px",
                         borderRadius: "5px 5px 0 0",
-                        backgroundImage: `url(${data.postData.titleImg})`,
+                        backgroundImage: `url(${data.postData.coverImg})`,
                         backgroundSize: "cover",
                     }}
                 ></div>

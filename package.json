@@ -2,7 +2,7 @@
   "name": "blogclient",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },

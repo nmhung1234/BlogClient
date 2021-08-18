@@ -9,7 +9,7 @@ function Slider(props) {
         setOffsetLeft(e.target.offsetLeft);
         setClientWidth(e.target.clientWidth);
         const nameAction = e.target.innerText;
-        getAction(nameAction)
+        getAction(nameAction);
     };
     return (
         <div className="category df">
@@ -40,7 +40,7 @@ function Slider(props) {
 Slider.propTypes = {
     data: PropTypes.array.isRequired,
     title: PropTypes.string.isRequired,
-    getAction: PropTypes.func.isRequired,
+    getAction: PropTypes.func,
 };
 
 export default Slider;

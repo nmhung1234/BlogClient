@@ -9,13 +9,16 @@ function PostDetail(props) {
     return (
         <>
             <div className="PostDetail bd-primary">
-                <img className="img-post" src={data.cover} alt="" />
+                {data.cover ? (
+                    <img className="img-post" src={data.cover} alt="" />
+                ) : (
+                    ""
+                )}
                 <div className="body">
-                    <div className="title pdb-20">{data.title}</div>
-                    <Tag />
-                    <Tag />
-                    <Tag />
-                    <Tag />
+                    <div className="title pdb-20">{data?.title}</div>
+                    {data?.hastag.map((elem, index) => (
+                        <Tag key={index} tag={elem} />
+                    ))}
                     <div className="authorInfo pdt-20 pdb-20 df align-c">
                         <div className="df align-c">
                             <div className="avatar mgl-0"></div>
@@ -29,7 +32,7 @@ function PostDetail(props) {
                         </div>
                     </div>
                     <div className="content">
-                        <MDEditor.Markdown source={data.content} />
+                        <MDEditor.Markdown source={data?.content} />
                     </div>
                     <div className="discussion"></div>
                 </div>
@@ -39,7 +42,12 @@ function PostDetail(props) {
 }
 
 PostDetail.propTypes = {
-    data: PropTypes.object.isRequired,
+    data: PropTypes.shape({
+        cover: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        content: PropTypes.string.isRequired,
+        hastag: PropTypes.array.isRequired,
+    }),
 };
 PostDetail.defaultProps = {
     data: {
@@ -47,6 +55,7 @@ PostDetail.defaultProps = {
         title: "Lorem Ipsum dolor sit amet",
         content:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, recusandae delectus! Reprehenderit aliquam repellat voluptatum magni, aliquid facilis? Adipisci porro corrupti fugit voluptate quaerat placeat. Mollitia natus, doloribus distinctio quia, illo a veniam sit, dolorem magnam est nam. Optio iste dolorum minus laborum porro delectus veniam. At officiis nostrum architecto!",
+        hastag: ["#nodejs"],
     },
 };
 

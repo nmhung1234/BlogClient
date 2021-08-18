@@ -23,17 +23,17 @@ function Home(props) {
         <div>
             <Header />
             <div className="homepage df fd-c align-c">
-                    <Slider
-                        title={"Bài viết"}
-                        data={[
-                            "Bảng tin",
-                            "Tuần",
-                            "Tháng",
-                            "Năm",
-                            "Mới nhất",
-                            "Khám phá",
-                        ]}
-                    />
+                <Slider
+                    title={"Bài viết"}
+                    data={[
+                        "Bảng tin",
+                        "Tuần",
+                        "Tháng",
+                        "Năm",
+                        "Mới nhất",
+                        "Khám phá",
+                    ]}
+                />
                 {listPostState
                     ? listPostState.map((post, index) => {
                           return (

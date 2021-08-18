@@ -19,8 +19,8 @@ function Tag(props) {
 
 Tag.propTypes = {
     tag: PropTypes.shape({
-        colorBG: PropTypes.string.isRequired,
-        colorText: PropTypes.string.isRequired,
+        colorBG: PropTypes.string,
+        colorText: PropTypes.string,
         name: PropTypes.string.isRequired,
     }),
 };

@@ -11,13 +11,13 @@ import UploadButton from "../../components/UploadButton";
 import PostDetail from "./../../components/PostDetail";
 import Slider from "./../../components/Slider";
 
-import { getAllTagRequest } from "../../action";
+import { getAllTagRequest, upPostRequest } from "../../action";
 
 import "./style.css";
 import "./ant.css";
 
-export const UpPost = (props) => {
-    const { getAllTags, tagStore } = props;
+const UpPost = (props) => {
+    const { getAllTags, tagStore, createPostReq } = props;
     const [action, setAction] = React.useState("Chỉnh sửa");
     const [linkImgCover, setLinkImgCover] = React.useState("");
     const [titlePost, setTitlePost] = React.useState("");
@@ -34,8 +34,8 @@ export const UpPost = (props) => {
         getAllTags();
     }, []);
 
-    const handleChange = (selectedItems) => {
-        setSelectedItems(selectedItems);
+    const handleChange = async (selectedItem) => {
+        await setSelectedItems(() => selectedItem);
     };
     const getAction = (action) => {
         setAction(action);
@@ -48,6 +48,16 @@ export const UpPost = (props) => {
                 setLinkImg(`![alt](${link.url})`);
             }
         }
+    };
+    const handleButtonUpPost = () => {
+        const data = {
+            owner_id: "610ab32f5e2bafb87ef87e6c",
+            title: titlePost,
+            coverImg: linkImgCover,
+            content: value,
+            tags: selectedItems,
+        };
+        createPostReq(data);
     };
     const OPTIONS = tagState.map((ele) => ele.name);
     const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
@@ -171,6 +181,7 @@ export const UpPost = (props) => {
                                     ? { display: "flex" }
                                     : { display: "none" }
                             }
+                            onClick={handleButtonUpPost}
                         >
                             Đăng
                         </div>
@@ -181,7 +192,7 @@ export const UpPost = (props) => {
                 className="previewpost df justify-c"
                 style={
                     action == "Xem trước"
-                        ? { display: "block" }
+                        ? { display: "flex" }
                         : { display: "none" }
                 }
             >
@@ -190,6 +201,9 @@ export const UpPost = (props) => {
                         cover: linkImgCover,
                         title: titlePost,
                         content: value,
+                        hastag: selectedItems.map(function (elem) {
+                            return { name: elem };
+                        }),
                     }}
                 />
             </div>
@@ -211,6 +225,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getAllTags: () => {
             dispatch(getAllTagRequest());
+        },
+        createPostReq: (data) => {
+            dispatch(upPostRequest(data));
         },
     };
 };

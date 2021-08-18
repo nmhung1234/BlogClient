@@ -18,9 +18,9 @@
     line-height: 60px;
     font-weight: bold;
 }
-.PostDetail .body .content {
-    font-size: 20px;
-    line-height: 30px;
+.PostDetail .body .content .wmde-markdown{
+    font-size: 20px !important;
+    line-height: 30px !important;
     color:var(--color-text);
 }
 .PostDetail .authorInfo .time{
