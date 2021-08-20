@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 import logoIcon from "./../../logo.svg";
 import bellIcon from "./../../assets/icons/bell.svg";
-import connectIcon from "./../../assets/icons/share-2.svg";
+import connectIconn from "./../../assets/icons/connect.svg";
 import searchIcon from "./../../assets/icons/search.svg";
 // import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
@@ -35,28 +35,36 @@ function Header(props) {
                         </div>
                     </Link>
                     <div className="nav-icon hover-secondary-bg">
-                        <img src={connectIcon} alt="" />
+                        <img src={connectIconn} alt="" />
                     </div>
                     <div className="nav-icon hover-secondary-bg">
                         <img src={bellIcon} alt="" />
                     </div>
                     <div className="avatar bd-primary">
                         <div className="user-popup cursor-pointer">
-                            <div className="name bdb-2">
-                                <div className="pd-10 bd-radius-5 hover-secondary-bg mg-5">
-                                    <h4 className="displayName pdl-10">
-                                        Nguyen Hung
-                                    </h4>
-                                    <p className="userName pdl-10">@hungnm</p>
+                            <Link to={"/nmhung"}>
+                                <div className="name bdb-2 hover-primary">
+                                    <div className="pd-10 bd-radius-5 hover-secondary-bg mg-5">
+                                        <h4 className="displayName pdl-10">
+                                            Nguyen Hung
+                                        </h4>
+                                        <p className="userName pdl-10">
+                                            @hungnm
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                             <div className="action bdb-2">
-                                <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5 mgt-5">
-                                    Dashboard
-                                </p>
-                                <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5">
-                                    Create Post
-                                </p>
+                                <Link to="/">
+                                    <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5 mgt-5">
+                                        Dashboard
+                                    </p>
+                                </Link>
+                                <Link to="/new">
+                                    <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5">
+                                        Create Post
+                                    </p>
+                                </Link>
                                 <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5">
                                     Reading List
                                 </p>

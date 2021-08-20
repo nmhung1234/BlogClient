@@ -22,11 +22,10 @@ function PostDetail(props) {
                     <div className="authorInfo pdt-20 pdb-20 df align-c">
                         <div className="df align-c">
                             <div className="avatar mgl-0"></div>
-                            <h4 className="name mgl-5">Author Name</h4>
+                            <h4 className="name bd-radius-5 hover-secondary-bg pd-5 cursor-pointer">Author Name</h4>
                         </div>
                         <div
-                            className="time pdl-20"
-                            style={{ color: "var(--color-text-gray)" }}
+                            className="time pdl-10 color-gray"
                         >
                             12 thg 8
                         </div>

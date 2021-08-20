@@ -9,7 +9,6 @@ import Tag from "../Tag";
 
 function PostPreview(props) {
     const { data, key2 } = props;
-
     function slug(str) {
         str = str.replace(/^\s+|\s+$/g, ""); // trim
         str = str.toLowerCase();
@@ -30,8 +29,10 @@ function PostPreview(props) {
     }
     return (
         <Link
-            to={`${slug(data.ownerData.name)}/${slug(data.postData.title)}`}
-            className="previrewPost df fd-c bd-primary bd-radius-5 mg-10"
+            to={`${slug(data.ownerData.name)}/${data.postData.keyString}/${slug(
+                data.postData.title
+            )}`}
+            className="previrewPost df fd-c bd-primary bd-radius-5 mgt-10"
         >
             {key2 == 0 ? (
                 <div
@@ -41,21 +42,28 @@ function PostPreview(props) {
                         borderRadius: "5px 5px 0 0",
                         backgroundImage: `url(${data.postData.coverImg})`,
                         backgroundSize: "cover",
+                        opacity: "98%",
                     }}
                 ></div>
             ) : (
                 ""
             )}
-
             <div className="infoAuthor mg-10 df">
                 <div className="avatar"></div>
                 <div className="right df">
-                    <p>{data.ownerData.name}</p>
-                    <p className="date">{showTime(data.postData.createdAt)}</p>
+                    <p
+                        className="bd-radius-5 hover-secondary-bg pd-5"
+                        style={{ width: "fit-content", fontWeight: "500" }}
+                    >
+                        {data.ownerData.name}
+                    </p>
+                    <p className="date color-gray pdl-5">
+                        {showTime(data.postData.createdAt)}
+                    </p>
                 </div>
             </div>
-            <div className="body df mg-20 mgr-20">
-                <h1 className=" mgb-10 cursor-pointer hover-primary">
+            <div className="body df mgt-10 mgr-20 mgb-20">
+                <h1 className=" mgb-20 cursor-pointer hover-primary">
                     {data.postData.title}
                 </h1>
                 <div>
@@ -67,7 +75,9 @@ function PostPreview(props) {
                     <div className="left df">
                         <div className="df hover-secondary-bg pd-10 bd-radius-5 cursor-pointer reaction ">
                             <img className="icon mgr-5" src={likeIcon} alt="" />
-                            <p>3 reaction</p>
+                            <p className="color-gray hover-primary">
+                                3 reaction
+                            </p>
                         </div>
                         <div className="df hover-secondary-bg pd-10 bd-radius-5 cursor-pointer comment ">
                             <img
@@ -75,7 +85,9 @@ function PostPreview(props) {
                                 src={commentIcon}
                                 alt=""
                             />
-                            <p>Add comment</p>
+                            <p className="color-gray hover-primary">
+                                Add comment
+                            </p>
                         </div>
                     </div>
                     <div className="right">

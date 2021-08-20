@@ -14,5 +14,5 @@ export const showTime = (dateISO) => {
     const compareHours = moment([year, month, date, hour, minnute, second]).locale("vi")
         .startOf("hours")
         .fromNow();
-    return `${date} Thg${month + 1} (${compareHours})`;
+    return `${date} Thg ${month + 1} (${compareHours})`;
 }

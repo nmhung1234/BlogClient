@@ -1,0 +1,52 @@
+:root {
+    --height-avatar: 150px;
+    --border-avatar: 15px;
+}
+.user-profile {
+    width: 100%;
+}
+.user-profile .bg {
+    height: 150px;
+    background: #000;
+}
+.user-profile .container {
+    /* position: relative; */
+    /* height: fit-content; */
+}
+.user-profile .profile {
+    width: 70%;
+    height: fit-content;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-50px);
+
+}
+.user-profile .user-avatar {
+    box-sizing: border-box;
+    height: var(--height-avatar);
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    background: #000;
+    overflow: hidden;
+    margin: 0;
+    transform: translateY(-50%);
+}
+.user-profile .user-avatar img {
+    height: calc(var(--height-avatar) - var(--border-avatar));
+    object-fit: cover;
+    border-radius: inherit;
+}
+.user-profile .edit-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.user-profile .describe{
+    transform: translateY(-50%);
+}
+.user-profile .description{
+    font-size: 18px;
+    line-height: 27px;
+}
