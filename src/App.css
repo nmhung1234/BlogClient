@@ -50,8 +50,8 @@
 :root {
     --color-primary: #4d59db;
     --color-secondary: #b5bdc4;
-    --color-text: #08090a;
-    --color-text-gray: #64707d;
+    --color-text: #202428;
+    --color-gray: #64707d;
     --border-radius: 5px;
     --border-color: #D7D9D9;
     font-family: "SegoeUI", Tahoma, Geneva, Verdana, sans-serif;
@@ -72,7 +72,10 @@
     background-image: url("https://picsum.photos/800/600");
 }
 .color-gray{
-    color: var(--color-text-gray);
+    color: var(--color-gray);
+}
+.color-text{
+    color: var(--color-text);
 }
 .color-gray-icon{
     stroke: var(--color-text-gray);

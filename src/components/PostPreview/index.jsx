@@ -9,6 +9,8 @@ import Tag from "../Tag";
 
 function PostPreview(props) {
     const { data, key2 } = props;
+    console.log(data);
+    
     function slug(str) {
         str = str.replace(/^\s+|\s+$/g, ""); // trim
         str = str.toLowerCase();
@@ -32,7 +34,7 @@ function PostPreview(props) {
             to={`${slug(data.ownerData.name)}/${data.postData.keyString}/${slug(
                 data.postData.title
             )}`}
-            className="previrewPost df fd-c bd-primary bd-radius-5 mgt-10"
+            className="previrewPost df fd-c bd-primary bd-radius-5 mgb-10"
         >
             {key2 == 0 ? (
                 <div
@@ -62,7 +64,7 @@ function PostPreview(props) {
                     </p>
                 </div>
             </div>
-            <div className="body df mgt-10 mgr-20 mgb-20">
+            <div className="body df fd-r mgt-10 mgr-20 mgb-20">
                 <h1 className=" mgb-20 cursor-pointer hover-primary">
                     {data.postData.title}
                 </h1>
@@ -106,5 +108,61 @@ PostPreview.propTypes = {
     }),
     key2: PropTypes.number.isRequired,
 };
+
+PostPreview.defaultProps = {
+    data: {
+        "tags": [
+            {
+                "_id": "61149fa4f9e0d0e18a826ba1",
+                "name": "#javascript",
+                "colorBG": "#F7E018",
+                "colorText": "#000"
+            },
+            {
+                "_id": "6114a049f9e0d0e18a826ba3",
+                "name": "#nodejs",
+                "colorBG": "#8BBF3D",
+                "colorText": "#fff"
+            },
+            {
+                "_id": "6114bdf4f9e0d0e18a826baa",
+                "name": "#reactjs",
+                "colorBG": "#2A2C2E",
+                "colorText": "#61DAFB"
+            }
+        ],
+        "postData": {
+            "_id": "611e681b468749bda6521fa1",
+            "owner_id": "610ab32f5e2bafb87ef87e6c",
+            "title": "🚌🛺 Du lịch khám phá",
+            "coverImg": "http://res.cloudinary.com/nmhung/image/upload/e_blur:50,q_80/v1629382557/puuxs6fefqzaj6vcasuk.png",
+            "content": "Đây là nội dùng demo vì thế nên không có gì nhé! hihiihihi\n![alt](http://res.cloudinary.com/nmhung/image/upload/e_blur:50,q_80/v1629382598/ppm81cwmafctipet8f1e.jpg)\nmjsbjbjsbfksbfksks",
+            "comments": {},
+            "like": 0,
+            "views": 0,
+            "tags": [
+                "#javascript",
+                "#nodejs",
+                "#reactjs",
+                "#react"
+            ],
+            "createdAt": "2021-08-19T14:18:03.134Z",
+            "lastmodified": "2021-08-19T14:18:03.134Z",
+            "keyString": "q2szl"
+        },
+        "ownerData": {
+            "_id": "610ab32f5e2bafb87ef87e6c",
+            "email": "nmhung@gmail.com",
+            "username": "nmhung",
+            "name": "nmhung",
+            "sex": 0,
+            "description": "",
+            "favoriteTopic": null,
+            "avatar": null,
+            "type": 1,
+            "createdAt": "2021-08-04T15:33:03.284Z"
+        }
+    }
+}
 
 export default PostPreview;
