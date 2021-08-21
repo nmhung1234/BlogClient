@@ -19,18 +19,22 @@ function Profile(props) {
                         <div className="edit-btn button-lg mg-10">
                             Chỉnh sửa
                         </div>
-                        <div className="describe df fd-c align-c">
+                        <div className="describe df fd-c align-c pdb-20">
                             <h1 className="name mg-20">Nguyen Hung</h1>
-                            <p className="description mgb-10">hmmmm</p>
+                            <p className="description mgb-10">
+                                hmmmm Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Magnam eum eaque tempora animi
+                                voluptatum voluptates sit, minus ullam
+                            </p>
                             <div className="birth df">
                                 <img src={birthIcon} alt="" />
-                                <p className="mgl-10 color-gray">
+                                <p className="mgl-10 color-gray mg-20">
                                     Đã tham gia ngày 3 tháng 8, 2021
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div className="df action pdt-10">
+                    <div className="df action pdt-10 justify-c">
                         <div className="count-activity bd-radius-5 bg-w bd-primary pd-20 mgr-10">
                             <div className="df align-c pd-10">
                                 <img src={fileIcon} alt="" />

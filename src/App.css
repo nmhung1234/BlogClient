@@ -53,7 +53,7 @@
     --color-text: #202428;
     --color-gray: #64707d;
     --border-radius: 5px;
-    --border-color: #D7D9D9;
+    --border-color: #d7d9d9;
     font-family: "SegoeUI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #eef0f1;
 }
@@ -71,13 +71,13 @@
     background-size: contain;
     background-image: url("https://picsum.photos/800/600");
 }
-.color-gray{
+.color-gray {
     color: var(--color-gray);
 }
-.color-text{
+.color-text {
     color: var(--color-text);
 }
-.color-gray-icon{
+.color-gray-icon {
     stroke: var(--color-text-gray);
 }
 .button-lg {
@@ -88,6 +88,8 @@
     height: fit-content;
     color: white;
     cursor: pointer;
+    font-weight: 500;
+    font-size: 18px;
 }
 .button-sm {
     background-color: var(--color-primary);
