@@ -4,36 +4,16 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import commentIcon from "./../../assets/icons/message-circle.svg";
 import likeIcon from "./../../assets/icons/heart.svg";
-import { showTime } from "../../utils";
+import { showTime, slug } from "../../utils";
 import Tag from "../Tag";
 
 function PostPreview(props) {
     const { data, key2 } = props;
-    console.log(data);
+    // console.log(data);
     
-    function slug(str) {
-        str = str.replace(/^\s+|\s+$/g, ""); // trim
-        str = str.toLowerCase();
-
-        // remove accents, swap ñ for n, etc
-        var from = "àáäăâèéëêìíïîòóöôùúüûñç·/_,:;";
-        var to = "aaaaeeeeiiiioooouuuunc------";
-        for (var i = 0, l = from.length; i < l; i++) {
-            str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
-        }
-
-        str = str
-            .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
-            .replace(/\s+/g, "-") // collapse whitespace and replace by -
-            .replace(/-+/g, "-"); // collapse dashes
-
-        return str;
-    }
     return (
         <Link
-            to={`${slug(data.ownerData.name)}/${data.postData.keyString}/${slug(
-                data.postData.title
-            )}`}
+            to={`${data.ownerData.name}/${data.postData.slugString}`}
             className="previrewPost df fd-c bd-primary bd-radius-5 mgb-10"
         >
             {key2 == 0 ? (
@@ -148,7 +128,7 @@ PostPreview.defaultProps = {
             ],
             "createdAt": "2021-08-19T14:18:03.134Z",
             "lastmodified": "2021-08-19T14:18:03.134Z",
-            "keyString": "q2szl"
+            "slugString": "du-lich-kham-pha-q2szl"
         },
         "ownerData": {
             "_id": "610ab32f5e2bafb87ef87e6c",

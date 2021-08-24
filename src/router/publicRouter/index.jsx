@@ -10,7 +10,7 @@ function index(props) {
             <Route exact path="/" component={Home} />
             <Route
                 exact
-                path="/:username/:key/:postname"
+                path="/:username/:slugString"
                 component={DetailPost}
             />
             <Route exact path="/login" component={LoginRegister} />

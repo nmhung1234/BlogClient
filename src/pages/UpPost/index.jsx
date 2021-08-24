@@ -198,12 +198,15 @@ const UpPost = (props) => {
             >
                 <PostDetail
                     data={{
-                        cover: linkImgCover,
-                        title: titlePost,
-                        content: value,
-                        hastag: selectedItems.map(function (elem) {
-                            return { name: elem };
-                        }),
+                        username: "nmhung",
+                        owner_post: {
+                            title: titlePost,
+                            coverImg: linkImgCover,
+                            content: value,
+                            tags: selectedItems,
+                            lastmodified: "2021-08-23T16:40:37.818Z",
+                        },
+                        tags: selectedItems,
                     }}
                 />
             </div>

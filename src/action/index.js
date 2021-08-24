@@ -42,3 +42,18 @@ export const getAllTag = (response) => {
         response
     }
 }
+
+
+// export const getDetailPostRequest = (data) => {
+//     return (dispatch) => {
+//         return axios.get('/post/detail', data).then((res) => {
+//             dispatch
+//         })
+//     }
+// }
+// export const getDetailPost = (response) => {
+//     return {
+//         type: Types.GET_DETAIL_POST,
+//         response
+//     }
+// }

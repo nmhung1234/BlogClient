@@ -23,6 +23,9 @@
     line-height: 30px !important;
     color:var(--color-text);
 }
+.PostDetail .body .content .wmde-markdown img{
+    margin: 20px 0;
+}
 .PostDetail .authorInfo .time{
     font-weight: 200;
 }
