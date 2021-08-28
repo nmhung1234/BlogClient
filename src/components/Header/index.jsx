@@ -6,11 +6,17 @@ import connectIconn from "./../../assets/icons/connect.svg";
 import searchIcon from "./../../assets/icons/search.svg";
 // import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
+import LoginRegister from "./../Login_Register";
 
 function Header(props) {
+    const [actionState, setActionState] = React.useState("cancel");
+    const handleLoginForm = (action) => {
+        setActionState(action);
+    };
     return (
         <>
             <div className="nav pd-5">
+                <LoginRegister actionProp={actionState} />
                 <div className="left">
                     <Link to="/" className="pd-0 mg-0">
                         <img src={logoIcon} alt="Dev Việt Nam" />
@@ -34,6 +40,14 @@ function Header(props) {
                             Đăng bài
                         </div>
                     </Link>
+
+                    <div
+                        className="button-lg hover-button mgr-10"
+                        onClick={() => handleLoginForm("login")}
+                    >
+                        login
+                    </div>
+
                     <div className="nav-icon hover-secondary-bg">
                         <img src={connectIconn} alt="" />
                     </div>

@@ -47,7 +47,7 @@ function PostDetail(props) {
 
 PostDetail.propTypes = {
     data: PropTypes.shape({
-        _id: PropTypes.number.isRequired,
+        _id: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,

@@ -163,6 +163,9 @@ a {
 .align-fs {
     align-items: flex-start;
 }
+.align-fs {
+    align-items: flex-start;
+}
 .fd-c {
     flex-direction: column;
 }

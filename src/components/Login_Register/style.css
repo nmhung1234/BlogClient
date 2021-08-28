@@ -1,0 +1,42 @@
+::placeholder {
+    color: #aaaaaadc;
+}
+
+.login_Container {
+    position: fixed;
+    z-index: 100;
+    height: calc(100vh + 10px);
+    width: 100vw;
+    top: -10px;
+    background: rgba(0, 0, 0, 0.521);
+    backdrop-filter: blur(2px);
+}
+.login-dialog {
+    position: fixed;
+    z-index: 200;
+    width: fit-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    background: rgb(255, 255, 255);
+}
+.login-dialog .cancel-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.login_Container .form {
+    margin-right: 100px;
+}
+.login_Container input {
+    line-height: 25px;
+    padding: 7px 15px;
+    width: 80%;
+    /* font-size: 20px */
+}
+.show {
+    display: block;
+}
+.hide {
+    display: none;
+}

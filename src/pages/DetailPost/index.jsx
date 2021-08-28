@@ -6,6 +6,7 @@ import PostDetail from "../../components/PostDetail";
 import Header from "./../../components/Header";
 import axios from "./../../utils/customAxios";
 import "./style.css";
+
 function DetailPost(props) {
     console.log(props);
 

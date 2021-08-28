@@ -7,7 +7,7 @@ import "./style.css";
 
 import { getListPostRequest } from "./../../action";
 import Slider from "../../components/Slider";
-
+import Skeleton from 'react-loading-skeleton';
 function Home(props) {
     const { listPost, getListPost } = props;
     const [listPostState, setListPostState] = React.useState();
@@ -44,7 +44,7 @@ function Home(props) {
                               />
                           );
                       })
-                    : ""}
+                    : <Skeleton count={5}/> }
             </div>
         </div>
     );

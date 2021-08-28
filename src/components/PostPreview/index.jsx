@@ -6,7 +6,7 @@ import commentIcon from "./../../assets/icons/message-circle.svg";
 import likeIcon from "./../../assets/icons/heart.svg";
 import { showTime, slug } from "../../utils";
 import Tag from "../Tag";
-
+import Skeleton from 'react-loading-skeleton';
 function PostPreview(props) {
     const { data, key2 } = props;
     // console.log(data);
