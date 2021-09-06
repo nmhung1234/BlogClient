@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 import PostPreview from "../../components/PostPreview";
 import "./style.css";
 
-import { getListPostRequest } from "./../../action";
+import { getListPostRequest } from "./../../action/post";
 import Slider from "../../components/Slider";
 import Skeleton from 'react-loading-skeleton';
 function Home(props) {

@@ -6,8 +6,11 @@ import PrivateRouter from "./privateRouter";
 function index(props) {
     return (
         <>
-            <PublicRouter />
-            <PrivateRouter />
+            {localStorage.getItem("token") ? (
+                <PrivateRouter />
+            ) : (
+                <PublicRouter />
+            )}
         </>
     );
 }

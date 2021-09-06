@@ -19,6 +19,8 @@ function DetailPost(props) {
         axios
             .get(`/post/detail?username=${username}&slugString=${slug}`)
             .then((response) => {
+                console.log(response);
+                
                 setPostContent((pre) => response.data[0]);
             });
     }, []);

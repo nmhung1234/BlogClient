@@ -9,9 +9,11 @@ import { Link } from "react-router-dom";
 import LoginRegister from "./../Login_Register";
 
 function Header(props) {
-    const [actionState, setActionState] = React.useState("cancel");
+    const [actionState, setActionState] = React.useState(0);
+    const num = React.useRef(1);
     const handleLoginForm = (action) => {
-        setActionState(action);
+        setActionState(num.current);
+        num.current++;
     };
     return (
         <>
@@ -35,64 +37,68 @@ function Header(props) {
                     </div>
                 </div>
                 <div className="right">
-                    <Link to={"/new"}>
-                        <div className="button-lg hover-button mgr-10">
-                            Đăng bài
-                        </div>
-                    </Link>
+                    {localStorage.getItem("token") ? (
+                        <>
+                            <Link to={"/new"}>
+                                <div className="button-lg hover-button mgr-10">
+                                    Đăng bài
+                                </div>
+                            </Link>
 
-                    <div
-                        className="button-lg hover-button mgr-10"
-                        onClick={() => handleLoginForm("login")}
-                    >
-                        login
-                    </div>
-
-                    <div className="nav-icon hover-secondary-bg">
-                        <img src={connectIconn} alt="" />
-                    </div>
-                    <div className="nav-icon hover-secondary-bg">
-                        <img src={bellIcon} alt="" />
-                    </div>
-                    <div className="avatar bd-primary">
-                        <div className="user-popup cursor-pointer">
-                            <Link to={"/nmhung"}>
-                                <div className="name bdb-2 hover-primary">
-                                    <div className="pd-10 bd-radius-5 hover-secondary-bg mg-5">
-                                        <h4 className="displayName pdl-10">
-                                            Nguyen Hung
-                                        </h4>
-                                        <p className="userName pdl-10">
-                                            @hungnm
+                            <div className="nav-icon hover-secondary-bg">
+                                <img src={connectIconn} alt="" />
+                            </div>
+                            <div className="nav-icon hover-secondary-bg">
+                                <img src={bellIcon} alt="" />
+                            </div>
+                            <div className="avatar bd-primary">
+                                <div className="user-popup cursor-pointer">
+                                    <Link to={"/nmhung"}>
+                                        <div className="name bdb-2 hover-primary">
+                                            <div className="pd-10 bd-radius-5 hover-secondary-bg mg-5">
+                                                <h4 className="displayName pdl-10">
+                                                    Nguyen Hung
+                                                </h4>
+                                                <p className="userName pdl-10">
+                                                    @hungnm
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                    <div className="action bdb-2">
+                                        <Link to="/">
+                                            <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5 mgt-5">
+                                                Dashboard
+                                            </p>
+                                        </Link>
+                                        <Link to="/new">
+                                            <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5">
+                                                Create Post
+                                            </p>
+                                        </Link>
+                                        <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5">
+                                            Reading List
+                                        </p>
+                                        <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5 mgb-5">
+                                            Settings
+                                        </p>
+                                    </div>
+                                    <div className="signout">
+                                        <p className="pdl-10 bd-radius-5 hover-secondary-bg pd-10 mg-5">
+                                            Sign Out
                                         </p>
                                     </div>
                                 </div>
-                            </Link>
-                            <div className="action bdb-2">
-                                <Link to="/">
-                                    <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5 mgt-5">
-                                        Dashboard
-                                    </p>
-                                </Link>
-                                <Link to="/new">
-                                    <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5">
-                                        Create Post
-                                    </p>
-                                </Link>
-                                <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5">
-                                    Reading List
-                                </p>
-                                <p className="pdl-10 bd-radius-5 hover-secondary-bg mg-0 pd-10 mgl-5 mgr-5 mgb-5">
-                                    Settings
-                                </p>
                             </div>
-                            <div className="signout">
-                                <p className="pdl-10 bd-radius-5 hover-secondary-bg pd-10 mg-5">
-                                    Sign Out
-                                </p>
-                            </div>
+                        </>
+                    ) : (
+                        <div
+                            className="button-lg hover-button mgr-10"
+                            onClick={() => handleLoginForm("login")}
+                        >
+                            Đăng nhập
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </>

@@ -2,11 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CancelIcon from "./../../assets/icons/x.svg";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import "./style.css";
+import { loginRequest } from "../../action/auth";
 function LoginRegister(props) {
-    const { actionProp } = props;
+    const { actionProp, loginDispatch } = props;
 
-    const [actionState, setActionState] = React.useState(actionProp);
+    const [actionState, setActionState] = React.useState("cancel");
+    const [formValue, setFormValue] = React.useState({
+        usernameLogin: "",
+        passwordLogin: "",
+        emailRegister: "",
+        usernameRegister: "",
+        passwordRegister: "",
+        cfpasswordRegister: "",
+        emailRecovery: "",
+    });
     const handlAction = (action) => {
         if (action == "login") {
             setActionState("login");
@@ -19,15 +30,50 @@ function LoginRegister(props) {
         }
     };
     React.useEffect(() => {
-        setActionState(actionProp);
+        if (actionProp != 0) {
+            setActionState("login");
+        }
     }, [actionProp]);
+
+    const onHandleChange = (e) => {
+        const value = e.target.value;
+        setFormValue((pre) => {
+            return {
+                ...pre,
+                [e.target.name]: value,
+            };
+        });
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const formName = event.target.id;
+        if (formName == "login") {
+            const formData = {
+                username: formValue.usernameLogin,
+                password: formValue.passwordLogin,
+            };
+            loginDispatch(formData);
+
+        } else if (formName == "register") {
+            const formData = {
+                username: formValue.usernameRegister,
+                password: formValue.passwordRegister,
+                email: formValue.emailRegister,
+            };
+        } else if (formName == "recovery") {
+            const formData = {
+                email: formValue.emailRecovery,
+            };
+        }
+    };
     return (
         <>
             <div
                 className="login_Container"
                 className={actionState == "cancel" ? "hide" : "login_Container"}
             >
-                <div className="login-dialog df bd-radius-5 pd-20">
+                <div className="login-dialog df align-c bd-radius-5 pd-20">
                     <img
                         className="cancel-form"
                         src={CancelIcon}
@@ -36,14 +82,15 @@ function LoginRegister(props) {
                     />
                     <div className="anim-icon">
                         <lottie-player
-                            src="https://assets5.lottiefiles.com/packages/lf20_y33ep5da.json"
+                            src="https://assets3.lottiefiles.com/packages/lf20_gtnyu482.json"
                             background="transparent"
                             speed="1"
-                            style={{ width: "400px", height: "400px" }}
+                            style={{ width: "300px", height: "300px" }}
                             autoplay
+                            loop
                         ></lottie-player>
                     </div>
-                    <div className="form df fd-c justify-fs pdb-10">
+                    <div className="form df fd-c justify-fs mg-20">
                         <div
                             className={
                                 actionState == "login"
@@ -57,41 +104,48 @@ function LoginRegister(props) {
                             >
                                 Đăng nhập{" "}
                             </h1>
-                            <div className="df fd-c align-fs mgb-10">
-                                <label
-                                    className="pdb-5"
-                                    htmlFor="username"
-                                    style={{ fontSize: "14px" }}
-                                >
-                                    Username
-                                </label>
-                                <input
-                                    name="username"
-                                    className="input"
-                                    type="text"
-                                    placeholder="VD: devvietnam"
-                                    required
-                                />
-                            </div>
-                            <div className="df fd-c align-fs mgb-10">
-                                <label
-                                    className="pdb-5"
-                                    htmlFor="password"
-                                    style={{ fontSize: "14px" }}
-                                >
-                                    Mật khẩu
-                                </label>
-                                <input
-                                    name="password"
-                                    className="input"
-                                    type="password"
-                                    placeholder="Mật khẩu"
-                                    required
-                                />
-                            </div>
-                            <div className="button-sm mgt-20 mgb-20">
-                                Đăng nhập
-                            </div>
+                            <form id="login" onSubmit={handleSubmit}>
+                                <div className="df fd-c align-fs mgb-10">
+                                    <label
+                                        className="pdb-5"
+                                        htmlFor="usernameLogin"
+                                        style={{ fontSize: "14px" }}
+                                    >
+                                        Username
+                                    </label>
+                                    <input
+                                        value={formValue.usernameLogin}
+                                        name="usernameLogin"
+                                        className="input"
+                                        type="text"
+                                        placeholder="VD: devvietnam"
+                                        required
+                                        onChange={onHandleChange}
+                                        
+                                    />
+                                </div>
+                                <div className="df fd-c align-fs mgb-10">
+                                    <label
+                                        className="pdb-5"
+                                        htmlFor="passwordLogin"
+                                        style={{ fontSize: "14px" }}
+                                    >
+                                        Mật khẩu
+                                    </label>
+                                    <input
+                                        value={formValue.passwordLogin}
+                                        name="passwordLogin"
+                                        className="input"
+                                        type="password"
+                                        placeholder="Mật khẩu"
+                                        required
+                                        onChange={onHandleChange}
+                                    />
+                                </div>
+                                <button className="button-sm mgt-20 mgb-20">
+                                    Đăng nhập
+                                </button>
+                            </form>
                             <Link to="#">
                                 <div
                                     style={{
@@ -130,73 +184,90 @@ function LoginRegister(props) {
                             >
                                 Đăng ký{" "}
                             </h1>
-                            <div className="df fd-c align-fs mgb-10">
-                                <label
-                                    className="pdb-5"
-                                    htmlFor="email"
-                                    style={{ fontSize: "14px" }}
-                                >
-                                    Email
-                                </label>
-                                <input
-                                    name="email"
-                                    className="input"
-                                    type="email"
-                                    placeholder="VD: devvietnam@gmail.com"
-                                    required
-                                />
-                            </div>
-                            <div className="df fd-c align-fs mgb-10">
-                                <label
-                                    className="pdb-5"
-                                    htmlFor="username"
-                                    style={{ fontSize: "14px" }}
-                                >
-                                    Username
-                                </label>
-                                <input
-                                    name="username"
-                                    className="input"
-                                    type="text"
-                                    placeholder="VD: devvietnam"
-                                    required
-                                />
-                            </div>
-                            <div className="df fd-c align-fs mgb-10">
-                                <label
-                                    className="pdb-5"
-                                    htmlFor="password"
-                                    style={{ fontSize: "14px" }}
-                                >
-                                    Mật khẩu
-                                </label>
-                                <input
-                                    name="password"
-                                    className="input"
-                                    type="password"
-                                    placeholder="Mật khẩu"
-                                    required
-                                />
-                            </div>
-                            <div className="df fd-c align-fs mgb-10">
-                                <label
-                                    className="pdb-5"
-                                    htmlFor="cfpassword"
-                                    style={{ fontSize: "14px" }}
-                                >
-                                    Xác nhận mật khẩu
-                                </label>
-                                <input
-                                    name="cfpassword"
-                                    className="input"
-                                    type="password"
-                                    placeholder="Xác nhận mật khẩu"
-                                    required
-                                />
-                            </div>
-                            <div className="button-sm mgt-20 mgb-20">
-                                Đăng ký
-                            </div>
+                            <form id="register" onSubmit={handleSubmit}>
+                                <div className="df fd-c align-fs mgb-10">
+                                    <label
+                                        className="pdb-5"
+                                        htmlFor="emailRegister"
+                                        style={{ fontSize: "14px" }}
+                                    >
+                                        Email
+                                    </label>
+                                    <input
+                                        value={formValue.emailRegister}
+                                        name="emailRegister"
+                                        className="input"
+                                        type="email"
+                                        placeholder="VD: devvietnam@gmail.com"
+                                        required
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                        title="VD: devvietnam@gmail.com"
+                                        onChange={onHandleChange}
+                                        
+                                    />
+                                </div>
+                                <div className="df fd-c align-fs mgb-10">
+                                    <label
+                                        className="pdb-5"
+                                        htmlFor="usernameRegister"
+                                        style={{ fontSize: "14px" }}
+                                    >
+                                        Username
+                                    </label>
+                                    <input
+                                        value={formValue.usernameRegister}
+                                        name="usernameRegister"
+                                        className="input"
+                                        type="text"
+                                        placeholder="VD: devvietnam"
+                                        required
+                                        onChange={onHandleChange}
+                                    />
+                                </div>
+                                <div className="df fd-c align-fs mgb-10">
+                                    <label
+                                        className="pdb-5"
+                                        htmlFor="passwordRegister"
+                                        style={{ fontSize: "14px" }}
+                                    >
+                                        Mật khẩu
+                                    </label>
+                                    <input
+                                        value={formValue.passwordRegister}
+                                        name="passwordRegister"
+                                        className="input"
+                                        type="password"
+                                        placeholder="Mật khẩu"
+                                        required
+                                        onChange={onHandleChange}
+                                        pattern=".{8,}"
+                                        title="Tối thiểu 8 ký tự"
+                                    />
+                                </div>
+                                <div className="df fd-c align-fs mgb-10">
+                                    <label
+                                        className="pdb-5"
+                                        htmlFor="cfpasswordRegister"
+                                        style={{ fontSize: "14px" }}
+                                    >
+                                        Xác nhận mật khẩu
+                                    </label>
+                                    <input
+                                        value={formValue.cfpasswordRegister}
+                                        name="cfpasswordRegister"
+                                        className="input"
+                                        type="password"
+                                        placeholder="Xác nhận mật khẩu"
+                                        required
+                                        onChange={onHandleChange}
+                                        pattern=".{8,}"
+                                        title="Tối thiểu 8 ký tự và giống mật khẩu"
+                                    />
+                                </div>
+                                <button className="button-sm mgt-20 mgb-20">
+                                    Đăng ký
+                                </button>
+                            </form>
                             <Link to="#">
                                 <div
                                     style={{
@@ -235,27 +306,31 @@ function LoginRegister(props) {
                             >
                                 Khôi phục tài khoản{" "}
                             </h1>
-                            <div className="df fd-c align-fs mgb-10">
-                                <label
-                                    className="pdb-5"
-                                    htmlFor="username"
-                                    style={{ fontSize: "14px" }}
-                                >
-                                    Email
-                                </label>
-                                <input
-                                    name="username"
-                                    className="input"
-                                    type="text"
-                                    placeholder="VD: devvietnam@gmail.com"
-                                    required
-                                />
-                            </div>
+                            <form id="recovery" onSubmit={handleSubmit}>
+                                <div className="df fd-c align-fs mgb-10">
+                                    <label
+                                        className="pdb-5"
+                                        htmlFor="emailRecovery"
+                                        style={{ fontSize: "14px" }}
+                                    >
+                                        Email
+                                    </label>
+                                    <input
+                                        value={formValue.emailRecovery}
+                                        name="emailRecovery"
+                                        className="input"
+                                        type="email"
+                                        placeholder="VD: devvietnam@gmail.com"
+                                        required
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                        onChange={onHandleChange}
+                                    />
+                                </div>
 
-                            <div className="button-sm mgt-20 mgb-20">
-                                Khôi phục
-                            </div>
-
+                                <button className="button-sm mgt-20 mgb-20">
+                                    Khôi phục
+                                </button>
+                            </form>
                             <Link to="#">
                                 <div
                                     style={{
@@ -275,7 +350,15 @@ function LoginRegister(props) {
         </>
     );
 }
+// const mapStateToProps = (state) => {}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loginDispatch: (data) => {
+            dispatch(loginRequest(data))
+        }
+    }
+}
 
 LoginRegister.propTypes = {};
 
-export default LoginRegister;
+export default connect(null, mapDispatchToProps)(LoginRegister);

@@ -80,6 +80,15 @@
 .color-gray-icon {
     stroke: var(--color-text-gray);
 }
+button {
+    display: inherit;
+    outline: inherit;
+    border: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
 .button-lg {
     background-color: var(--color-primary);
     border-radius: var(--border-radius);
@@ -89,7 +98,8 @@
     color: white;
     cursor: pointer;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 24px;
 }
 .button-sm {
     background-color: var(--color-primary);
@@ -99,6 +109,8 @@
     height: fit-content;
     color: white;
     cursor: pointer;
+    font-size: 14px;
+    line-height: 24px;
 }
 .bd-radius-5 {
     border-radius: var(--border-radius);

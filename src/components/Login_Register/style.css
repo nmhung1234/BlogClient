@@ -17,21 +17,23 @@
     width: fit-content;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%);
-    background: rgb(255, 255, 255);
+    transform: translate(-50%, -50%);
+    background: white;
+    transition: all .5s linear;
 }
 .login-dialog .cancel-form {
     position: absolute;
     top: 10px;
     right: 10px;
 }
-.login_Container .form {
-    margin-right: 100px;
+.login_Container .login, .register, .recovery {
+    width: fit-content;
+    padding: 0 50px 20px 50px;
 }
 .login_Container input {
     line-height: 25px;
     padding: 7px 15px;
-    width: 80%;
+    width: 120%;
     /* font-size: 20px */
 }
 .show {

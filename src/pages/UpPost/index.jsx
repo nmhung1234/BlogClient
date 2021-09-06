@@ -11,7 +11,8 @@ import UploadButton from "../../components/UploadButton";
 import PostDetail from "./../../components/PostDetail";
 import Slider from "./../../components/Slider";
 
-import { getAllTagRequest, upPostRequest } from "../../action";
+import { upPostRequest } from "../../action/post";
+import { getAllTagRequest } from "../../action/tag";
 
 import "./style.css";
 import "./ant.css";
