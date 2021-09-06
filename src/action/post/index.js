@@ -3,7 +3,7 @@ import axios from "./../../utils/customAxios";
 
 export const getListPostRequest = () => {
     return (dispatch) => {
-        return axios.get('/post?limit=5&page=1').then((res) => {
+        return axios.get('api/post?limit=5&page=1').then((res) => {
             dispatch(getListPost(res));
         })
     }
@@ -17,7 +17,7 @@ export const getListPost = (response) => {
 
 export const upPostRequest = (data) => {
     return (dispatch) => {
-        return axios.post('/post', data).then((res) => {
+        return axios.post('api/post', data).then((res) => {
             dispatch(upPost(res));
         })
     }

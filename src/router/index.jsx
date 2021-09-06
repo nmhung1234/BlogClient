@@ -14,7 +14,7 @@ function index(props) {
     return (
         <>
             <Header />
-            {userDataState?._id ? <PrivateRouter /> : <PublicRouter />}
+            {localStorage.getItem("tk") ? <PrivateRouter /> : <PublicRouter />}
         </>
     );
 }

@@ -9,27 +9,41 @@ const customAxios = axios.create({
     timeout: 30000,
 });
 // Step-2: Create request, response & error handlers
-
+const decodeToken = (token) => {
+    try {
+        const expired = jwt_decode(token);
+        return expired
+    } catch (error) {
+        return false
+    }
+}
 const requestHandler = async (request) => {
     // Token will be dynamic so we can use any app-specific way to always
     // fetch the new token before making the call
     // console.log(request);
     let AUTH_TOKEN = localStorage.getItem('tk');
     if (AUTH_TOKEN) {
-        const expired = jwt_decode(AUTH_TOKEN);
+        const expired = decodeToken(AUTH_TOKEN);
+        console.log(expired);
         var date = new Date();
         var now = date.getTime() / 1000;
-        if (now <= expired) {
+        if (expired && now <= expired) {
             request.headers.Authorization = AUTH_TOKEN;
             return request;
         } else {
             const refreshToken = localStorage.getItem('rtk');
             const data = { refreshToken: refreshToken }
-            await axios.post(`${API_URL}/refreshToken`, data).then((res) => {
-                localStorage.setItem('tk', res.data.token);
+            await axios.post(`${API_URL}api/refreshToken`, data).then((res) => {
+                if (res.data.errorCode === 400) {
+                    //domain client
+                    window.location.replace("http://localhost:3000/");
+                    localStorage.clear();
+                } else {
+                    localStorage.setItem('tk', res.data.token);
+                }
             }).catch((err) => {
-                localStorage.clear();
-                window.location.reload();
+                console.log(err);
+
             })
             AUTH_TOKEN = localStorage.getItem('tk');
             request.headers.Authorization = AUTH_TOKEN;

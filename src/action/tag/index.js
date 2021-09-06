@@ -3,7 +3,7 @@ import axios from "./../../utils/customAxios";
 
 export const getAllTagRequest = () => {
     return (dispatch) => {
-        return axios.get('/upload/tag').then((res) => {
+        return axios.get('api/upload/tag').then((res) => {
             dispatch(getAllTag(res));
         })
     }

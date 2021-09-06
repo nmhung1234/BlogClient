@@ -3,7 +3,7 @@ import axios from "./../../utils/customAxios";
 
 export const loginRequest = (data) => {
     return (dispatch) => {
-        return axios.post('/login', data).then((res) => {
+        return axios.post('api/login', data).then((res) => {
             dispatch(login(res));
         })
     }

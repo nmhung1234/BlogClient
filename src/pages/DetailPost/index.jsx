@@ -17,7 +17,7 @@ function DetailPost(props) {
 
     React.useEffect(() => {
         axios
-            .get(`/post/detail?username=${username}&slugString=${slug}`)
+            .get(`api/post/detail?username=${username}&slugString=${slug}`)
             .then((response) => {
                 console.log(response);
                 

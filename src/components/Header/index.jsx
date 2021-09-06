@@ -48,7 +48,7 @@ function Header(props) {
                     </div>
                 </div>
                 <div className="right">
-                    {userDataState?._id ? (
+                    {localStorage.getItem("tk") ? (
                         <>
                             <Link to={"/new"}>
                                 <div className="button-lg hover-button mgr-10">
