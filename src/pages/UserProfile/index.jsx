@@ -6,7 +6,7 @@ import Header from './../../components/Header';
 export const UserProfile = (props) => {
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <Profile />
         </>
     )

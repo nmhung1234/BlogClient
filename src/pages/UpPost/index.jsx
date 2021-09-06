@@ -71,7 +71,7 @@ const UpPost = (props) => {
                 >
                     <div className=" df left align-c">
                         <Link to="/" className="pd-0 mg-0">
-                            <img src={logoIcon} alt="Dev Việt Nam" />
+                            {/* <img src={logoIcon} alt="Dev Việt Nam" /> */}
                         </Link>
                     </div>
                     <Slider

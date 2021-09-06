@@ -8,11 +8,7 @@ function index(props) {
     return (
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route
-                exact
-                path="/:username/:slugString"
-                component={DetailPost}
-            />
+            <Route exact path="/:username/:slugString" component={DetailPost} />
             <Route exact path="/login" component={LoginRegister} />
         </Switch>
     );

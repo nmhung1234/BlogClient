@@ -21,12 +21,12 @@ function DetailPost(props) {
             .then((response) => {
                 console.log(response);
                 
-                setPostContent((pre) => response.data[0]);
+                setPostContent((pre) => response.data.data[0]);
             });
     }, []);
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <div className="df justify-c mgt-20">
                 <div className="Detail-post df">
                     {postContent ? (

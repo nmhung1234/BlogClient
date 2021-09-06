@@ -8,6 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import thunk from "redux-thunk";
 import myReducer from "./reducer";
+import axios from "axios";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(myReducer, composeEnhancer(applyMiddleware(thunk)));

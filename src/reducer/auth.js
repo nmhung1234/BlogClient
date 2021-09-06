@@ -90,11 +90,11 @@ const myReducer = (state = initialState, action) => {
         }
         case Types.LOGIN: {
             console.log(action.response);
-            // if (action.datalogin.success) {
-            //     localStorage.setItem('tk', action.datalogin.data.token);
-            //     localStorage.setItem('rtk', action.datalogin.data.refreshToken);
-            // }
-            // state = action.response.data.user[0];
+            if (action.response.data.success) {
+                localStorage.setItem('tk', action.response.data.data.token);
+                localStorage.setItem('rtk', action.response.data.data.refreshToken);
+            }
+            state = action.response.data.data.userData;
             return state;
         }
         case Types.LOGOUT: {

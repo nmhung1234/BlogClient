@@ -7,18 +7,29 @@ import searchIcon from "./../../assets/icons/search.svg";
 // import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
 import LoginRegister from "./../Login_Register";
+import { connect } from "react-redux";
 
 function Header(props) {
+    const { userData } = props;
     const [actionState, setActionState] = React.useState(0);
+    const [userDataState, setUserDataState] = React.useState();
     const num = React.useRef(1);
     const handleLoginForm = (action) => {
         setActionState(num.current);
         num.current++;
     };
+    React.useEffect(() => {
+        setUserDataState(userData);
+    }, [userData]);
+
     return (
         <>
             <div className="nav pd-5">
-                <LoginRegister actionProp={actionState} />
+                {userData?._id ? (
+                    ""
+                ) : (
+                    <LoginRegister actionProp={actionState} />
+                )}
                 <div className="left">
                     <Link to="/" className="pd-0 mg-0">
                         <img src={logoIcon} alt="Dev Việt Nam" />
@@ -37,7 +48,7 @@ function Header(props) {
                     </div>
                 </div>
                 <div className="right">
-                    {localStorage.getItem("token") ? (
+                    {userDataState?._id ? (
                         <>
                             <Link to={"/new"}>
                                 <div className="button-lg hover-button mgr-10">
@@ -57,10 +68,10 @@ function Header(props) {
                                         <div className="name bdb-2 hover-primary">
                                             <div className="pd-10 bd-radius-5 hover-secondary-bg mg-5">
                                                 <h4 className="displayName pdl-10">
-                                                    Nguyen Hung
+                                                    {userData.name}
                                                 </h4>
                                                 <p className="userName pdl-10">
-                                                    @hungnm
+                                                    @{userData.username}
                                                 </p>
                                             </div>
                                         </div>
@@ -108,5 +119,10 @@ function Header(props) {
 // Header.propTypes = {
 
 // }
+const mapStateToProps = (state) => {
+    return {
+        userData: state.auth,
+    };
+};
 
-export default Header;
+export default connect(mapStateToProps, null)(Header);

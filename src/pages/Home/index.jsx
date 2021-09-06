@@ -21,7 +21,7 @@ function Home(props) {
 
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <div className="homepage df fd-c align-c">
                 <Slider
                     title={"Bài viết"}
