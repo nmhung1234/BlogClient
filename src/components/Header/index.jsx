@@ -18,8 +18,9 @@ function Header(props) {
         setActionState(num.current);
         num.current++;
     };
+    // nếu có data thì set tên vào popup user
     React.useEffect(() => {
-        setUserDataState(userData);
+        setUserDataState(userData);        
     }, [userData]);
 
     return (
@@ -64,14 +65,14 @@ function Header(props) {
                             </div>
                             <div className="avatar bd-primary">
                                 <div className="user-popup cursor-pointer">
-                                    <Link to={"/nmhung"}>
+                                    <Link to={`/${userDataState?.username}`}>
                                         <div className="name bdb-2 hover-primary">
                                             <div className="pd-10 bd-radius-5 hover-secondary-bg mg-5">
                                                 <h4 className="displayName pdl-10">
-                                                    {userData.name}
+                                                    {userDataState?.name}
                                                 </h4>
                                                 <p className="userName pdl-10">
-                                                    @{userData.username}
+                                                    @{userDataState?.username}
                                                 </p>
                                             </div>
                                         </div>

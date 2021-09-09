@@ -5,6 +5,7 @@ import DetailPost from "../../pages/DetailPost";
 import Home from "../../pages/Home";
 
 function index(props) {
+    
     return (
         <Switch>
             <Route exact path="/" component={Home} />

@@ -7,18 +7,15 @@ import API_URL from "./../../constant/Config";
 function UploadButton(props) {
     const props2 = {
         name: "file",
-        action: `${API_URL}/upload`,
-        headers: {
-            authorization: "ejyakbafalafkafbabf.afiabfbafkafaf",
-        },
+        action: `${API_URL}api/upload`,
         maxCount: 1,
         onChange(info) {
             if (info.file.status !== "uploading") {
                 // console.log(info.file, info.fileList);
             }
             if (info.file.status === "done") {
-                // console.log(info.file.response);
-                    linkImgRes({url: info.file.response, content})
+                console.log(info.file.response);
+                    linkImgRes({url: info.file.response.data, content})
                 
                 message.success(`${info.file.name} file uploaded successfully`);                
             } else if (info.file.status === "error") {

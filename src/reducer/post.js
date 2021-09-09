@@ -4,7 +4,6 @@ const initialState = [];
 const myReducer = (state = initialState, action) => {
     switch (action.type) {
         case Types.GET_HOME_POST: {
-            console.log(action);
             // console.log(action.response.data.data);
             let newState = action.response.data.data;
             state = newState;

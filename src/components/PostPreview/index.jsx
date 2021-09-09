@@ -9,7 +9,7 @@ import Tag from "../Tag";
 import Skeleton from 'react-loading-skeleton';
 function PostPreview(props) {
     const { data, key2 } = props;
-    // console.log(data);
+    console.log(data);
     
     return (
         <Link
@@ -22,7 +22,7 @@ function PostPreview(props) {
                         width: "100%",
                         height: "200px",
                         borderRadius: "5px 5px 0 0",
-                        backgroundImage: `url(${data.postData.coverImg})`,
+                        backgroundImage: `url("${data.postData.coverImg}")`,
                         backgroundSize: "cover",
                         opacity: "98%",
                     }}

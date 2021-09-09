@@ -93,14 +93,22 @@ const myReducer = (state = initialState, action) => {
             if (action.response.data.success) {
                 localStorage.setItem('tk', action.response.data.data.token);
                 localStorage.setItem('rtk', action.response.data.data.refreshToken);
+                localStorage.setItem('username', action.response.data.data.userData.username);
             }
             state = action.response.data.data.userData;
+            return state;
+        }
+        case Types.GET_USER_DATA: {
+            if (action.response.data.success) {
+                state = action.response.data.data[0];
+                return state;
+            }
             return state;
         }
         case Types.LOGOUT: {
             localStorage.clear();
             state = { data: { token: '' } };
-            window.location.pathname ='/';
+            window.location.pathname = '/';
             return state;
         }
         default:

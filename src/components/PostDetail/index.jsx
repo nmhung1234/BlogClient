@@ -6,18 +6,24 @@ import MDEditor from "@uiw/react-md-editor";
 import { showTime } from "./../../utils/index";
 function PostDetail(props) {
     const { data } = props;
-    const dataPost = data.owner_post;
+    const [dataState, setDataState] = React.useState();
+    let dataPost = dataState?.owner_post;
+    console.log(data);
+    React.useEffect(() => {
+        setDataState(data);
+    },[data])
+    
     return (
         <>
             <div className="PostDetail bd-primary">
-                {dataPost.coverImg ? (
-                    <img className="img-post" src={dataPost.coverImg} alt="" />
+                {dataPost?.coverImg ? (
+                    <img className="img-post" src={dataPost?.coverImg} alt="" />
                 ) : (
                     ""
                 )}
                 <div className="body">
                     <div className="title pdb-20">{dataPost?.title}</div>
-                    {data?.tags.map((elem, index) =>
+                    {dataState?.tags.map((elem, index) =>
                         typeof elem != "object" ? (
                             <Tag key={index} tag={{ name: elem }} />
                         ) : (
@@ -28,11 +34,11 @@ function PostDetail(props) {
                         <div className="df align-c">
                             <div className="avatar mgl-0"></div>
                             <h4 className="name bd-radius-5 hover-secondary-bg pd-5 cursor-pointer">
-                                {data.username}
+                                {dataState?.username}
                             </h4>
                         </div>
                         <div className="time pdl-10 color-gray">
-                            {showTime(dataPost.lastmodified)}
+                            {showTime(dataPost?.lastmodified)}
                         </div>
                     </div>
                     <div className="content">

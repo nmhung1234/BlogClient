@@ -20,11 +20,10 @@ const decodeToken = (token) => {
 const requestHandler = async (request) => {
     // Token will be dynamic so we can use any app-specific way to always
     // fetch the new token before making the call
-    // console.log(request);
+    console.log(request);
     let AUTH_TOKEN = localStorage.getItem('tk');
     if (AUTH_TOKEN) {
         const expired = decodeToken(AUTH_TOKEN);
-        console.log(expired);
         var date = new Date();
         var now = date.getTime() / 1000;
         if (expired && now <= expired) {
@@ -43,7 +42,6 @@ const requestHandler = async (request) => {
                 }
             }).catch((err) => {
                 console.log(err);
-
             })
             AUTH_TOKEN = localStorage.getItem('tk');
             request.headers.Authorization = AUTH_TOKEN;
@@ -52,8 +50,6 @@ const requestHandler = async (request) => {
     } else {
         return request;
     }
-
-
 };
 
 const responseHandler = (response) => {
