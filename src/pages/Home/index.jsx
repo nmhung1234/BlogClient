@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Header from "../../components/Header";
+// import Header from "../../components/Header";
 import PostPreview from "../../components/PostPreview";
 import "./style.css";
 
 import { getListPostRequest } from "./../../action/post";
 import Slider from "../../components/Slider";
-import Skeleton from 'react-loading-skeleton';
+import Skeleton from "react-loading-skeleton";
 function Home(props) {
     const { listPost, getListPost } = props;
-    const [listPostState, setListPostState] = React.useState();
+    const [listPostState, setListPostState] = React.useState([]);
 
     React.useEffect(() => {
         getListPost();
@@ -34,17 +34,23 @@ function Home(props) {
                         "Khám phá",
                     ]}
                 />
-                {listPostState
-                    ? listPostState.map((post, index) => {
-                          return (
-                              <PostPreview
-                                  key={index}
-                                  key2={index}
-                                  data={post}
-                              />
-                          );
-                      })
-                    : <Skeleton count={5}/> }
+                {/* <Skeleton width={300} height={300} count={5}/>
+                <Skeleton width={300} height={300} count={5}/>
+                <Skeleton width={300} height={300} count={5}/>
+                <Skeleton width={300} height={300} count={5}/> */}
+                {listPostState.length ? (
+                    listPostState.map((post, index) => {
+                        return (
+                            <PostPreview key={index} key2={index} data={post} />
+                        );
+                    })
+                ) : (
+                    <>
+                        <PostPreview />
+                        <PostPreview />
+                        <PostPreview />
+                    </>
+                )}
             </div>
         </div>
     );

@@ -44,16 +44,15 @@
     margin: 0 5px;
     display: flex;
 }
-.nav .avatar {
-    /* background-image: url("https://lh3.googleusercontent.com/proxy/mVieVNDKQxbtxZyEfZgJU0UReWNdH6LcVSNhPZNA1yIltL-0YNy7aJqp3qu6xUBf50dnCn903BZ6YpUwiEQHYw-6lqpL4jFHB5A40r_n5Ug2N-ZtQulot1H0j0U2TvE"); */
+.nav .avatar-relative {
     position: relative;
     overflow: hidden;
 }
-.nav .avatar:hover {
+.nav .avatar-relative:hover {
     overflow: visible;
     transition: all 0.3s;
 }
-.nav .avatar:hover > .user-popup {
+.nav .avatar-relative:hover > .user-popup {
     opacity: 100%;
     transition: all 0.3s;
 }

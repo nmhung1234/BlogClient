@@ -32,7 +32,7 @@ function PostDetail(props) {
                     )}
                     <div className="authorInfo pdt-20 pdb-20 df align-c">
                         <div className="df align-c">
-                            <div className="avatar mgl-0"></div>
+                        <img className="avatar mgl-0" src="https://picsum.photos/800/600" alt="" />
                             <h4 className="name bd-radius-5 hover-secondary-bg pd-5 cursor-pointer">
                                 {dataState?.username}
                             </h4>

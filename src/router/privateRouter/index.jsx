@@ -5,7 +5,8 @@ import { Switch, Route } from "react-router-dom";
 import UpPost from "../../pages/UpPost";
 import UserProfile from "../../pages/UserProfile";
 import Home from "./../../pages/Home/index";
-import DetailPost from './../../pages/DetailPost/index';
+import DetailPost from "./../../pages/DetailPost/index";
+import { decodeJWT } from "../../utils";
 
 // import PropTypes from 'prop-types'
 
@@ -13,8 +14,11 @@ function index(props) {
     const { getUserData } = props;
     //gọi để lấy data user về nếu có token ở local Storage
     React.useEffect(() => {
-        let username = localStorage.getItem("username");
-        getUserData(username);
+        const token = localStorage.getItem("tk");
+        if (token) {
+            const decoded = decodeJWT(token);
+            getUserData(decoded.username);
+        }
     }, []);
     return (
         <Switch>
@@ -37,4 +41,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(index)
+export default connect(null, mapDispatchToProps)(index);

@@ -13,7 +13,7 @@ function Comment(props) {
                 </h2>
                 {/* user write comment */}
                 <div className="write-comment df pdt-20">
-                    <div className="avatar mgl-0"></div>
+                <img className="avatar mgl-0" src="https://picsum.photos/800/600" alt="" />
                     <div className="right pdl-20">
                         <textarea
                             className="input pd-10 area-comment"
@@ -26,7 +26,7 @@ function Comment(props) {
                 {/* comment của khách */}
                 <div className="guest-comment df pdt-20 fd-c">
                     <div className="df">
-                        <div className="avatar mgl-0"></div>
+                    <img className="avatar mgl-0" src="https://picsum.photos/800/600" alt="" />
                         <div className="right pdl-5">
                             <div className="df df-c bd-primary bd-radius-5 pd-20 fd-c align-fs">
                                 <div className="guest-info">
@@ -78,7 +78,7 @@ function Comment(props) {
                             className="guest-comment df pdt-20"
                             style={{ paddingLeft: "40px" }}
                         >
-                            <div className="avatar mgl-0"></div>
+                           <img className="avatar mgl-0" src="https://picsum.photos/800/600" alt="" />
                             <div className="right pdl-5">
                                 <div className="df df-c bd-primary bd-radius-5 pd-20 fd-c align-fs">
                                     <div className="guest-info">

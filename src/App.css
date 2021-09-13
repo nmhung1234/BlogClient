@@ -61,7 +61,7 @@
     font-family: "SegoeUI";
     src: local("SegoeUI"), url("./assets/fonts/SVN-SegoeUI.ttf") format("ttf");
 }
-.avatar {
+/* .avatar {
     width: 40px;
     height: 40px;
     min-width: 40px;
@@ -70,6 +70,16 @@
     margin: 0 10px;
     background-size: contain;
     background-image: url("https://picsum.photos/800/600");
+} */
+.avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 35px;
+    margin: 0 10px;
+    object-fit: cover;
+
 }
 .color-gray {
     color: var(--color-gray);

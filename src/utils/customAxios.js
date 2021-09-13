@@ -1,6 +1,6 @@
 import axios from 'axios';
 import API_URL from './../constant/Config';
-import jwt_decode from "jwt-decode";
+import { decodeJWT } from '.';
 
 // Step-1: Create a new Axios instance with a custom config.
 
@@ -9,21 +9,13 @@ const customAxios = axios.create({
     timeout: 30000,
 });
 // Step-2: Create request, response & error handlers
-const decodeToken = (token) => {
-    try {
-        const expired = jwt_decode(token);
-        return expired
-    } catch (error) {
-        return false
-    }
-}
 const requestHandler = async (request) => {
     // Token will be dynamic so we can use any app-specific way to always
     // fetch the new token before making the call
     console.log(request);
     let AUTH_TOKEN = localStorage.getItem('tk');
     if (AUTH_TOKEN) {
-        const expired = decodeToken(AUTH_TOKEN);
+        const expired = decodeJWT(AUTH_TOKEN);
         var date = new Date();
         var now = date.getTime() / 1000;
         if (expired && now <= expired) {
@@ -33,7 +25,8 @@ const requestHandler = async (request) => {
             const refreshToken = localStorage.getItem('rtk');
             const data = { refreshToken: refreshToken }
             await axios.post(`${API_URL}api/refreshToken`, data).then((res) => {
-                if (res.data.errorCode === 400) {
+                console.log(res);
+                if (res.data.errorCode === (400 | 401)) {
                     //domain client
                     window.location.replace("http://localhost:3000/");
                     localStorage.clear();

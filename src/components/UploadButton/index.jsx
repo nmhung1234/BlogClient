@@ -10,15 +10,19 @@ function UploadButton(props) {
         action: `${API_URL}api/upload`,
         maxCount: 1,
         onChange(info) {
+            console.log(info);
             if (info.file.status !== "uploading") {
                 // console.log(info.file, info.fileList);
             }
-            if (info.file.status === "done") {
+            if (info.file.status === "done" && info.file.response.data) {
                 console.log(info.file.response);
-                    linkImgRes({url: info.file.response.data, content})
-                
-                message.success(`${info.file.name} file uploaded successfully`);                
-            } else if (info.file.status === "error") {
+                linkImgRes({ url: info.file.response.data, content });
+
+                message.success(`${info.file.name} file uploaded successfully`);
+            } else if (
+                info.file.status === "done" &&
+                !info.file.response.success
+            ) {
                 message.error(`${info.file.name} file upload failed.`);
             }
         },

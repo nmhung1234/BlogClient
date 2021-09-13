@@ -1,3 +1,4 @@
+import jwt_decode from "jwt-decode";
 import moment from "moment";
 import "moment/locale/vi.js";
 moment.locale('vi');
@@ -45,4 +46,13 @@ export const slug = (str) => {
     str = str.replace(/\@\-|\-\@|\@/gi, '');
 
     return str;
+}
+
+export const decodeJWT = (token) => {
+    try {
+        const expired = jwt_decode(token);
+        return expired
+    } catch (error) {
+        return false
+    }
 }

@@ -93,9 +93,8 @@ const myReducer = (state = initialState, action) => {
             if (action.response.data.success) {
                 localStorage.setItem('tk', action.response.data.data.token);
                 localStorage.setItem('rtk', action.response.data.data.refreshToken);
-                localStorage.setItem('username', action.response.data.data.userData.username);
+                state = action.response.data.data.userData;
             }
-            state = action.response.data.data.userData;
             return state;
         }
         case Types.GET_USER_DATA: {
