@@ -3,7 +3,7 @@ import axios from "./../../utils/customAxios";
 
 export const getUserDataRequest = (username) => {
     return (dispatch) => {
-        return axios.get(`api/user?username=${username}`).then((res) => {
+        return axios.get(`api/user/user?username=${username}`).then((res) => {
             dispatch(getUserData(res));
         })
     }
