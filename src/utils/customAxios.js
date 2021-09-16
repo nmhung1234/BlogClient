@@ -12,7 +12,7 @@ const customAxios = axios.create({
 const requestHandler = async (request) => {
     // Token will be dynamic so we can use any app-specific way to always
     // fetch the new token before making the call
-    console.log(request);
+//    console.log(request);
     let AUTH_TOKEN = localStorage.getItem('tk');
     if (AUTH_TOKEN) {
         const expired = decodeJWT(AUTH_TOKEN);
@@ -24,17 +24,16 @@ const requestHandler = async (request) => {
         } else {
             const refreshToken = localStorage.getItem('rtk');
             const data = { refreshToken: refreshToken }
-            await axios.post(`${API_URL}api/refreshToken`, data).then((res) => {
-                console.log(res);
+            await axios.post(`${API_URL}api/user/refreshToken`, data).then((res) => {
                 if (res.data.errorCode === (400 | 401)) {
                     //domain client
                     window.location.replace("http://localhost:3000/");
                     localStorage.clear();
                 } else {
-                    localStorage.setItem('tk', res.data.token);
+                    localStorage.setItem('tk', res.data.data);
                 }
             }).catch((err) => {
-                console.log(err);
+//                console.log(err);
             })
             AUTH_TOKEN = localStorage.getItem('tk');
             request.headers.Authorization = AUTH_TOKEN;

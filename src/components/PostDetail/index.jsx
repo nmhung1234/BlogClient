@@ -1,18 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Tag from "../Tag";
-import "./style.css";
+import "./style.scss";
 import MDEditor from "@uiw/react-md-editor";
 import { showTime } from "./../../utils/index";
 function PostDetail(props) {
     const { data } = props;
     const [dataState, setDataState] = React.useState();
     let dataPost = dataState?.owner_post;
-    console.log(data);
+    // console.log(data);
     React.useEffect(() => {
         setDataState(data);
-    },[data])
-    
+    }, [data]);
+
     return (
         <>
             <div className="PostDetail bd-primary">
@@ -32,12 +32,16 @@ function PostDetail(props) {
                     )}
                     <div className="authorInfo pdt-20 pdb-20 df align-c">
                         <div className="df align-c">
-                        <img className="avatar mgl-0" src="https://picsum.photos/800/600" alt="" />
+                            <img
+                                className="avatar mgl-0"
+                                src="https://picsum.photos/800/600"
+                                alt=""
+                            />
                             <h4 className="name bd-radius-5 hover-secondary-bg pd-5 cursor-pointer">
                                 {dataState?.username}
                             </h4>
                         </div>
-                        <div className="time pdl-10 color-gray">
+                        <div className="time pdl-10 color-gray-text">
                             {showTime(dataPost?.lastmodified)}
                         </div>
                     </div>

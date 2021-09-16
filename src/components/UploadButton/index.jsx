@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./style.scss";
 import { Upload, message, Button } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import API_URL from "./../../constant/Config";

@@ -8,7 +8,7 @@
     height: calc(100vh + 10px);
     width: 100vw;
     top: -10px;
-    background: rgba(0, 0, 0, 0.521);
+    background-color: rgba(0, 0, 0, 0.521);
     backdrop-filter: blur(2px);
 }
 .login-dialog {
@@ -18,7 +18,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background-color: var(--background-login);
     transition: all .5s linear;
 }
 .login-dialog .cancel-form {

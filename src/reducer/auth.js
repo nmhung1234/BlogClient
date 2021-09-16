@@ -98,6 +98,7 @@ const myReducer = (state = initialState, action) => {
             return state;
         }
         case Types.GET_USER_DATA: {
+            console.log(action.response);
             if (action.response.data.success) {
                 state = action.response.data.data[0];
                 return state;

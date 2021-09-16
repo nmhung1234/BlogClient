@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from 'prop-types'
-import './style.css'
+import PropTypes from "prop-types";
+import "./style.scss";
 function Tag(props) {
     const { tag } = props;
     return (
@@ -29,8 +29,8 @@ Tag.defaultProps = {
     tag: {
         colorBG: "#37c2ec",
         colorText: "#4e4e4ee",
-        name: "#demotag"
-    }
+        name: "#demotag",
+    },
 };
 
 export default Tag;

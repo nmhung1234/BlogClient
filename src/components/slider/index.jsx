@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./style.css";
+import "./style.scss";
 function Slider(props) {
     const { data, title, getAction } = props;
     const [offsetLeft, setOffsetLeft] = React.useState();

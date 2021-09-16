@@ -5,7 +5,7 @@ import Comment from "../../components/Comment";
 import PostDetail from "../../components/PostDetail";
 import Header from "./../../components/Header";
 import axios from "./../../utils/customAxios";
-import "./style.css";
+import "./style.scss";
 
 function DetailPost(props) {
     console.log(props);
@@ -17,10 +17,10 @@ function DetailPost(props) {
 
     React.useEffect(() => {
         axios
-            .get(`api/post/detail?username=${username}&slugString=${slug}`)
+            .get(`api/user/post/detail?username=${username}&slugString=${slug}`)
             .then((response) => {
                 console.log(response);
-                
+
                 setPostContent((pre) => response.data.data[0]);
             });
     }, []);

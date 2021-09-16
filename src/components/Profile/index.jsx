@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./style.scss";
 import PropTypes from "prop-types";
 import birthIcon from "./../../assets/icons/activity.svg";
 import fileIcon from "./../../assets/icons/file-minus.svg";
@@ -28,14 +28,14 @@ function Profile(props) {
                             </p>
                             <div className="birth df">
                                 <img src={birthIcon} alt="" />
-                                <p className="mgl-10 color-gray mg-20">
+                                <p className="mgl-10 color-gray-text mg-20">
                                     Đã tham gia ngày 3 tháng 8, 2021
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div className="df action pdt-10 justify-c">
-                        <div className="count-activity bd-radius-5 bg-w bd-primary pd-20 mgr-10">
+                        <div className="count-activity bd-radius-5 bg-post bd-primary pd-20 mgr-10">
                             <div className="df align-c pd-10">
                                 <img src={fileIcon} alt="" />
                                 <p className="color-text mgl-10">

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CancelIcon from "./../../assets/icons/x.svg";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import "./style.css";
+import "./style.scss";
 import { loginRequest } from "../../action/auth";
 function LoginRegister(props) {
     const { actionProp, loginDispatch } = props;
@@ -54,7 +54,6 @@ function LoginRegister(props) {
                 password: formValue.passwordLogin,
             };
             loginDispatch(formData);
-
         } else if (formName == "register") {
             const formData = {
                 username: formValue.usernameRegister,
@@ -83,7 +82,7 @@ function LoginRegister(props) {
                     <div className="anim-icon">
                         <lottie-player
                             src="https://assets3.lottiefiles.com/packages/lf20_gtnyu482.json"
-                            background="transparent"
+                            background-color="transparent"
                             speed="1"
                             style={{ width: "300px", height: "300px" }}
                             autoplay
@@ -121,7 +120,6 @@ function LoginRegister(props) {
                                         placeholder="VD: devvietnam"
                                         required
                                         onChange={onHandleChange}
-                                        
                                     />
                                 </div>
                                 <div className="df fd-c align-fs mgb-10">
@@ -203,7 +201,6 @@ function LoginRegister(props) {
                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                         title="VD: devvietnam@gmail.com"
                                         onChange={onHandleChange}
-                                        
                                     />
                                 </div>
                                 <div className="df fd-c align-fs mgb-10">
@@ -354,10 +351,10 @@ function LoginRegister(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         loginDispatch: (data) => {
-            dispatch(loginRequest(data))
-        }
-    }
-}
+            dispatch(loginRequest(data));
+        },
+    };
+};
 
 LoginRegister.propTypes = {};
 

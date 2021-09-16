@@ -14,7 +14,7 @@ import Slider from "./../../components/Slider";
 import { upPostRequest } from "../../action/post";
 import { getAllTagRequest } from "../../action/tag";
 
-import "./style.css";
+import "./style.scss";
 import "./ant.css";
 
 const UpPost = (props) => {
@@ -96,7 +96,7 @@ const UpPost = (props) => {
                                 : { display: "none" }
                         }
                     >
-                        <div className="write-space df fd-c bd-radius-5 bd-primary bg-w mgb-20">
+                        <div className="write-space df fd-c bd-radius-5 bd-primary bg-post mgb-20">
                             <UploadButton
                                 content={"Thêm ảnh bìa"}
                                 linkImgRes={getImgLink}

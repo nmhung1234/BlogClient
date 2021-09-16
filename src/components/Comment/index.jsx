@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./style.css";
+import "./style.scss";
 import heartIcon from "./../../assets/icons/heart.svg";
 import commentIcon from "./../../assets/icons/message-circle.svg";
 

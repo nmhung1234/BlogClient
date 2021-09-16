@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import "./style.css";
+import "./style.scss";
 import commentIcon from "./../../assets/icons/message-circle.svg";
 import likeIcon from "./../../assets/icons/heart.svg";
-import { showTime, slug } from "../../utils";
+import { showTime } from "../../utils";
 import Tag from "../Tag";
 import Skeleton from "react-loading-skeleton";
 function PostPreview(props) {
@@ -58,7 +58,7 @@ function PostPreview(props) {
                             <Skeleton width={100} />
                         )}
                     </p>
-                    <p className="date color-gray pdl-5">
+                    <p className="date color-gray-text pdl-5">
                         {data?.postData?.createdAt ? (
                             showTime(data.postData.createdAt)
                         ) : (
@@ -92,7 +92,7 @@ function PostPreview(props) {
                     <div className="left df">
                         <div className="df hover-secondary-bg pd-10 bd-radius-5 cursor-pointer reaction ">
                             <img className="icon mgr-5" src={likeIcon} alt="" />
-                            <p className="color-gray hover-primary">
+                            <p className="color-gray-text hover-primary">
                                 {data?.postData?.like ? data.postData.like : 0}{" "}
                                 reaction
                             </p>
@@ -103,7 +103,7 @@ function PostPreview(props) {
                                 src={commentIcon}
                                 alt=""
                             />
-                            <p className="color-gray hover-primary">
+                            <p className="color-gray-text hover-primary">
                                 Add comment
                             </p>
                         </div>

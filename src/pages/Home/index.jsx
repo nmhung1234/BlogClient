@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 // import Header from "../../components/Header";
 import PostPreview from "../../components/PostPreview";
-import "./style.css";
+import "./style.scss";
 
 import { getListPostRequest } from "./../../action/post";
 import Slider from "../../components/Slider";
-import Skeleton from "react-loading-skeleton";
 function Home(props) {
     const { listPost, getListPost } = props;
     const [listPostState, setListPostState] = React.useState([]);

@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./style.scss";
 import logoIcon from "./../../logo.svg";
 import bellIcon from "./../../assets/icons/bell.svg";
 import connectIconn from "./../../assets/icons/connect.svg";
@@ -64,7 +64,11 @@ function Header(props) {
                                 <img src={bellIcon} alt="" />
                             </div>
                             <div className="avatar-relative">
-                                <img className="avatar bd-primary" src="https://picsum.photos/800/600" alt="" />
+                                <img
+                                    className="avatar bd-primary"
+                                    src="https://picsum.photos/800/600"
+                                    alt=""
+                                />
                                 <div className="user-popup cursor-pointer">
                                     <Link to={`/${userDataState?.username}`}>
                                         <div className="name bdb-2 hover-primary">
