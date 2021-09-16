@@ -12,7 +12,7 @@ function Slider(props) {
         getAction(nameAction);
     };
     return (
-        <div className="category df mgb-10">
+        <div className="category mgb-10">
             <div className="left mgt-10">{title}</div>
             <div className="right df">
                 <div className="select df">

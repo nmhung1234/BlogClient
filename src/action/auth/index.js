@@ -14,3 +14,8 @@ export const login = (response) => {
         response
     }
 }
+export const logout = () => {
+    return {
+        type: Types.LOGOUT,
+    }
+}

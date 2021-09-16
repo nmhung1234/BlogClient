@@ -11,15 +11,15 @@ function Profile(props) {
         <>
             <div className="user-profile">
                 <div className="bg"></div>
-                <div className="container df align-c fd-c">
-                    <div className="profile bd-primary bd-radius-5 df justify-c">
-                        <div className="user-avatar df justify-c align-c">
+                <div className="container fd-c">
+                    <div className="profile bd-primary bd-radius-5">
+                        <div className="user-avatar">
                             <img src="https://picsum.photos/200" alt="" />
                         </div>
                         <div className="edit-btn button-lg mg-10">
                             Chỉnh sửa
                         </div>
-                        <div className="describe df fd-c align-c pdb-20">
+                        <div className="describe fd-c pdb-20">
                             <h1 className="name mg-20">Nguyen Hung</h1>
                             <p className="description mgb-10">
                                 hmmmm Lorem ipsum dolor sit amet consectetur
@@ -34,21 +34,21 @@ function Profile(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="df action pdt-10 justify-c">
+                    <div className="action pdt-10">
                         <div className="count-activity bd-radius-5 bg-post bd-primary pd-20 mgr-10">
-                            <div className="df align-c pd-10">
+                            <div className="activity">
                                 <img src={fileIcon} alt="" />
                                 <p className="color-text mgl-10">
                                     Đã đăng 2 bài viết
                                 </p>
                             </div>
-                            <div className="df align-c pd-10">
+                            <div className="activity">
                                 <img src={commentIcon} alt="" />
                                 <p className="color-text mgl-10">
                                     Đã comment 16 bài
                                 </p>
                             </div>
-                            <div className="df align-c pd-10">
+                            <div className="activity">
                                 <img src={hashIcon} alt="" />
                                 <p className="color-text mgl-10">
                                     Theo dõi 9 #tag

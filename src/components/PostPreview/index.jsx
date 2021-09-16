@@ -14,7 +14,7 @@ function PostPreview(props) {
     return (
         <Link
             to={`${data?.ownerData?.name}/${data?.postData?.slugString}`}
-            className="previrewPost df fd-c bd-primary bd-radius-5 mgb-10"
+            className="previrewPost fd-c bd-primary bd-radius-5 mgb-10"
         >
             {key2 == 0 ? (
                 <div
@@ -47,7 +47,7 @@ function PostPreview(props) {
                     />
                 )}
                 {/* </div> */}
-                <div className="right df">
+                <div className="right">
                     <p
                         className="bd-radius-5 hover-secondary-bg pd-5"
                         style={{ width: "fit-content", fontWeight: "500" }}
@@ -67,7 +67,7 @@ function PostPreview(props) {
                     </p>
                 </div>
             </div>
-            <div className="body df fd-r mgt-10 mgr-20 mgb-20">
+            <div className="body fd-r mgt-10 mgr-20 mgb-20">
                 <h1 className=" mgb-20 cursor-pointer hover-primary">
                     {data?.postData?.title ? (
                         data.postData.title

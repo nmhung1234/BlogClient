@@ -1,62 +1,58 @@
+@import './../../mixin';
 .previrewPost {
     width: 100%;
     min-width: 270px;
     max-width: 1000px;
     flex-wrap: wrap;
-    justify-content: left;
+    @include flexbox("flex-start", "null");
     background-color: var(--background-post);
     box-sizing: content-box;
+    .infoAuthor {
+        text-align: left;
+        .right {
+            @include flexbox("space-around", "null");
+            flex-direction: column;
+            p:first-child {
+                font-size: 14px;
+                line-height: 17.5px;
+                color: var(--color-text);
+                /* font-weight: 500 */
+            }
+            p:last-child {
+                font-size: 12px;
+                color: var(--color-text);
+                font-weight: 300;
+                line-height: 15px;
+            }
+        }
+    }
+    .body {
+        text-align: left;
+        flex-direction: column;
+        @include flexbox("null", "flex-start");
+        margin-left: 70px;
+        h1 {
+            text-align: left;
+            @include text-truncate(2);
+        }
+    }
+    .bottom {
+        width: 100%;
+        @include flexbox("space-between", "flex-end");
+        position: relative;
+        .right {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+        }
+    }
+    .reaction,
+    .comment {
+        align-items: center;
+    }
 }
 .previrewPost:active {
     box-shadow: 0 0 0 2px var(--color-primary);
-}
-/* .previrewPost .avatar {
-    background-image: url("https://pickaface.net/gallery/avatar/demo.webmaster541295de29059.png");
-} */
-.previrewPost .infoAuthor {
-    text-align: left;
-}
-.previrewPost .infoAuthor .right {
-    flex-direction: column;
-    justify-content: space-around;
-}
-.previrewPost .infoAuthor .right p:first-child {
-    font-size: 14px;
-    line-height: 17.5px;
-    /* font-weight: 500 */
-}
-.previrewPost .infoAuthor .right p:last-child {
-    font-size: 12px;
-    color: var(--color-text);
-    font-weight: 300;
-    line-height: 15px;
-}
-.previrewPost .body {
-    text-align: left;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 70px;
-}
-.previrewPost .body h1 {
-    text-align: left;
-    flex-direction: column;
-    align-items: flex-start;
-    /* margin-bottom: 40px; */
-}
-.previrewPost .bottom {
-    width: 100%;
-    align-items: flex-end;
-    justify-content: space-between;
-    position: relative;
-}
-.previrewPost .bottom .right {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-}
-.previrewPost .reaction,
-.comment {
-    align-items: center;
 }
 
 /* @media only screen and (max-width: 1200px) {

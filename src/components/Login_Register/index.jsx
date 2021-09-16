@@ -89,7 +89,7 @@ function LoginRegister(props) {
                             loop
                         ></lottie-player>
                     </div>
-                    <div className="form df fd-c justify-fs mg-20">
+                    <div className="form fd-c mg-20">
                         <div
                             className={
                                 actionState == "login"
@@ -104,7 +104,7 @@ function LoginRegister(props) {
                                 Đăng nhập{" "}
                             </h1>
                             <form id="login" onSubmit={handleSubmit}>
-                                <div className="df fd-c align-fs mgb-10">
+                                <div className="field mgb-10">
                                     <label
                                         className="pdb-5"
                                         htmlFor="usernameLogin"
@@ -122,7 +122,7 @@ function LoginRegister(props) {
                                         onChange={onHandleChange}
                                     />
                                 </div>
-                                <div className="df fd-c align-fs mgb-10">
+                                <div className="field mgb-10">
                                     <label
                                         className="pdb-5"
                                         htmlFor="passwordLogin"
@@ -183,7 +183,7 @@ function LoginRegister(props) {
                                 Đăng ký{" "}
                             </h1>
                             <form id="register" onSubmit={handleSubmit}>
-                                <div className="df fd-c align-fs mgb-10">
+                                <div className="field mgb-10">
                                     <label
                                         className="pdb-5"
                                         htmlFor="emailRegister"
@@ -203,7 +203,7 @@ function LoginRegister(props) {
                                         onChange={onHandleChange}
                                     />
                                 </div>
-                                <div className="df fd-c align-fs mgb-10">
+                                <div className="field mgb-10">
                                     <label
                                         className="pdb-5"
                                         htmlFor="usernameRegister"
@@ -221,7 +221,7 @@ function LoginRegister(props) {
                                         onChange={onHandleChange}
                                     />
                                 </div>
-                                <div className="df fd-c align-fs mgb-10">
+                                <div className="field mgb-10">
                                     <label
                                         className="pdb-5"
                                         htmlFor="passwordRegister"
@@ -241,7 +241,7 @@ function LoginRegister(props) {
                                         title="Tối thiểu 8 ký tự"
                                     />
                                 </div>
-                                <div className="df fd-c align-fs mgb-10">
+                                <div className="field mgb-10">
                                     <label
                                         className="pdb-5"
                                         htmlFor="cfpasswordRegister"
@@ -304,7 +304,7 @@ function LoginRegister(props) {
                                 Khôi phục tài khoản{" "}
                             </h1>
                             <form id="recovery" onSubmit={handleSubmit}>
-                                <div className="df fd-c align-fs mgb-10">
+                                <div className="field mgb-10">
                                     <label
                                         className="pdb-5"
                                         htmlFor="emailRecovery"

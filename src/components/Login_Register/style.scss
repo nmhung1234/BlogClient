@@ -1,3 +1,4 @@
+@import './../../mixin';
 ::placeholder {
     color: #aaaaaadc;
 }
@@ -10,6 +11,25 @@
     top: -10px;
     background-color: rgba(0, 0, 0, 0.521);
     backdrop-filter: blur(2px);
+    .form{
+        @include flexbox("flex-start", "null");
+        .field{
+            @include flexbox("null","flex-start");
+            flex-direction: column;
+        }
+    }
+    .login,
+    .register,
+    .recovery {
+        width: fit-content;
+        padding: 0 50px 20px 50px;
+    }
+    input {
+        line-height: 25px;
+        padding: 7px 15px;
+        width: 120%;
+        /* font-size: 20px */
+    }
 }
 .login-dialog {
     position: fixed;
@@ -19,23 +39,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--background-login);
-    transition: all .5s linear;
+    transition: all 0.5s linear;
+    .cancel-form {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
 }
-.login-dialog .cancel-form {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-.login_Container .login, .register, .recovery {
-    width: fit-content;
-    padding: 0 50px 20px 50px;
-}
-.login_Container input {
-    line-height: 25px;
-    padding: 7px 15px;
-    width: 120%;
-    /* font-size: 20px */
-}
+
 .show {
     display: block;
 }

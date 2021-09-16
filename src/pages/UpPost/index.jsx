@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import MDEditor from "@uiw/react-md-editor";
 import { Link } from "react-router-dom";
 import { Select } from "antd";
-import logoIcon from "./../../logo.svg";
 import xIcon from "./../../assets/icons/x.svg";
 import copyIcon from "./../../assets/icons/copy.svg";
 import UploadButton from "../../components/UploadButton";
@@ -15,7 +14,7 @@ import { upPostRequest } from "../../action/post";
 import { getAllTagRequest } from "../../action/tag";
 
 import "./style.scss";
-import "./ant.css";
+import "./ant.scss";
 
 const UpPost = (props) => {
     const { getAllTags, tagStore, createPostReq } = props;
@@ -65,11 +64,8 @@ const UpPost = (props) => {
     return (
         <>
             <div>
-                <div
-                    className="nav-uppost df align-c pd-5"
-                    style={{ justifyContent: "space-evenly" }}
-                >
-                    <div className=" df left align-c">
+                <div className="nav-uppost pd-5">
+                    <div className="left">
                         <Link to="/" className="pd-0 mg-0">
                             {/* <img src={logoIcon} alt="Dev Việt Nam" /> */}
                         </Link>
@@ -89,14 +85,14 @@ const UpPost = (props) => {
                 </div>
                 <div className="uppost df fd-c">
                     <div
-                        className="write-container df "
+                        className="write-container df"
                         style={
                             action == "Chỉnh sửa"
                                 ? { display: "flex" }
                                 : { display: "none" }
                         }
                     >
-                        <div className="write-space df fd-c bd-radius-5 bd-primary bg-post mgb-20">
+                        <div className="write-space fd-c bd-radius-5 bd-primary bg-post mgb-20">
                             <UploadButton
                                 content={"Thêm ảnh bìa"}
                                 linkImgRes={getImgLink}
@@ -135,7 +131,7 @@ const UpPost = (props) => {
                                     type="text"
                                     value={linkImg}
                                 />
-                                <div className="df align-c pdl-20 cursor-pointer">
+                                <div className="copy pdl-20 cursor-pointer">
                                     <img src={copyIcon} alt="copy" />
                                     <p
                                         className="mg-0 pdl-5"

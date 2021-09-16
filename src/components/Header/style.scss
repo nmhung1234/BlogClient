@@ -1,4 +1,4 @@
-@import './../mixin';
+@import './../../mixin';
 .nav {
     @include flexbox("space-around", "null");
     background-color: var(--background-header);
@@ -33,12 +33,12 @@
     .right {
         @include flexbox("center", "center");
         .nav-icon {
+            display: flex;
             padding: 10px;
             border-radius: 50px;
             width: 40px;
             height: 40px;
             margin: 0 5px;
-            display: flex;
         }
         .avatar-relative {
             position: relative;

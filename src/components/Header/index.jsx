@@ -1,16 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "./style.scss";
 import logoIcon from "./../../logo.svg";
 import bellIcon from "./../../assets/icons/bell.svg";
 import connectIconn from "./../../assets/icons/connect.svg";
 import searchIcon from "./../../assets/icons/search.svg";
 // import PropTypes from 'prop-types'
-import { Link } from "react-router-dom";
 import LoginRegister from "./../Login_Register";
-import { connect } from "react-redux";
+import { logout } from "../../action/auth";
 
 function Header(props) {
-    const { userData } = props;
+    const { userData, logoutRequest } = props;
     const [actionState, setActionState] = React.useState(0);
     const [userDataState, setUserDataState] = React.useState();
     const num = React.useRef(1);
@@ -22,7 +23,9 @@ function Header(props) {
     React.useEffect(() => {
         setUserDataState(userData);
     }, [userData]);
-
+    const handleLogout = () => {
+        logoutRequest();
+    };
     return (
         <>
             <div className="nav pd-5">
@@ -100,7 +103,10 @@ function Header(props) {
                                             Settings
                                         </p>
                                     </div>
-                                    <div className="signout">
+                                    <div
+                                        className="signout"
+                                        onClick={handleLogout}
+                                    >
                                         <p className="pdl-10 bd-radius-5 hover-secondary-bg pd-10 mg-5">
                                             Sign Out
                                         </p>
@@ -130,5 +136,12 @@ const mapStateToProps = (state) => {
         userData: state.auth,
     };
 };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logoutRequest: () => {
+            dispatch(logout());
+        }
+    };
+};
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

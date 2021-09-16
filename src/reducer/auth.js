@@ -107,7 +107,7 @@ const myReducer = (state = initialState, action) => {
         }
         case Types.LOGOUT: {
             localStorage.clear();
-            state = { data: { token: '' } };
+            state = { data: { token: null } };
             window.location.pathname = '/';
             return state;
         }

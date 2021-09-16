@@ -1,3 +1,4 @@
+@import "./../../mixin";
 :root {
     --height-avatar: 150px;
     --border-avatar: 15px;
@@ -5,63 +6,72 @@
 .user-profile {
     width: 100%;
     position: relative;
-}
-.user-profile .bg {
-    height: 150px;
-    background-color: #000;
-}
-.user-profile .container {
-    width: 100%;
-    position: absolute;
-    top: 90px;
-}
-.user-profile .profile {
-    width: 70%;
-    height: fit-content;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    background: white;
-}
-.user-profile .user-avatar {
-    box-sizing: border-box;
-    height: var(--height-avatar);
-    width: 150px;
-    height: 150px;
-    border-radius: 75px;
-    background: black;
-    overflow: hidden;
-    margin: 0;
-    position: absolute;
-    top: -75px;
-}
-.user-profile .user-avatar img {
-    height: calc(var(--height-avatar) - var(--border-avatar));
-    object-fit: cover;
-    border-radius: inherit;
-}
-.user-profile .edit-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-.user-profile .profile .describe {
-    padding-top: 75px;
-}
-.user-profile .description {
-    font-size: 18px;
-    line-height: 27px;
-    max-width: 60%;
-}
-.user-profile .action {
-    width: 70%;
-}
-.user-profile .count-activity {
-    width: fit-content;
-    text-align: left;
-    white-space: nowrap;
-    height: fit-content;
-}
-.user-profile .post-list {
-    width: 100%;
+    .bg {
+        height: 150px;
+        background-color: #000;
+    }
+    .container {
+        @include flexbox("null", "center");
+        width: 100%;
+        position: absolute;
+        top: 90px;
+        .profile {
+            width: 70%;
+            height: fit-content;
+            @include flexbox("center", "center");
+            flex-direction: column;
+            position: relative;
+            background-color: var(--background-profile);
+            .user-avatar {
+                @include flexbox("center", "center");
+                box-sizing: border-box;
+                height: var(--height-avatar);
+                width: 150px;
+                height: 150px;
+                border-radius: 75px;
+                background: black;
+                overflow: hidden;
+                margin: 0;
+                position: absolute;
+                top: -75px;
+                img {
+                    height: calc(var(--height-avatar) - var(--border-avatar));
+                    object-fit: cover;
+                    border-radius: inherit;
+                }
+            }
+            .describe {
+                @include flexbox("null", "center");
+                padding-top: 75px;
+                color: (--color-text);
+                .description {
+                    font-size: 18px;
+                    line-height: 27px;
+                    max-width: 60%;
+                }
+            }
+        }
+    }
+    .edit-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .action {
+        width: 70%;
+        @include flexbox("center", "null");
+        .activity{
+            @include flexbox("null", "center");
+            padding: 10px;
+        }
+    }
+    .count-activity {
+        width: fit-content;
+        text-align: left;
+        white-space: nowrap;
+        height: fit-content;
+    }
+    .post-list {
+        width: 100%;
+    }
 }
