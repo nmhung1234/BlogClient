@@ -60,8 +60,8 @@ button {
     background-color: var(--color-primary);
     border-radius: var(--border-radius);
     padding: 7px 15px 10px 15px;
-    width: fit-content;
-    height: fit-content;
+    width: fit-content!important;
+    height: fit-content!important;
     color: white;
     cursor: pointer;
     font-weight: 500;

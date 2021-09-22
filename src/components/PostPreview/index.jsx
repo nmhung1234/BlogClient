@@ -8,7 +8,7 @@ import { showTime } from "../../utils";
 import Tag from "../Tag";
 import Skeleton from "react-loading-skeleton";
 function PostPreview(props) {
-    const { data, key2 } = props;
+    const { data } = props;
     // console.log(data);
 
     return (
@@ -16,7 +16,7 @@ function PostPreview(props) {
             to={`${data?.ownerData?.name}/${data?.postData?.slugString}`}
             className="previrewPost fd-c bd-primary bd-radius-5 mgb-10"
         >
-            {key2 == 0 ? (
+            {data?.postData?.coverImg ? (
                 <div
                     style={{
                         width: "100%",
@@ -126,7 +126,7 @@ PostPreview.propTypes = {
         ownerData: PropTypes.object.isRequired,
         postData: PropTypes.object.isRequired,
     }),
-    key2: PropTypes.number.isRequired,
+    // key2: PropTypes.number.isRequired,
 };
 
 // PostPreview.defaultProps = {

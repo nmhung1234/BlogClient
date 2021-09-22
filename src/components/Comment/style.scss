@@ -9,16 +9,19 @@
     .write-comment{
         width: 100%;
         .right{
-            width: 100%;
+            @extend .write-comment;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-        }
-        .area-comment{
-            width:80%;
-            max-width: 80%;
-            min-height: 70px;
-            max-height: 200px;
+            .area-comment{
+                width:80%;
+                max-width: 80%;
+                min-height: 70px;
+                max-height: 200px;
+            }
+            .upComment{
+                width: min-content;
+            }
         }
     }
     .guest-comment-content{

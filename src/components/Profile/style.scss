@@ -51,6 +51,12 @@
                 }
             }
         }
+        .count-activity {
+            width: min-content;
+            text-align: left;
+            white-space: nowrap;
+            height: min-content;
+        }
     }
     .edit-btn {
         position: absolute;
@@ -64,12 +70,6 @@
             @include flexbox("null", "center");
             padding: 10px;
         }
-    }
-    .count-activity {
-        width: fit-content;
-        text-align: left;
-        white-space: nowrap;
-        height: fit-content;
     }
     .post-list {
         width: 100%;

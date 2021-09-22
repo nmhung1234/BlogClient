@@ -40,7 +40,7 @@ function Home(props) {
                 {listPostState.length ? (
                     listPostState.map((post, index) => {
                         return (
-                            <PostPreview key={index} key2={index} data={post} />
+                            <PostPreview key={index} data={post} />
                         );
                     })
                 ) : (

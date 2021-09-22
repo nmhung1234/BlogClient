@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./style.scss";
 import heartIcon from "./../../assets/icons/heart.svg";
 import commentIcon from "./../../assets/icons/message-circle.svg";
+import "./style.scss";
 
 function Comment(props) {
     return (
@@ -13,20 +13,28 @@ function Comment(props) {
                 </h2>
                 {/* user write comment */}
                 <div className="write-comment df pdt-20">
-                <img className="avatar mgl-0" src="https://picsum.photos/800/600" alt="" />
+                    <img
+                        className="avatar mgl-0"
+                        src="https://picsum.photos/800/600"
+                        alt=""
+                    />
                     <div className="right pdl-20">
                         <textarea
                             className="input pd-10 area-comment"
                             type="text"
                             placeholder="Thêm bình luận ..."
                         />
-                        <div className="button-lg mgt-20">Đăng</div>
+                        <div className="upComment button-lg mgt-20">Đăng</div>
                     </div>
                 </div>
                 {/* comment của khách */}
                 <div className="guest-comment df pdt-20 fd-c">
                     <div className="df">
-                    <img className="avatar mgl-0" src="https://picsum.photos/800/600" alt="" />
+                        <img
+                            className="avatar mgl-0"
+                            src="https://picsum.photos/800/600"
+                            alt=""
+                        />
                         <div className="right pdl-5">
                             <div className="df df-c bd-primary bd-radius-5 pd-20 fd-c align-fs">
                                 <div className="guest-info">
@@ -78,7 +86,11 @@ function Comment(props) {
                             className="guest-comment df pdt-20"
                             style={{ paddingLeft: "40px" }}
                         >
-                           <img className="avatar mgl-0" src="https://picsum.photos/800/600" alt="" />
+                            <img
+                                className="avatar mgl-0"
+                                src="https://picsum.photos/800/600"
+                                alt=""
+                            />
                             <div className="right pdl-5">
                                 <div className="df df-c bd-primary bd-radius-5 pd-20 fd-c align-fs">
                                     <div className="guest-info">
