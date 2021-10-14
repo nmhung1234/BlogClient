@@ -1,8 +1,8 @@
 @import './../../mixin';
 .category {
     @include flexbox("space-between", "center");
-    width: 45%;
-    max-width: 1000px;
+    width: 100%;
+    // max-width: 1000px;
     user-select: none;
     .left {
         font-weight: bold;

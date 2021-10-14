@@ -16,7 +16,7 @@ function Profile(props) {
                         <div className="user-avatar">
                             <img src="https://picsum.photos/200" alt="" />
                         </div>
-                        <div className="edit-btn button-lg mg-10">
+                        <div className="edit-btn button-lg hover-button mg-10">
                             Chỉnh sửa
                         </div>
                         <div className="describe fd-c pdb-20">
@@ -27,7 +27,7 @@ function Profile(props) {
                                 voluptatum voluptates sit, minus ullam
                             </p>
                             <div className="birth df">
-                                <img src={birthIcon} alt="" />
+                                <img src={birthIcon} alt="" style={{width: "30px"}}/>
                                 <p className="mgl-10 color-gray-text mg-20">
                                     Đã tham gia ngày 3 tháng 8, 2021
                                 </p>

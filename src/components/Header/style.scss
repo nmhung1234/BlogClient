@@ -1,8 +1,13 @@
 @import './../../mixin';
 .nav {
-    @include flexbox("space-around", "null");
+    @include flexbox("space-between", "null");
     background-color: var(--background-header);
     position: relative;
+    max-width: 2000px;
+    width: 100%;
+    padding: 5px 5%;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border-color);
     .left {
         width: 40%;
         display: flex;

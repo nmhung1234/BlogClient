@@ -1,3 +1,26 @@
-.homepage {
-    width: 100%;
+@import "./../../mixin";
+
+.home-wrapper {
+    @include flexbox("center", "");
+    max-width: 2000px;
+    margin: 0 auto;
+    .sidebar-left{
+        width: 20%;
+        max-width: 255px;
+        color: var(--color-text);
+    }
+    .homepage {
+        width: 50%;
+    }
+    .sidebar-right{
+        width: 20%;
+        .notification{
+            width: 100%;
+            border-radius: var(--border-radius);
+            background-color: var(--background-post);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            margin: 15px;
+        }
+    }
 }

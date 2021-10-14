@@ -10,7 +10,8 @@ html{
 
 /* css lib */
 :root {
-    --color-primary: #4d59db;
+    --color-primary: #4150f5;
+    --color-primary-dark: #323ebe;
     --color-secondary: #b5bdc4;
     --color-text: #202428;
     --color-gray-text: #64707d;
@@ -79,6 +80,10 @@ button {
     font-size: 14px;
     line-height: 24px;
 }
+.hover-button:hover{
+    background-color: var(--color-primary-dark);
+    transition: all 0.5s;
+}
 .bd-radius-5 {
     border-radius: var(--border-radius);
 }
@@ -90,8 +95,8 @@ button {
     transition: all 0.5s;
 }
 .hover-primary:hover {
-    color: var(--color-primary);
-    transition: all 0.3s;
+    color: var(--color-primary-dark);
+    transition: all 0.5s;
 }
 .tag {
     font-weight: 200;

@@ -9,7 +9,7 @@ function Slider(props) {
         setOffsetLeft(e.target.offsetLeft);
         setClientWidth(e.target.clientWidth);
         const nameAction = e.target.innerText;
-        getAction(nameAction);
+        getAction ? getAction(nameAction) : "";
     };
     return (
         <div className="category mgb-10">

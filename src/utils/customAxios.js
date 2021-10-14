@@ -24,8 +24,10 @@ const requestHandler = async (request) => {
         } else {
             const refreshToken = localStorage.getItem('rtk');
             const data = { refreshToken: refreshToken }
-            await axios.post(`${API_URL}api/user/refreshToken`, data).then((res) => {
-                if (res.data.errorCode === (400 | 401)) {
+            await axios.post(`${API_URL}api/user/refreshToken`, data)
+            .then((res) => {
+                // console.log(res);
+                if (res.data.errorCode == (400 || 401)) {
                     //domain client
                     window.location.replace("http://localhost:3000/");
                     localStorage.clear();

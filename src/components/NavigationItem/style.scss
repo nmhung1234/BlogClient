@@ -1,0 +1,10 @@
+@import './../../mixin';
+
+.navigation-item{
+    // width: 100%;
+    display: flex;
+    img{
+        width: 25px;
+        align-self: flex-start;
+    }
+}

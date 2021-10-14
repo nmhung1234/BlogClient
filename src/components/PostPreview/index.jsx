@@ -103,14 +103,18 @@ function PostPreview(props) {
                                 src={commentIcon}
                                 alt=""
                             />
-                            <p className="color-gray-text hover-primary">
+
+                            <Link
+                                to={`${data?.ownerData?.name}/${data?.postData?.slugString}/#comment`}
+                                className="color-gray-text hover-primary"
+                            >
                                 Add comment
-                            </p>
+                            </Link>
                         </div>
                     </div>
                     <div className="right">
                         {data?.postData ? (
-                            <div className="button-sm">Save</div>
+                            <div className="button-sm hover-button">Save</div>
                         ) : (
                             ""
                         )}

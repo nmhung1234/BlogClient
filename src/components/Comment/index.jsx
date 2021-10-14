@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import MDEditor from "@uiw/react-md-editor";
+
 import heartIcon from "./../../assets/icons/heart.svg";
 import commentIcon from "./../../assets/icons/message-circle.svg";
+import alert from "./../../assets/icons/alert.svg";
 import "./style.scss";
-
+let stringDemo = "Very awesome! I didn't watch the video but followed the instructions. VS Code right inthe browser opened up to whatever repo /branch you are on when you pressed theperiod (.) key. A great feature is if yousync your extensions from your locallyinstalled VS Code,\t```hi``` you can access them inthe in-browser editor."
 function Comment(props) {
     return (
         <>
@@ -20,10 +23,15 @@ function Comment(props) {
                     />
                     <div className="right pdl-20">
                         <textarea
+                            id="comment"
                             className="input pd-10 area-comment"
                             type="text"
                             placeholder="Thêm bình luận ..."
                         />
+                        <div className="noti df mgt-5">
+                            <img src={alert} alt="" />
+                            <span className="mgl-5">Hỗ trợ cú pháp markdown</span>
+                        </div>
                         <div className="upComment button-lg mgt-20">Đăng</div>
                     </div>
                 </div>
@@ -36,7 +44,7 @@ function Comment(props) {
                             alt=""
                         />
                         <div className="right pdl-5">
-                            <div className="df df-c bd-primary bd-radius-5 pd-20 fd-c align-fs">
+                            <div className="right-wrapper df df-c bd-primary bd-radius-5 pd-20 fd-c align-fs">
                                 <div className="guest-info">
                                     nmhung{" "}
                                     <span
@@ -47,16 +55,10 @@ function Comment(props) {
                                         • 12 thg 8
                                     </span>
                                 </div>
-                                <p className="guest-comment-content pd-10">
-                                    Very awesome! I didn't watch the video but
-                                    followed the instructions. VS Code right in
-                                    the browser opened up to whatever repo /
-                                    branch you are on when you pressed the
-                                    period (.) key. A great feature is if you
-                                    sync your extensions from your locally
-                                    installed VS Code, you can access them in
-                                    the in-browser editor.
-                                </p>
+                                <MDEditor.Markdown
+                                    className="editor pd-10 guest-comment-content"
+                                    source={stringDemo}
+                                />
                                 <p className="action">•••</p>
                             </div>
                             <div className="df">
@@ -103,17 +105,10 @@ function Comment(props) {
                                             • 12 thg 8
                                         </span>
                                     </div>
-                                    <p className="guest-comment-content pd-10">
-                                        Very awesome! I didn't watch the video
-                                        but followed the instructions. VS Code
-                                        right in the browser opened up to
-                                        whatever repo / branch you are on when
-                                        you pressed the period (.) key. A great
-                                        feature is if you sync your extensions
-                                        from your locally installed VS Code, you
-                                        can access them in the in-browser
-                                        editor.
-                                    </p>
+                                    <MDEditor.Markdown
+                                    className="editor pd-10 guest-comment-content"
+                                    source={stringDemo}
+                                />
                                     <p className="action">•••</p>
                                 </div>
                                 <div className="df">
