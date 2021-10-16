@@ -3,34 +3,53 @@
     padding: 0;
     box-sizing: border-box;
 }
-html{
+html {
     background-color: var(--background-site);
     font-family: "SegoeUI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-default);
 }
 
 /* css lib */
 :root {
     --color-primary: #4150f5;
     --color-primary-dark: #323ebe;
+    --color-primary-light: rgb(218, 229, 252);
     --color-secondary: #b5bdc4;
-    --color-text: #202428;
-    --color-gray-text: #64707d;
-    --border-radius: 5px;
-    --border-color: #d7d9d9;
+    --text-default: #202428;
+    --text-default-light: #64707d;
+    --color-icon: rgb(32, 32, 32);
+
     --background-site: #eef0f1;
     --background-post: #fff;
     --background-header: #fff;
     --background-login: #fff;
     --background-profile: #fff;
+
+    --border-color: #d7d9d9;
+    --border-radius: 5px;
 }
-html[data-theme='dark'] {
-   
+html[data-theme="dark"] {
 }
 @font-face {
     font-family: "SegoeUI";
     src: local("SegoeUI"), url("./assets/fonts/SVN-SegoeUI.ttf") format("ttf");
 }
-
+// icon
+.icon-sm {
+    width: 20px;
+    height: 20px;
+}
+.icon-md {
+    width: 25px;
+    height: 25px;
+}
+.icon-lg {
+    width: 30px;
+    height: 30px;
+}
+.icon-color {
+    stroke: var(--color-icon);
+}
 .avatar {
     width: 40px;
     height: 40px;
@@ -39,15 +58,12 @@ html[data-theme='dark'] {
     border-radius: 35px;
     margin: 0 10px;
     object-fit: cover;
-
 }
-.color-gray-text {
-    color: var(--color-gray-text);
+// text
+.text-light {
+    color: var(--text-default-light);
 }
-.color-text {
-    color: var(--color-text);
-}
-
+// button
 button {
     display: inherit;
     outline: inherit;
@@ -61,8 +77,8 @@ button {
     background-color: var(--color-primary);
     border-radius: var(--border-radius);
     padding: 7px 15px 10px 15px;
-    width: fit-content!important;
-    height: fit-content!important;
+    width: fit-content !important;
+    height: fit-content !important;
     color: white;
     cursor: pointer;
     font-weight: 500;
@@ -80,52 +96,54 @@ button {
     font-size: 14px;
     line-height: 24px;
 }
-.hover-button:hover{
-    background-color: var(--color-primary-dark);
-    transition: all 0.5s;
-}
 .bd-radius-5 {
     border-radius: var(--border-radius);
 }
 .bd-primary {
     border: 1px solid var(--border-color);
 }
-.hover-secondary-bg:hover {
-    background-color: #e4e4e49a;
+
+//hover
+.hover-button:hover {
+    background-color: var(--color-primary-dark);
     transition: all 0.5s;
 }
-.hover-primary:hover {
+
+.hover-bg:hover {
+    background-color: var(--color-primary-light);
+    transition: all 0.5s;
+}
+.hover-text:hover {
     color: var(--color-primary-dark);
     transition: all 0.5s;
 }
-.tag {
-    font-weight: 200;
-    background-color: var(--color-secondary);
-}
-.icon {
-    width: 17px;
-    height: 17px;
-}
-.cursor-pointer {
-    cursor: pointer;
-}
+// ------------
+
+//input
 .input {
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     outline: none;
-    color: var(--color-text);
+    color: var(--text-default);
 }
 .input:focus {
     box-shadow: 2px 2px var(--color-primary);
     border-color: var(--color-primary);
     transition: box-shadow 0.3s;
 }
+// ------------
+// util
 .bg-post {
     background-color: var(--background-post);
 }
-/* .bs-sm{
-  
-} */
+.tag {
+    font-weight: 200;
+    background-color: var(--color-secondary);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
 
 a {
     color: inherit;

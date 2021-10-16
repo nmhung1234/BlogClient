@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style.scss";
 function Slider(props) {
+    
     const { data, title, getAction } = props;
     const [offsetLeft, setOffsetLeft] = React.useState();
     const [clientWidth, setClientWidth] = React.useState();
@@ -19,7 +20,7 @@ function Slider(props) {
                     {data?.map((ele, index) => (
                         <p
                             key={index}
-                            className="bd-radius-5 hover-secondary-bg mgt-10 active"
+                            className="bd-radius-5 hover-bg hover-text mgt-10 active"
                             onClick={handleClick}
                         >
                             {ele}

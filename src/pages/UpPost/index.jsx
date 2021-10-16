@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import MDEditor from "@uiw/react-md-editor";
 import { Link } from "react-router-dom";
 import { Select } from "antd";
-import xIcon from "./../../assets/icons/x.svg";
-import copyIcon from "./../../assets/icons/copy.svg";
 import UploadButton from "../../components/UploadButton";
 import PostDetail from "./../../components/PostDetail";
 import Slider from "./../../components/Slider";
@@ -75,13 +73,23 @@ const UpPost = (props) => {
                         data={["Chỉnh sửa", "Xem trước"]}
                         getAction={getAction}
                     />
-                    <img
-                        src={xIcon}
-                        alt="Close"
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 icon-color icon-md"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        // stroke="currentColor"
                         onClick={() => {
                             history.back();
                         }}
-                    />
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
                 </div>
                 <div className="uppost df fd-c">
                     <div
@@ -131,8 +139,21 @@ const UpPost = (props) => {
                                     type="text"
                                     value={linkImg}
                                 />
-                                <div className="copy pdl-20 cursor-pointer">
-                                    <img src={copyIcon} alt="copy" />
+                                <div className="copy pdl-20 cursor-pointer ">
+                                    {/* <img src={copyIcon} alt="copy" /> */}
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-6 w-6 icon-color icon-md"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                                        />
+                                    </svg>
                                     <p
                                         className="mg-0 pdl-5"
                                         style={{ fontWeight: "bold" }}

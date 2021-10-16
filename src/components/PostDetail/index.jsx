@@ -37,11 +37,11 @@ function PostDetail(props) {
                                 src="https://picsum.photos/800/600"
                                 alt=""
                             />
-                            <h4 className="name bd-radius-5 hover-secondary-bg pd-5 cursor-pointer">
+                            <h4 className="name bd-radius-5 hover-bg pd-5 cursor-pointer">
                                 {dataState?.username}
                             </h4>
                         </div>
-                        <div className="time pdl-10 color-gray-text">
+                        <div className="time pdl-10 text-light">
                             {showTime(dataPost?.lastmodified)}
                         </div>
                     </div>

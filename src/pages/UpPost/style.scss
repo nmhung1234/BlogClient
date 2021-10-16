@@ -36,11 +36,9 @@
                     padding-left: 20px;
                     width: 50%;
                 }
-                .copy{
+                .copy {
                     @include flexbox("null", "center");
-                    p{
-                        color: var(--color-text);
-                    }
+
                 }
             }
             .content-post {
@@ -56,7 +54,6 @@
             width: 20%;
             @include flexbox("flex-end", "flex-start");
             text-align: left;
-            color: var(--color-text);
         }
     }
     .editor {

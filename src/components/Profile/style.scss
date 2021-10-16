@@ -43,12 +43,14 @@
             .describe {
                 @include flexbox("null", "center");
                 padding-top: 75px;
-                color: (--color-text);
                 .description {
                     font-size: 18px;
                     line-height: 27px;
                     max-width: 60%;
                     @include text-truncate(3);
+                }
+                .birth {
+                    @include flexbox("null", "center");
                 }
             }
         }
@@ -61,7 +63,7 @@
         .action {
             width: 70%;
             @include flexbox("center", "null");
-            .activity{
+            .activity {
                 @include flexbox("null", "center");
                 padding: 10px;
             }

@@ -1,4 +1,4 @@
-.comment-container{
+.comment-container {
     width: 70%;
     background-color: var(--background-post);
     overflow: hidden;
@@ -6,39 +6,39 @@
     border-top: none;
     padding: 50px;
 
-    .write-comment{
+    .write-comment {
         width: 100%;
-        .right{
+        .right {
             @extend .write-comment;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            .area-comment{
-                width:80%;
+            .area-comment {
+                width: 80%;
                 max-width: 80%;
                 min-height: 70px;
                 max-height: 200px;
             }
-            .upComment{
+            .upComment {
                 width: min-content;
             }
-            &-wrapper{
+            &-wrapper {
                 height: fit-content;
             }
         }
     }
-    .guest-comment-content{
-        font-size:18px;
+    .guest-comment-content {
+        font-size: 18px;
         line-height: 27px;
         text-align: left;
-        font-family: "SegoeUI", Tahoma, Geneva, Verdana, sans-serif;    }
-    .guest-comment{
+        font-family: "SegoeUI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .guest-comment {
         position: relative;
-        .action{
-            color: var(--color-text-gray);
+        .action {
             position: absolute;
-            top:30px;
-            right:20px;
+            top: 30px;
+            right: 20px;
         }
     }
 }

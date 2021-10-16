@@ -2,15 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./style.scss";
-import commentIcon from "./../../assets/icons/message-circle.svg";
-import likeIcon from "./../../assets/icons/heart.svg";
 import { showTime } from "../../utils";
 import Tag from "../Tag";
 import Skeleton from "react-loading-skeleton";
 function PostPreview(props) {
     const { data } = props;
-    // console.log(data);
-
     return (
         <Link
             to={`${data?.ownerData?.name}/${data?.postData?.slugString}`}
@@ -49,8 +45,8 @@ function PostPreview(props) {
                 {/* </div> */}
                 <div className="right">
                     <p
-                        className="bd-radius-5 hover-secondary-bg pd-5"
-                        style={{ width: "fit-content", fontWeight: "500" }}
+                        className="bd-radius-5 hover-bg pd-5"
+                        style={{ width: "min-content", fontWeight: "500" }}
                     >
                         {data?.ownerData?.name ? (
                             data.ownerData.name
@@ -58,7 +54,7 @@ function PostPreview(props) {
                             <Skeleton width={100} />
                         )}
                     </p>
-                    <p className="date color-gray-text pdl-5">
+                    <p className="date text-light pdl-5">
                         {data?.postData?.createdAt ? (
                             showTime(data.postData.createdAt)
                         ) : (
@@ -68,7 +64,7 @@ function PostPreview(props) {
                 </div>
             </div>
             <div className="body fd-r mgt-10 mgr-20 mgb-20">
-                <h1 className=" mgb-20 cursor-pointer hover-primary">
+                <h1 className=" mgb-20 cursor-pointer hover-text">
                     {data?.postData?.title ? (
                         data.postData.title
                     ) : (
@@ -90,23 +86,42 @@ function PostPreview(props) {
                 </div>
                 <div className="bottom df mgt-10">
                     <div className="left df">
-                        <div className="df hover-secondary-bg pd-10 bd-radius-5 cursor-pointer reaction ">
-                            <img className="icon mgr-5" src={likeIcon} alt="" />
-                            <p className="color-gray-text hover-primary">
+                        <div className="df hover-bg pd-10 bd-radius-5 cursor-pointer reaction ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6 icon-color icon-sm mgr-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                />
+                            </svg>
+                            <p className="text-light hover-text">
                                 {data?.postData?.like ? data.postData.like : 0}{" "}
                                 reaction
                             </p>
                         </div>
-                        <div className="df hover-secondary-bg pd-10 bd-radius-5 cursor-pointer comment ">
-                            <img
-                                className="icon mgr-5"
-                                src={commentIcon}
-                                alt=""
-                            />
-
+                        <div className="df hover-bg pd-10 bd-radius-5 cursor-pointer comment ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6 icon-color icon-sm mgr-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                                />
+                            </svg>
                             <Link
                                 to={`${data?.ownerData?.name}/${data?.postData?.slugString}/#comment`}
-                                className="color-gray-text hover-primary"
+                                className="text-light hover-text"
                             >
                                 Add comment
                             </Link>

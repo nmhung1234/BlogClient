@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CancelIcon from "./../../assets/icons/x.svg";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "./style.scss";
@@ -73,12 +72,20 @@ function LoginRegister(props) {
                 className={actionState == "cancel" ? "hide" : "login_Container"}
             >
                 <div className="login-dialog df align-c bd-radius-5 pd-20">
-                    <img
-                        className="cancel-form"
-                        src={CancelIcon}
-                        alt=""
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 icon-color icon-md"
+                        fill="none"
+                        viewBox="0 0 24 24"
                         onClick={() => handlAction("cancel")}
-                    />
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
                     <div className="anim-icon">
                         <lottie-player
                             src="https://assets3.lottiefiles.com/packages/lf20_gtnyu482.json"
@@ -150,7 +157,7 @@ function LoginRegister(props) {
                                         fontSize: "12px",
                                         textAlign: "left",
                                     }}
-                                    className="mgt-5  hover-primary"
+                                    className="mgt-5  hover-text"
                                     onClick={() => handlAction("recovery")}
                                 >
                                     Quên mật khẩu
@@ -162,7 +169,7 @@ function LoginRegister(props) {
                                         fontSize: "12px",
                                         textAlign: "left",
                                     }}
-                                    className="mgt-5 hover-primary"
+                                    className="mgt-5 hover-text"
                                     onClick={() => handlAction("register")}
                                 >
                                     Đăng kí tài khoản
@@ -271,7 +278,7 @@ function LoginRegister(props) {
                                         fontSize: "12px",
                                         textAlign: "left",
                                     }}
-                                    className="mgt-5  hover-primary"
+                                    className="mgt-5  hover-text"
                                     onClick={() => handlAction("recovery")}
                                 >
                                     Quên mật khẩu
@@ -283,7 +290,7 @@ function LoginRegister(props) {
                                         fontSize: "12px",
                                         textAlign: "left",
                                     }}
-                                    className="mgt-5 hover-primary"
+                                    className="mgt-5 hover-text"
                                     onClick={() => handlAction("login")}
                                 >
                                     Quay lại đăng nhập
@@ -334,7 +341,7 @@ function LoginRegister(props) {
                                         fontSize: "12px",
                                         textAlign: "left",
                                     }}
-                                    className="mgt-5 hover-primary"
+                                    className="mgt-5 hover-text"
                                     onClick={() => handlAction("login")}
                                 >
                                     Quay lại đăng nhập

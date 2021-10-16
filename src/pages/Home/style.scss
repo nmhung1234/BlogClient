@@ -4,17 +4,16 @@
     @include flexbox("center", "");
     max-width: 2000px;
     margin: 0 auto;
-    .sidebar-left{
+    .sidebar-left {
         width: 20%;
         max-width: 255px;
-        color: var(--color-text);
     }
     .homepage {
         width: 50%;
     }
-    .sidebar-right{
+    .sidebar-right {
         width: 20%;
-        .notification{
+        .notification {
             width: 100%;
             border-radius: var(--border-radius);
             background-color: var(--background-post);
