@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import "./style.scss";
 function Slider(props) {
-    
-    const { data, title, getAction } = props;
+    const { data, getAction } = props;
+
     const [offsetLeft, setOffsetLeft] = React.useState();
     const [clientWidth, setClientWidth] = React.useState();
+    
     const handleClick = (e) => {
         setOffsetLeft(e.target.offsetLeft);
         setClientWidth(e.target.clientWidth);
@@ -14,7 +16,6 @@ function Slider(props) {
     };
     return (
         <div className="category mgb-10">
-            <div className="left mgt-10">{title}</div>
             <div className="right df">
                 <div className="select df">
                     {data?.map((ele, index) => (

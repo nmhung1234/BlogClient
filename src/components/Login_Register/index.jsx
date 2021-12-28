@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import "./style.scss";
+import { CloseCircle } from "iconsax-react";
 import { loginRequest } from "../../action/auth";
+import "./style.scss";
 function LoginRegister(props) {
     const { actionProp, loginDispatch } = props;
 
@@ -28,11 +29,6 @@ function LoginRegister(props) {
             setActionState("cancel");
         }
     };
-    React.useEffect(() => {
-        if (actionProp != 0) {
-            setActionState("login");
-        }
-    }, [actionProp]);
 
     const onHandleChange = (e) => {
         const value = e.target.value;
@@ -65,27 +61,33 @@ function LoginRegister(props) {
             };
         }
     };
+    
+    React.useEffect(() => {
+        if (actionProp != 0) {
+            setActionState("login");
+        }
+    }, [actionProp]);
+
+    React.useEffect(() => {
+        if (actionState !== "cancel") {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+    }, [actionState]);
     return (
         <>
             <div
                 className="login_Container"
                 className={actionState == "cancel" ? "hide" : "login_Container"}
             >
-                <div className="login-dialog df align-c bd-radius-5 pd-20">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 icon-color icon-md"
-                        fill="none"
-                        viewBox="0 0 24 24"
+                <div className="login-dialog bd-radius-5 pd-20">
+                    <CloseCircle
+                        className="cancel-form"
+                        size="25"
+                        color="currentColor"
                         onClick={() => handlAction("cancel")}
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M6 18L18 6M6 6l12 12"
-                        />
-                    </svg>
+                    />
                     <div className="anim-icon">
                         <lottie-player
                             src="https://assets3.lottiefiles.com/packages/lf20_gtnyu482.json"

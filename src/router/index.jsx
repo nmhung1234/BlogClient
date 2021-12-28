@@ -4,8 +4,8 @@ import PublicRouter from "./publicRouter";
 import PrivateRouter from "./privateRouter";
 import { connect } from "react-redux";
 import Header from "../components/Header";
-
-function index(props) {
+import "./style.scss";
+function Router(props) {
     const { userData } = props;
     const [userDataState, setUserDataState] = React.useState();
     React.useEffect(() => {
@@ -14,7 +14,13 @@ function index(props) {
     return (
         <>
             <Header />
-            {localStorage.getItem("tk") ? <PrivateRouter /> : <PublicRouter />}
+            <div className="Router-wrapper">
+                {localStorage.getItem("tk") ? (
+                    <PrivateRouter />
+                ) : (
+                    <PublicRouter />
+                )}
+            </div>
         </>
     );
 }
@@ -28,4 +34,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, null)(index);
+export default connect(mapStateToProps, null)(Router);

@@ -9,6 +9,7 @@
     .bg {
         height: 150px;
         background-color: #000;
+        border-radius: 0 0 10px 10px;
     }
     .container {
         @include flexbox("null", "center");

@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.scss";
 export const CardContent = (props) => {
+    const {title} = props;
     return (
-        <div className="card-content">
+        <div className="card-content mgb-15">
             <div className="header">
-                <h3 className="title">#news</h3>
+                <h3 className="title">{title ? title : "#news"}</h3>
                 <a href="" className="seeall">
                     Xem thêm
                 </a>

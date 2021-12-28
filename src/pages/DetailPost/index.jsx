@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import { CardContent } from "../../components/CardContent";
 import Comment from "../../components/Comment";
 // import PropTypes from 'prop-types'
 import PostDetail from "../../components/PostDetail";
-import Header from "./../../components/Header";
 import axios from "./../../utils/customAxios";
 import "./style.scss";
 
@@ -26,17 +26,41 @@ function DetailPost(props) {
     }, []);
     return (
         <>
-            {/* <Header /> */}
-            <div className="df justify-c mgt-20">
-                <div className="Detail-post df">
+            <div className="detai-post-wrapper">
+                <div className="detail-post df">
                     {postContent ? (
-                        <>
+                        <Fragment>
                             <PostDetail data={postContent} />
                             <Comment />{" "}
-                        </>
+                        </Fragment>
                     ) : (
                         ""
                     )}
+                </div>
+                <div className="author-info">
+                    <div className="short-profile bd-radius-5 boder pdb-20 mgb-15">
+                        <div className="bubble"></div>
+                        <div className="info">
+                            <img
+                                src="https://picsum.photos/200"
+                            />
+                            <h2>nmhungxxx</h2>
+                        </div>
+                        <div className="follow-btn button-lg hover-button mgl-20 mgr-20 text-center">
+                            Theo dõi
+                        </div>
+                        <div className="description mg-20">
+                            JavaScript developer & bloger Lorem ipsum, dolor sit
+                            amet consectetur adipisicing elit. Cupiditate neque
+                            modi illum minima at aliquam animi sunt et
+                            voluptatum nam?
+                        </div>
+                        <div className="join-time pdl-20">
+                            <h4>Đã tham gia</h4>
+                            <p>15 tháng 10, 2020</p>
+                        </div>
+                    </div>
+                    <CardContent title="More from nmhungxxx"/>
                 </div>
             </div>
         </>

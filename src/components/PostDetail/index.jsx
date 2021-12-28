@@ -1,21 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Tag from "../Tag";
-import "./style.scss";
 import MDEditor from "@uiw/react-md-editor";
+import Tag from "../Tag";
 import { showTime } from "./../../utils/index";
+import "./style.scss";
 function PostDetail(props) {
     const { data } = props;
     const [dataState, setDataState] = React.useState();
     let dataPost = dataState?.owner_post;
-    // console.log(data);
     React.useEffect(() => {
         setDataState(data);
     }, [data]);
 
     return (
         <>
-            <div className="PostDetail bd-primary">
+            <div className="PostDetail boder">
                 {dataPost?.coverImg ? (
                     <img className="img-post" src={dataPost?.coverImg} alt="" />
                 ) : (
@@ -30,7 +29,7 @@ function PostDetail(props) {
                             <Tag key={index} tag={elem} />
                         )
                     )}
-                    <div className="authorInfo pdt-20 pdb-20 df align-c">
+                    <div className="authorInfo mgt-20 pdb-20 df align-c">
                         <div className="df align-c">
                             <img
                                 className="avatar mgl-0"

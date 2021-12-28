@@ -2,24 +2,29 @@
 
 .home-wrapper {
     @include flexbox("center", "");
-    max-width: 2000px;
+    width: 100%;
     margin: 0 auto;
     .sidebar-left {
         width: 20%;
-        max-width: 255px;
+        max-width: 250px;
+        & .mytag h3{
+            @include flexbox("flex-start", "center");
+        }
     }
     .homepage {
-        width: 50%;
+        width: 60%;
     }
     .sidebar-right {
         width: 20%;
+        max-width: 300px;
+        margin: 15px 10px 15px 15px;
         .notification {
             width: 100%;
             border-radius: var(--border-radius);
             background-color: var(--background-post);
             padding: 20px;
             border: 1px solid var(--border-color);
-            margin: 15px;
+            // margin: 15px;
         }
     }
 }

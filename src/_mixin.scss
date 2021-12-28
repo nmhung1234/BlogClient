@@ -32,3 +32,12 @@
     text-overflow: ellipsis;
     word-break: break-word;
 }
+@mixin avatar ($size){
+    width: $size;
+    height: $size;
+    min-width: $size;
+    min-height: $size;
+    border-radius: $size;
+    margin: 0 10px;
+    object-fit: cover;
+}

@@ -1,14 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getUserDataRequest } from "../../action/user";
 import { Switch, Route } from "react-router-dom";
-import UpPost from "../../pages/UpPost";
-import UserProfile from "../../pages/UserProfile";
-import Home from "./../../pages/Home/index";
-import DetailPost from "./../../pages/DetailPost/index";
+import { getUserDataRequest } from "../../action/user";
+import Loading from "../../components/Loading";
 import { decodeJWT } from "../../utils";
-
-// import PropTypes from 'prop-types'
+const UpPost = React.lazy(() => import("../../pages/UpPost"));
+const UserProfile = React.lazy(() => import("../../pages/UserProfile"));
+const DetailPost = React.lazy(() => import("../../pages/DetailPost"));
+const Home = React.lazy(() => import("../../pages/Home"));
 
 function index(props) {
     const { getUserData } = props;
@@ -21,18 +20,21 @@ function index(props) {
         }
     }, []);
     return (
-        <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/new" component={UpPost} />
-            <Route exact path="/:username/:slugString" component={DetailPost} />
-            <Route exact path="/:username" component={UserProfile} />
-        </Switch>
+        <React.Suspense fallback={<Loading />}>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/new" component={UpPost} />
+                <Route
+                    exact
+                    path="/:username/:slugString"
+                    component={DetailPost}
+                />
+                <Route exact path="/:username" component={UserProfile} />
+            </Switch>
+        </React.Suspense>
     );
 }
 
-// index.propTypes = {
-
-// }
 const mapDispatchToProps = (dispatch) => {
     return {
         getUserData: (username) => {

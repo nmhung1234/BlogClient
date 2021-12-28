@@ -1,6 +1,41 @@
-.Detail-post{
-    width: 80%;
-    max-width: 1400px;
-    flex-direction: column;
-    align-items: center;
+@import "./../../mixin";
+
+.detai-post-wrapper {
+    @include flexbox("center", "start");
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 15px;
+    .detail-post {
+        width: 70%;
+        align-items: center;
+        flex-direction: column;
+    }
+    .author-info {
+        width: 30%;
+        height: min-content;
+        margin: 0 15px;
+        .short-profile {
+            position: relative;
+            overflow: hidden;
+            background: var(--background-post);
+            .bubble {
+                height: 40px;
+                width: 100%;
+                background-color: rgb(18, 12, 43);
+                margin-bottom: 60px;
+
+            }
+            .info {
+                position: absolute;
+                @include flexbox("null", "flex-end");
+                top: 15px;
+                img {
+                    @include avatar(60px);
+                }
+            }
+            .description{
+                @include text-truncate(2)
+            }
+        }
+    }
 }

@@ -1,18 +1,23 @@
 @import "./../../mixin";
 .nav {
-    width: 100vw;
+    width: 100%;
     background-color: var(--background-header);
     border-bottom: 1px solid var(--border-color);
     .wrapper {
         @include flexbox("space-between", "null");
-        width: 90%;
+        height: 56px;
+        width: 80%;
         margin: 0 auto;
         position: relative;
-        max-width: 2000px;
+        max-width: var(--max-width-site);
         .left {
             width: 40%;
             display: flex;
             position: relative;
+            align-items: center;
+            .logo {
+                height: 40px;
+            }
             .search {
                 align-items: center;
                 position: relative;
@@ -31,17 +36,19 @@
                 }
             }
             .nav-search {
-                padding: 5px 10px;
+                padding: 5px 8px;
                 font-size: 16px;
+                line-height: 24px;
                 margin: 0 10px;
+                height: 40px;
             }
         }
 
         .right {
             @include flexbox("center", "center");
             .nav-icon {
-                display: flex;
-                padding: 10px;
+                @extend .right;
+                padding: 7px;
                 border-radius: 50px;
                 width: 40px;
                 height: 40px;
@@ -50,6 +57,7 @@
             .avatar-relative {
                 position: relative;
                 overflow: hidden;
+                height: 40px;
             }
             .avatar-relative:hover {
                 overflow: visible;

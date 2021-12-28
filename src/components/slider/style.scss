@@ -4,10 +4,6 @@
     width: 100%;
     // max-width: 1000px;
     user-select: none;
-    .left {
-        font-weight: bold;
-        font-size: 18px;
-    }
     .right {
         flex-direction: column;
         position: relative;
@@ -17,7 +13,6 @@
         }
         .slider {
             min-width: 40px;
-            /* min-width: 40px; */
             height: 3px;
             word-wrap: none;
             background-color: var(--color-primary);

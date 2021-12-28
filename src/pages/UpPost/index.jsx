@@ -75,7 +75,7 @@ const UpPost = (props) => {
                     />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 icon-color icon-md"
+                        className="h-6 w-6   icon-md"
                         fill="none"
                         viewBox="0 0 24 24"
                         // stroke="currentColor"
@@ -100,7 +100,7 @@ const UpPost = (props) => {
                                 : { display: "none" }
                         }
                     >
-                        <div className="write-space fd-c bd-radius-5 bd-primary bg-post mgb-20">
+                        <div className="write-space fd-c bd-radius-5 boder bg-post mgb-20">
                             <UploadButton
                                 content={"Thêm ảnh bìa"}
                                 linkImgRes={getImgLink}
@@ -143,7 +143,7 @@ const UpPost = (props) => {
                                     {/* <img src={copyIcon} alt="copy" /> */}
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="h-6 w-6 icon-color icon-md"
+                                        className="h-6 w-6   icon-md"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                     >
