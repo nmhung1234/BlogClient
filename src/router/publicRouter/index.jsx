@@ -7,21 +7,23 @@ const DetailPost = React.lazy(() => import("../../pages/DetailPost"));
 const LoginRegister = React.lazy(() =>
     import("../../components/Login_Register")
 );
+const NotFound = React.lazy(() => import("../../components/NotFound"));
 
-function index(props) {
+function PublicRouter(props) {
     return (
         <React.Suspense fallback={<Loading />}>
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route
                     exact
-                    path="/:username/:slugString"
+                    path="post/:username/:slugString"
                     component={DetailPost}
                 />
                 <Route exact path="/login" component={LoginRegister} />
+                <Route component={NotFound} />
             </Switch>
         </React.Suspense>
     );
 }
 
-export default index;
+export default PublicRouter;

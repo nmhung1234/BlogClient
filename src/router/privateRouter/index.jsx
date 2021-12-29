@@ -8,6 +8,7 @@ const UpPost = React.lazy(() => import("../../pages/UpPost"));
 const UserProfile = React.lazy(() => import("../../pages/UserProfile"));
 const DetailPost = React.lazy(() => import("../../pages/DetailPost"));
 const Home = React.lazy(() => import("../../pages/Home"));
+const NotFound = React.lazy(() => import("../../components/NotFound"));
 
 function index(props) {
     const { getUserData } = props;
@@ -26,10 +27,11 @@ function index(props) {
                 <Route exact path="/new" component={UpPost} />
                 <Route
                     exact
-                    path="/:username/:slugString"
+                    path="/post/:username/:slugString"
                     component={DetailPost}
                 />
-                <Route exact path="/:username" component={UserProfile} />
+                <Route exact path="/user/:username" component={UserProfile} />
+                {/* <Route component={NotFound} /> */}
             </Switch>
         </React.Suspense>
     );
