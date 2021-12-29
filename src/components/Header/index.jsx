@@ -14,10 +14,27 @@ function Header(props) {
     const [actionState, setActionState] = React.useState(0);
     const [userDataState, setUserDataState] = React.useState();
     const num = React.useRef(1);
+    const darkmodeRef = React.useRef();
+
     const handleLoginForm = (action) => {
         setActionState(num.current);
         num.current++;
     };
+
+    const onHandleDarkmode = () => {
+        console.log(darkmodeRef.current.checked);
+        const root = document.querySelector(":root");
+        
+        const isLightMode =
+            root.getAttribute("data-theme") === "dark" ? false : true;
+        // toggle theme mode
+        if (isLightMode) {
+            root.setAttribute("data-theme", "dark");
+        } else {
+            root.setAttribute("data-theme", "light");
+        }
+    };
+
     // nếu có data thì set tên vào popup user
     React.useEffect(() => {
         setUserDataState(userData);
@@ -44,21 +61,11 @@ function Header(props) {
                                 type="text"
                                 placeholder="Search..."
                             />
-                            <SearchStatus className="hover-bg" size="25" color="currentColor" />
-
-                            {/* <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6   icon-md hover-bg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                />
-                            </svg> */}
+                            <SearchStatus
+                                className="hover-bg"
+                                size="25"
+                                color="currentColor"
+                            />
                         </div>
                     </div>
                     <div className="right">
@@ -86,7 +93,7 @@ function Header(props) {
                                     />
                                     <div className="user-popup cursor-pointer">
                                         <Link
-                                            to={`/${userDataState?.username}`}
+                                            to={`/user/${userDataState?.username}`}
                                         >
                                             <div className="name bdb-2 hover-text">
                                                 <div className="pd-10 bd-radius-5 hover-bg mg-5">
@@ -119,6 +126,20 @@ function Header(props) {
                                             <p className="pdl-10 bd-radius-5 hover-bg mg-0 pd-10 mgl-5 mgr-5 mgb-5">
                                                 Settings
                                             </p>
+                                            <div className="darkmode pdl-10 bd-radius-5 hover-bg mg-0 pd-10 mgl-5 mgr-5 mgb-5">
+                                                Dark Mode
+                                                <input
+                                                    ref={darkmodeRef}
+                                                    type="checkbox"
+                                                    id="switch"
+                                                    className="switch-input"
+                                                    onChange={onHandleDarkmode}
+                                                />
+                                                <label
+                                                    for="switch"
+                                                    className="switch"
+                                                ></label>
+                                            </div>
                                         </div>
                                         <div
                                             className="signout"

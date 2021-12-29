@@ -1,4 +1,4 @@
-import * as Types from './../constant/Type'
+import * as Types from '../constant/Type'
 const initialState = [];
 
 const myReducer = (state = initialState, action) => {

@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-// import PropTypes from "prop-types";
-import MDEditor from "@uiw/react-md-editor";
 import { Link } from "react-router-dom";
-import { Select } from "antd";
+import { Select, Tooltip } from "antd";
+import MDEditor from "@uiw/react-md-editor";
+import { CloseCircle, ClipboardText } from "iconsax-react";
+
 import UploadButton from "../../components/UploadButton";
 import PostDetail from "./../../components/PostDetail";
 import Slider from "./../../components/Slider";
@@ -11,8 +12,8 @@ import Slider from "./../../components/Slider";
 import { upPostRequest } from "../../action/post";
 import { getAllTagRequest } from "../../action/tag";
 
-import "./style.scss";
 import "./ant.scss";
+import "./style.scss";
 
 const UpPost = (props) => {
     const { getAllTags, tagStore, createPostReq } = props;
@@ -32,8 +33,8 @@ const UpPost = (props) => {
         getAllTags();
     }, []);
 
-    const handleChange = async (selectedItem) => {
-        await setSelectedItems(() => selectedItem);
+    const handleChange = (selectedItem) => {
+        setSelectedItems(() => selectedItem);
     };
     const getAction = (action) => {
         setAction(action);
@@ -57,12 +58,15 @@ const UpPost = (props) => {
         };
         createPostReq(data);
     };
+    const handleDeleteCover = () => {
+        setLinkImgCover("");
+    };
     const OPTIONS = tagState.map((ele) => ele.name);
     const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
     return (
         <>
             <div>
-                <div className="nav-uppost pd-5">
+                <div className="nav-uppost">
                     <div className="left">
                         <Link to="/" className="pd-0 mg-0">
                             {/* <img src={logoIcon} alt="Dev Việt Nam" /> */}
@@ -73,38 +77,44 @@ const UpPost = (props) => {
                         data={["Chỉnh sửa", "Xem trước"]}
                         getAction={getAction}
                     />
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6   icon-md"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        // stroke="currentColor"
+                    <CloseCircle
+                        size="25"
+                        color="currentColor"
                         onClick={() => {
                             history.back();
                         }}
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M6 18L18 6M6 6l12 12"
-                        />
-                    </svg>
+                    />
                 </div>
                 <div className="uppost df fd-c">
                     <div
-                        className="write-container df"
+                        className="write-container"
                         style={
                             action == "Chỉnh sửa"
-                                ? { display: "flex" }
+                                ? { display: "block" }
                                 : { display: "none" }
                         }
                     >
                         <div className="write-space fd-c bd-radius-5 boder bg-post mgb-20">
-                            <UploadButton
-                                content={"Thêm ảnh bìa"}
-                                linkImgRes={getImgLink}
-                            />
+                            <div className="editCover">
+                                {linkImgCover ? (
+                                    <div className="cover-img">
+                                        <img src={linkImgCover} alt="" />
+                                    </div>
+                                ) : null}
+
+                                <UploadButton
+                                    content={"Thêm ảnh bìa"}
+                                    linkImgRes={getImgLink}
+                                />
+                                {linkImgCover ? (
+                                    <div
+                                        className="button-sm mgl-20 remove-cover"
+                                        onClick={handleDeleteCover}
+                                    >
+                                        Xóa ảnh bìa
+                                    </div>
+                                ) : null}
+                            </div>
                             <textarea
                                 autoFocus
                                 className="title-post mgt-20 mgb-20"
@@ -140,26 +150,10 @@ const UpPost = (props) => {
                                     value={linkImg}
                                 />
                                 <div className="copy pdl-20 cursor-pointer ">
-                                    {/* <img src={copyIcon} alt="copy" /> */}
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-6 w-6   icon-md"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-                                        />
-                                    </svg>
-                                    <p
-                                        className="mg-0 pdl-5"
-                                        style={{ fontWeight: "bold" }}
-                                    >
-                                        Sao chép
-                                    </p>
+                                    <ClipboardText
+                                        size="25"
+                                        color="currentColor"
+                                    />
                                 </div>
                             </div>
                             <div style={{ width: "100%" }}>
@@ -173,27 +167,8 @@ const UpPost = (props) => {
                                 />
                             </div>
                         </div>
-                        <div className=" df fd-c tutorial mgl-20">
-                            <h3>Hướng dẫn viết bài</h3>
-                            <p>
-                                Sử dụng{" "}
-                                <a
-                                    style={{ color: "var(--color-primary)" }}
-                                    target="_blank"
-                                    href="https://viblo.asia/helps/cach-su-dung-markdown-bxjvZYnwkJZ"
-                                >
-                                    Markdown
-                                </a>{" "}
-                                để viết và định dạng bài viết
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        className="df"
-                        style={{ width: "70%", margin: "0 auto" }}
-                    >
                         <div
-                            className="button-lg mgt-20 mgb-20"
+                            className="button-lg mgb-20"
                             style={
                                 action == "Chỉnh sửa"
                                     ? { display: "flex" }

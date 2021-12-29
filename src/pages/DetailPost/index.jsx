@@ -8,7 +8,6 @@ import axios from "./../../utils/customAxios";
 import "./style.scss";
 
 function DetailPost(props) {
-    console.log(props);
 
     const slug = props.match.params.slugString;
     const username = props.match.params.username;
@@ -19,8 +18,6 @@ function DetailPost(props) {
         axios
             .get(`api/user/post/detail?username=${username}&slugString=${slug}`)
             .then((response) => {
-                console.log(response);
-
                 setPostContent((pre) => response.data.data[0]);
             });
     }, []);

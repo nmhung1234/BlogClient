@@ -1,13 +1,14 @@
 import React from "react";
-import "./style.scss";
 import { Upload, message, Button } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import API_URL from "./../../constant/Config";
 
+import "./style.scss";
+
 function UploadButton(props) {
     const props2 = {
         name: "file",
-        action: `${API_URL}api/upload`,
+        action: `${API_URL}api/user/upload`,
         maxCount: 1,
         onChange(info) {
             console.log(info);
@@ -38,7 +39,7 @@ function UploadButton(props) {
     const { content, linkImgRes } = props;
     return (
         <Upload {...props2}>
-            <Button icon={<UploadOutlined />}>{content}</Button>
+            <Button className="button-sm" icon={<UploadOutlined />}>{content}</Button>
         </Upload>
     );
 }

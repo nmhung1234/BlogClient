@@ -13,7 +13,7 @@ function Comment(props) {
                     Bình luận (2)
                 </h2>
                 {/* user write comment */}
-                <div className="write-comment df pdt-20">
+                <div className="write-comment df pdt-20" id="comment">
                     <img
                         className="avatar mgl-0"
                         src="https://picsum.photos/800/600"

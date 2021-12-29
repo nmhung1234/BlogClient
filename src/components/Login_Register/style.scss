@@ -41,11 +41,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--background-login);
+    background-color: var(--color-background-1);
     transition: all 0.5s linear;
     .cancel-form {
         align-self: flex-start;
-        &:hover{
+        &:hover {
             fill: bold;
         }
     }

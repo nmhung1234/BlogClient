@@ -1,34 +1,23 @@
-
-.card-content{
+.card-content {
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
-    background-color: var(--background-post);
+    background-color: var(--color-background-1);
     width: 100%;
-    // margin: 15px;
-    .header{
+    .header {
         padding: 15px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid var(--border-color);
-        a{
+        a {
             font-size: 12px;
         }
     }
-    .seeall{
-        color: var(--color-primary)
+    .seeall {
+        color: var(--color-primary);
     }
-    .listitem{
+    .listitem {
         padding: 20px 20px 10px 20px;
         border-bottom: 1px solid var(--border-color);
-        .new{
-            background:var(--color-primary);
-            margin: 5px 0;
-            padding: 3px 5px;
-            font-size: 12px;
-            width: min-content;
-            color: var(--background-post);
-            border-radius: var(--border-radius);
-        }
     }
 }

@@ -15,35 +15,35 @@ export const CardContent = (props) => {
                 <div className="listitem hover-bg">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Excepturi, dolores?
-                    <p className="new">Mới</p>
+                    <p className="button-tn">Mới</p>
                 </div>
             </Link>
             <Link to={""}>
                 <div className="listitem hover-bg">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Excepturi, dolores?
-                    <p className="new">Mới</p>
+                    <p className="button-tn">Mới</p>
                 </div>
             </Link>
             <Link to={""}>
                 <div className="listitem hover-bg">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Excepturi, dolores?
-                    <p className="new">Mới</p>
+                    <p className="button-tn">Mới</p>
                 </div>
             </Link>
             <Link to={""}>
                 <div className="listitem hover-bg">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Excepturi, dolores?
-                    <p className="new">Mới</p>
+                    <p className="button-tn">Mới</p>
                 </div>
             </Link>
             <Link to={""}>
                 <div className="listitem hover-bg">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Excepturi, dolores?
-                    <p className="new">Mới</p>
+                    <p className="button-tn">Mới</p>
                 </div>
             </Link>
         </div>

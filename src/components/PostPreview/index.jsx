@@ -6,13 +6,14 @@ import { Heart, Message } from "iconsax-react";
 import { showTime } from "../../utils";
 import Tag from "../Tag";
 import "./style.scss";
+
 function PostPreview(props) {
-    const { data } = props;
+    const { data } = props;    
     return (
         <Link
             to={
                 data
-                    ? `${data?.ownerData?.name}/${data?.postData?.slugString}`
+                    ? `/post/${data?.ownerData?.name}/${data?.postData?.slugString}`
                     : ""
             }
             className="previrewPost fd-c boder bd-radius-5 mgb-15"
@@ -67,7 +68,7 @@ function PostPreview(props) {
                 </div>
             </div>
             <div className="body fd-r mgt-10 mgr-20 mgb-20">
-                <h1 className=" mgb-20 cursor-pointer hover-text">
+                <h1 className=" mgb-20 cursor-pointer">
                     {data?.postData?.title ? (
                         data.postData.title
                     ) : (
@@ -106,7 +107,7 @@ function PostPreview(props) {
                             <Message size="20" color="currentColor" />
                             {data ? (
                                 <Link
-                                    to={`${data?.ownerData?.name}/${data?.postData?.slugString}/#comment`}
+                                    to={`/post/${data?.ownerData?.name}/${data?.postData?.slugString}#comment`}
                                     className="text-light hover-text pdl-10"
                                 >
                                     Add comment

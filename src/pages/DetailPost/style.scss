@@ -17,13 +17,12 @@
         .short-profile {
             position: relative;
             overflow: hidden;
-            background: var(--background-post);
+            background: var(--color-background-1);
             .bubble {
                 height: 40px;
                 width: 100%;
                 background-color: rgb(18, 12, 43);
                 margin-bottom: 60px;
-
             }
             .info {
                 position: absolute;
@@ -33,8 +32,8 @@
                     @include avatar(60px);
                 }
             }
-            .description{
-                @include text-truncate(2)
+            .description {
+                @include text-truncate(2);
             }
         }
     }

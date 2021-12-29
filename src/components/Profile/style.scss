@@ -22,7 +22,7 @@
             @include flexbox("center", "center");
             flex-direction: column;
             position: relative;
-            background-color: var(--background-profile);
+            background-color: var(--color-background-1);
             .user-avatar {
                 @include flexbox("center", "center");
                 box-sizing: border-box;

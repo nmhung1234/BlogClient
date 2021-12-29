@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 html {
-    background-color: var(--background-site);
+    background-color: var(--color-background-2);
     font-family: "SegoeUI", Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-default);
     font-weight: 400;
@@ -16,22 +16,38 @@ html {
     --color-primary-hover: #323ebe;
     --color-primary-light: #dae5fc;
     --color-secondary: #b5bdc4;
+
     --text-default: #3d3d3d;
     --text-default-light: #64707d;
 
-    --background-site: #eef0f1;
-    --background-post: #fff;
-    --background-header: #fff;
-    --background-login: #fff;
-    --background-profile: #fff;
+    --color-background-1: #fff;
+    --color-background-2: #f8f8f8;
+    --color-background-3: #dadbdb;
 
     --border-color: #d7d9d9;
-    --border-radius: 5px;
 
+    --border-radius: 5px;
     --max-width-site: 1280px;
 }
 html[data-theme="dark"] {
+    --color-primary: #4150f5;
+    --color-primary-hover: #1827d1;
+    --color-primary-light: #47587c;
+    --color-secondary: #b5bdc4;
+
+    --text-default: #a0aec0;
+    --text-default-light: #64707d;
+
+    --color-background-1: #1a202c;
+    --color-background-2: #2d3748;
+    --color-background-3: #414f68;
+
+    --border-color: #ffffff29;
+
+    --border-radius: 5px;
+    --max-width-site: 1280px;
 }
+
 @font-face {
     font-family: "SegoeUI";
     src: local("SegoeUI"), url("./assets/fonts/SVN-SegoeUI.ttf") format("ttf");
@@ -98,6 +114,15 @@ button {
     font-size: 14px;
     line-height: 24px;
 }
+.button-tn {
+    background: var(--color-primary);
+    margin: 5px 0;
+    padding: 3px 5px;
+    font-size: 12px;
+    width: min-content;
+    color: white;
+    border-radius: var(--border-radius);
+}
 .bd-radius-5 {
     border-radius: var(--border-radius);
 }
@@ -136,7 +161,7 @@ button {
 // ------------
 // util
 .bg-post {
-    background-color: var(--background-post);
+    background-color: var(--color-background-1);
 }
 .tag {
     font-weight: 200;
