@@ -1,11 +1,14 @@
 import React from "react";
-import { Upload, message, Button } from "antd";
+import { Upload, Button } from "antd";
+import { useDispatch } from "react-redux";
 import { UploadOutlined } from "@ant-design/icons";
 import API_URL from "./../../constant/Config";
 
 import "./style.scss";
+import { toastError, toastSuccess } from "../../action/toast";
 
 function UploadButton(props) {
+    const dispatch = useDispatch();
     const props2 = {
         name: "file",
         action: `${API_URL}api/user/upload`,
@@ -18,13 +21,14 @@ function UploadButton(props) {
             if (info.file.status === "done" && info.file.response.data) {
                 console.log(info.file.response);
                 linkImgRes({ url: info.file.response.data, content });
-
-                message.success(`${info.file.name} file uploaded successfully`);
+                dispatch(toastSuccess(`${info.file.name} file uploaded successfully`))
+                // message.success(`${info.file.name} file uploaded successfully`);
             } else if (
                 info.file.status === "done" &&
                 !info.file.response.success
             ) {
-                message.error(`${info.file.name} file upload failed.`);
+                dispatch(toastError(`${info.file.name} file uploaded failed`))
+                // message.error(`${info.file.name} file upload failed.`);
             }
         },
         progress: {

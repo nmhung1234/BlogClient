@@ -1,4 +1,7 @@
-.card-content {
+import styled from 'styled-components';
+
+export const CardContentStyle = styled.div`
+    margin-bottom: 15px;
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     background-color: var(--color-background-1);
@@ -20,4 +23,4 @@
         padding: 20px 20px 10px 20px;
         border-bottom: 1px solid var(--border-color);
     }
-}
+`

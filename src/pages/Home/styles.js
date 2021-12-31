@@ -1,14 +1,19 @@
-@import "./../../mixin";
+import styled from "styled-components";
 
-.home-wrapper {
-    @include flexbox("center", "");
+export const HomePageStyles = styled.div`
+/* @include flexbox("center", ""); */
+display: flex;
+justify-content: center;
     width: 100%;
     margin: 0 auto;
     .sidebar-left {
         width: 20%;
         max-width: 250px;
         & .mytag h3 {
-            @include flexbox("flex-start", "center");
+            /* @include flexbox("flex-start", "center"); */
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
         }
     }
     .homepage {
@@ -27,4 +32,4 @@
             // margin: 15px;
         }
     }
-}
+`;

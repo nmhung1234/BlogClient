@@ -10,7 +10,7 @@ const DetailPost = React.lazy(() => import("../../pages/DetailPost"));
 const Home = React.lazy(() => import("../../pages/Home"));
 const NotFound = React.lazy(() => import("../../components/NotFound"));
 
-function index(props) {
+function PrivateRouter(props) {
     const { getUserData } = props;
     //gọi để lấy data user về nếu có token ở local Storage
     React.useEffect(() => {
@@ -31,7 +31,7 @@ function index(props) {
                     component={DetailPost}
                 />
                 <Route exact path="/user/:username" component={UserProfile} />
-                {/* <Route component={NotFound} /> */}
+                <Route component={NotFound} />
             </Switch>
         </React.Suspense>
     );
@@ -45,4 +45,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(index);
+export default connect(null, mapDispatchToProps)(PrivateRouter);

@@ -29,7 +29,7 @@ const requestHandler = async (request) => {
                 // console.log(res);
                 if (res.data.errorCode == (400 || 401)) {
                     //domain client
-                    window.location.replace("http://localhost:3000/");
+                    window.location.replace(import.meta.env.VITE_DOMAIN);
                     localStorage.clear();
                 } else {
                     localStorage.setItem('tk', res.data.data);

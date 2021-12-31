@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import MDEditor from "@uiw/react-md-editor";
 import Tag from "../Tag";
 import { showTime } from "./../../utils/index";
-import "./style.scss";
+// import "./style.scss";
+import { PostDetailStyles } from "./styles";
+
 function PostDetail(props) {
     const { data } = props;
     const [dataState, setDataState] = React.useState();
@@ -13,44 +15,42 @@ function PostDetail(props) {
     }, [data]);
 
     return (
-        <>
-            <div className="PostDetail boder">
-                {dataPost?.coverImg ? (
-                    <img className="img-post" src={dataPost?.coverImg} alt="" />
-                ) : (
-                    ""
+        <PostDetailStyles className="border">
+            {dataPost?.coverImg ? (
+                <img className="img-post" src={dataPost?.coverImg} alt="" />
+            ) : (
+                ""
+            )}
+            <div className="body">
+                <div className="title pdb-20">{dataPost?.title}</div>
+                {dataState?.tags.map((elem, index) =>
+                    typeof elem != "object" ? (
+                        <Tag key={index} tag={{ name: elem }} />
+                    ) : (
+                        <Tag key={index} tag={elem} />
+                    )
                 )}
-                <div className="body">
-                    <div className="title pdb-20">{dataPost?.title}</div>
-                    {dataState?.tags.map((elem, index) =>
-                        typeof elem != "object" ? (
-                            <Tag key={index} tag={{ name: elem }} />
-                        ) : (
-                            <Tag key={index} tag={elem} />
-                        )
-                    )}
-                    <div className="authorInfo mgt-20 pdb-20 df align-c">
-                        <div className="df align-c">
-                            <img
-                                className="avatar mgl-0"
-                                src="https://picsum.photos/800/600"
-                                alt=""
-                            />
-                            <h4 className="name bd-radius-5 hover-bg pd-5 cursor-pointer">
-                                {dataState?.username}
-                            </h4>
-                        </div>
-                        <div className="time pdl-10 text-light">
-                            {showTime(dataPost?.lastmodified)}
-                        </div>
+                <div className="authorInfo mgt-20 pdb-20 df align-c">
+                    <div className="df align-c">
+                        <img
+                            className="avatar mgl-0"
+                            src="https://picsum.photos/800/600"
+                            alt=""
+                        />
+                        <h4 className="name bd-radius-5 hover-bg pd-5 cursor-pointer">
+                            {dataState?.username}
+                        </h4>
                     </div>
-                    <div className="content">
-                        <MDEditor.Markdown source={dataPost?.content} />
+                    <div className="time pdl-10 text-light">
+                        {showTime(dataPost?.lastmodified)}
                     </div>
-                    <div className="discussion"></div>
                 </div>
+                <div className="content">
+                    <MDEditor.Markdown source={dataPost?.content} />
+                </div>
+                <div className="discussion"></div>
             </div>
-        </>
+        </PostDetailStyles>
     );
 }
 

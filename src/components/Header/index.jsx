@@ -7,7 +7,8 @@ import LoginRegister from "./../Login_Register";
 import { logout } from "../../action/auth";
 import logoIcon from "./../../logo.svg";
 
-import "./style.scss";
+// import "./style.scss";
+import { HeaderStyle } from "./styles.js";
 
 function Header(props) {
     const { userData, logoutRequest } = props;
@@ -24,7 +25,7 @@ function Header(props) {
     const onHandleDarkmode = () => {
         console.log(darkmodeRef.current.checked);
         const root = document.querySelector(":root");
-        
+
         const isLightMode =
             root.getAttribute("data-theme") === "dark" ? false : true;
         // toggle theme mode
@@ -44,7 +45,7 @@ function Header(props) {
     };
     return (
         <>
-            <div className="nav">
+            <HeaderStyle>
                 <div className="wrapper">
                     {userData?._id ? (
                         ""
@@ -87,7 +88,7 @@ function Header(props) {
                                 </div>
                                 <div className="avatar-relative">
                                     <img
-                                        className="avatar boder"
+                                        className="avatar border"
                                         src="https://picsum.photos/800/600"
                                         alt=""
                                     />
@@ -136,7 +137,7 @@ function Header(props) {
                                                     onChange={onHandleDarkmode}
                                                 />
                                                 <label
-                                                    for="switch"
+                                                    htmlFor="switch"
                                                     className="switch"
                                                 ></label>
                                             </div>
@@ -162,7 +163,7 @@ function Header(props) {
                         )}
                     </div>
                 </div>
-            </div>
+            </HeaderStyle>
         </>
     );
 }

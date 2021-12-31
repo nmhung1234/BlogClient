@@ -1,4 +1,6 @@
-.PostDetail {
+import styled from "styled-components";
+
+export const PostDetailStyles = styled.div`
     width: 100%;
     background-color: var(--color-background-1);
     overflow: hidden;
@@ -27,4 +29,4 @@
     .authorInfo .time {
         font-weight: 200;
     }
-}
+`;

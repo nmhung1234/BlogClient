@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./style.scss";
+// import "./style.scss";
+import {CardContentStyle} from "./styles.js";
+
 export const CardContent = (props) => {
-    const {title} = props;
+    const { title } = props;
     return (
-        <div className="card-content mgb-15">
+        <CardContentStyle>
             <div className="header">
                 <h3 className="title">{title ? title : "#news"}</h3>
                 <a href="" className="seeall">
@@ -46,6 +48,6 @@ export const CardContent = (props) => {
                     <p className="button-tn">Mới</p>
                 </div>
             </Link>
-        </div>
+        </CardContentStyle>
     );
 };

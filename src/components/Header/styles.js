@@ -1,10 +1,12 @@
-@import "./../../mixin";
-.nav {
+import styled from 'styled-components';
+
+export const HeaderStyle = styled.div`
     width: 100%;
     background-color: var(--color-background-1);
     border-bottom: 1px solid var(--border-color);
     .wrapper {
-        @include flexbox("space-between", "null");
+        display: flex;
+        justify-content: space-between;
         height: 56px;
         width: 80%;
         margin: 0 auto;
@@ -46,9 +48,13 @@
         }
 
         .right {
-            @include flexbox("center", "center");
+            display: flex;
+            justify-content:center;
+            align-items: center;
             .nav-icon {
-                @extend .right;
+                display: flex;
+                justify-content:center;
+                align-items: center;
                 padding: 7px;
                 border-radius: 50px;
                 width: 40px;
@@ -91,7 +97,9 @@
                 top: -20px;
             }
             .darkmode {
-                @include flexbox("center", "center");
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             .switch {
                 border: 1px solid var(--border-color);
@@ -134,4 +142,4 @@
             border-bottom: 1px solid rgba(90, 90, 90, 0.144);
         }
     }
-}
+`

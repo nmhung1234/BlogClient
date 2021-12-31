@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { CloseCircle } from "iconsax-react";
 import { loginRequest } from "../../action/auth";
-import "./style.scss";
+// import "./style.scss";
+import { LoginRegisterStyle } from "./styles.js";
 function LoginRegister(props) {
     const { actionProp, loginDispatch } = props;
 
@@ -77,10 +78,7 @@ function LoginRegister(props) {
     }, [actionState]);
     return (
         <>
-            <div
-                className="login_Container"
-                className={actionState == "cancel" ? "hide" : "login_Container"}
-            >
+            <LoginRegisterStyle toggle={actionState == "cancel" ? "hide" : "login_Container"}>
                 <div className="login-dialog bd-radius-5 pd-20">
                     <CloseCircle
                         className="cancel-form"
@@ -352,7 +350,7 @@ function LoginRegister(props) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </LoginRegisterStyle>
         </>
     );
 }

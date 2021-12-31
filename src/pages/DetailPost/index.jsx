@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { CardContent } from "../../components/CardContent";
 import Comment from "../../components/Comment";
 // import PropTypes from 'prop-types'
 import PostDetail from "../../components/PostDetail";
 import axios from "./../../utils/customAxios";
-import "./style.scss";
+// import "./style.scss";
+import {DetailPostPageStyles} from "./styles";
 
-function DetailPost(props) {
-
+const DetailPostPage = (props) => {
     const slug = props.match.params.slugString;
     const username = props.match.params.username;
 
@@ -23,7 +23,7 @@ function DetailPost(props) {
     }, []);
     return (
         <>
-            <div className="detai-post-wrapper">
+            <DetailPostPageStyles>
                 <div className="detail-post df">
                     {postContent ? (
                         <Fragment>
@@ -35,12 +35,10 @@ function DetailPost(props) {
                     )}
                 </div>
                 <div className="author-info">
-                    <div className="short-profile bd-radius-5 boder pdb-20 mgb-15">
+                    <div className="short-profile bd-radius-5 border pdb-20 mgb-15">
                         <div className="bubble"></div>
                         <div className="info">
-                            <img
-                                src="https://picsum.photos/200"
-                            />
+                            <img src="https://picsum.photos/200" />
                             <h2>nmhungxxx</h2>
                         </div>
                         <div className="follow-btn button-lg hover-button mgl-20 mgr-20 text-center">
@@ -57,12 +55,12 @@ function DetailPost(props) {
                             <p>15 tháng 10, 2020</p>
                         </div>
                     </div>
-                    <CardContent title="More from nmhungxxx"/>
+                    <CardContent title="More from nmhungxxx" />
                 </div>
-            </div>
+            </DetailPostPageStyles>
         </>
     );
-}
+};
 
 // DetailPost.propTypes = {
 
@@ -70,4 +68,4 @@ function DetailPost(props) {
 // const mapStateToProps = (state) => {};
 
 // const mapDispatchToProps = (dispatch) => {};
-export default DetailPost;
+export default DetailPostPage;

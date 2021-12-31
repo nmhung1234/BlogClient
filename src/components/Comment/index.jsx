@@ -2,13 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import MDEditor from "@uiw/react-md-editor";
 import { InfoCircle, Message, Heart } from "iconsax-react";
-import "./style.scss";
-let stringDemo =
-    "Very awesome! I didn't watch the video but followed the instructions. VS Code right inthe browser opened up to whatever repo /branch you are on when you pressed theperiod (.) key. A great feature is if yousync your extensions from your locallyinstalled VS Code,\t```hi``` you can access them inthe in-browser editor.";
-function Comment(props) {
+// import "./style.scss";
+import { CommentStyle } from "./styles";
+
+const Comment = () => {
+    const stringDemo =
+        "Very awesome! I didn't watch the video but followed the instructions. VS Code right inthe browser opened up to whatever repo /branch you are on when you pressed theperiod (.) key. A great feature is if yousync your extensions from your locallyinstalled VS Code,\t```hi``` you can access them inthe in-browser editor.";
     return (
         <>
-            <div className="comment-container boder">
+            <CommentStyle className="border">
                 <h2 className="pdb-20" style={{ textAlign: "left" }}>
                     Bình luận (2)
                 </h2>
@@ -44,7 +46,7 @@ function Comment(props) {
                             alt=""
                         />
                         <div className="right pdl-5">
-                            <div className="right-wrapper df df-c boder bd-radius-5 pd-20 fd-c align-fs">
+                            <div className="right-wrapper df df-c border bd-radius-5 pd-20 fd-c align-fs">
                                 <div className="guest-info">
                                     nmhung{" "}
                                     <span className="text-light">
@@ -82,7 +84,7 @@ function Comment(props) {
                                 alt=""
                             />
                             <div className="right pdl-5">
-                                <div className="df df-c boder bd-radius-5 pd-20 fd-c align-fs">
+                                <div className="df df-c border bd-radius-5 pd-20 fd-c align-fs">
                                     <div className="guest-info">
                                         nmhung{" "}
                                         <span className="text-light">
@@ -113,10 +115,10 @@ function Comment(props) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </CommentStyle>
         </>
     );
-}
+};
 
 Comment.propTypes = {};
 

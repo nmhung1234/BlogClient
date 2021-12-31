@@ -1,8 +1,0 @@
-@import './../../mixin';
-
-.navigation-item{
-    & p {
-        padding: 0 10px;
-    }
-    @include flexbox(flex-start, center);
-}

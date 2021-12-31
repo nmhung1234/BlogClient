@@ -12,7 +12,7 @@ import Slider from "./../../components/Slider";
 import { upPostRequest } from "../../action/post";
 import { getAllTagRequest } from "../../action/tag";
 
-import "./ant.scss";
+// import "./ant.scss";
 import "./style.scss";
 
 const UpPost = (props) => {
@@ -94,7 +94,7 @@ const UpPost = (props) => {
                                 : { display: "none" }
                         }
                     >
-                        <div className="write-space fd-c bd-radius-5 boder bg-post mgb-20">
+                        <div className="write-space fd-c bd-radius-5 border bg-post mgb-20">
                             <div className="editCover">
                                 {linkImgCover ? (
                                     <div className="cover-img">

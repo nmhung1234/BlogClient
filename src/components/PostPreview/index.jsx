@@ -5,128 +5,133 @@ import { Link } from "react-router-dom";
 import { Heart, Message } from "iconsax-react";
 import { showTime } from "../../utils";
 import Tag from "../Tag";
-import "./style.scss";
+// import "./style.scss";
+
+import { PostDetailStyles } from "./styles";
 
 function PostPreview(props) {
-    const { data } = props;    
+    const { data } = props;
     return (
-        <Link
-            to={
-                data
-                    ? `/post/${data?.ownerData?.name}/${data?.postData?.slugString}`
-                    : ""
-            }
-            className="previrewPost fd-c boder bd-radius-5 mgb-15"
-        >
-            {data?.postData?.coverImg ? (
-                <div
-                    style={{
-                        width: "100%",
-                        height: "200px",
-                        borderRadius: "5px 5px 0 0",
-                        backgroundImage: `url("${data?.postData?.coverImg}")`,
-                        backgroundSize: "cover",
-                        opacity: "98%",
-                    }}
-                ></div>
-            ) : (
-                <Skeleton height={200} />
-            )}
-            <div className="infoAuthor mg-10 df">
-                {data?.ownerData?.avatar ? (
-                    <img
-                        className="avatar mgr-10"
-                        src={data.ownerData.avatar}
-                        alt=""
-                    />
+        <PostDetailStyles className="border bd-radius-5 mgb-15">
+            <Link
+                to={
+                    data
+                        ? `/post/${data?.ownerData?.name}/${data?.postData?.slugString}`
+                        : ""
+                }
+            >
+                {data?.postData?.coverImg ? (
+                    <div
+                        style={{
+                            width: "100%",
+                            height: "200px",
+                            borderRadius: "5px 5px 0 0",
+                            backgroundImage: `url("${data?.postData?.coverImg}")`,
+                            backgroundSize: "cover",
+                            opacity: "98%",
+                        }}
+                    ></div>
                 ) : (
-                    <Skeleton
-                        className="mgr-10"
-                        width={40}
-                        height={40}
-                        circle={true}
-                    />
+                    <Skeleton height={200} />
                 )}
-                <div className="right">
-                    <p
-                        className="bd-radius-5 hover-bg pd-5"
-                        style={{ width: "min-content", fontWeight: "500" }}
-                    >
-                        {data?.ownerData?.name ? (
-                            data.ownerData.name
-                        ) : (
-                            <Skeleton width={100} />
-                        )}
-                    </p>
-                    <p className="date text-light pdl-5">
-                        {data?.postData?.createdAt ? (
-                            showTime(data.postData.createdAt)
-                        ) : (
-                            <Skeleton width={100} />
-                        )}
-                    </p>
-                </div>
-            </div>
-            <div className="body fd-r mgt-10 mgr-20 mgb-20">
-                <h1 className=" mgb-20 cursor-pointer">
-                    {data?.postData?.title ? (
-                        data.postData.title
+                <div className="infoAuthor mg-10 df">
+                    {data?.ownerData?.avatar ? (
+                        <img
+                            className="avatar mgr-10"
+                            src={data.ownerData.avatar}
+                            alt=""
+                        />
                     ) : (
-                        <Skeleton width={300} />
+                        <Skeleton
+                            className="mgr-10"
+                            width={40}
+                            height={40}
+                            circle={true}
+                        />
                     )}
-                </h1>
-                <div>
-                    {data?.tags ? (
-                        data.tags?.map((tag, index) => {
-                            return <Tag key={index} tag={tag} />;
-                        })
-                    ) : (
-                        <>
-                            <Skeleton width={100} height={25} />{" "}
-                            <Skeleton width={100} height={25} />{" "}
-                            <Skeleton width={100} height={25} />
-                        </>
-                    )}
-                </div>
-                <div className="bottom df mgt-10">
-                    <div className="left df">
-                        <div className="df hover-bg pd-10 bd-radius-5 cursor-pointer reaction ">
-                            <Heart size="20" color="currentColor" />
-                            {data ? (
-                                <p className="text-light hover-text pdl-10">
-                                    {data?.postData?.like
-                                        ? data.postData.like
-                                        : 0}{" "}
-                                    reaction
-                                </p>
-                            ) : (
-                                <Skeleton width={100} height={25} />
-                            )}
-                        </div>
-                        <div className="df hover-bg pd-10 bd-radius-5 cursor-pointer comment ">
-                            <Message size="20" color="currentColor" />
-                            {data ? (
-                                <Link
-                                    to={`/post/${data?.ownerData?.name}/${data?.postData?.slugString}#comment`}
-                                    className="text-light hover-text pdl-10"
-                                >
-                                    Add comment
-                                </Link>
-                            ) : (
-                                <Skeleton width={100} height={25} />
-                            )}
-                        </div>
-                    </div>
                     <div className="right">
-                        {data?.postData ? (
-                            <div className="button-sm hover-button">Save</div>
-                        ) : (
-                            ""
-                        )}
+                        <p
+                            className="bd-radius-5 hover-bg pd-5"
+                            style={{ width: "min-content", fontWeight: "500" }}
+                        >
+                            {data?.ownerData?.name ? (
+                                data.ownerData.name
+                            ) : (
+                                <Skeleton width={100} />
+                            )}
+                        </p>
+                        <p className="date text-light pdl-5">
+                            {data?.postData?.createdAt ? (
+                                showTime(data.postData.createdAt)
+                            ) : (
+                                <Skeleton width={100} />
+                            )}
+                        </p>
                     </div>
                 </div>
-            </div>
-        </Link>
+                <div className="body fd-r mgt-10 mgr-20 mgb-20">
+                    <h1 className=" mgb-20 cursor-pointer">
+                        {data?.postData?.title ? (
+                            data.postData.title
+                        ) : (
+                            <Skeleton width={300} />
+                        )}
+                    </h1>
+                    <div>
+                        {data?.tags ? (
+                            data.tags?.map((tag, index) => {
+                                return <Tag key={index} tag={tag} />;
+                            })
+                        ) : (
+                            <>
+                                <Skeleton width={100} height={25} />{" "}
+                                <Skeleton width={100} height={25} />{" "}
+                                <Skeleton width={100} height={25} />
+                            </>
+                        )}
+                    </div>
+                    <div className="bottom df mgt-10">
+                        <div className="left df">
+                            <div className="df hover-bg pd-10 bd-radius-5 cursor-pointer reaction ">
+                                <Heart size="20" color="currentColor" />
+                                {data ? (
+                                    <p className="text-light hover-text pdl-10">
+                                        {data?.postData?.like
+                                            ? data.postData.like
+                                            : 0}{" "}
+                                        reaction
+                                    </p>
+                                ) : (
+                                    <Skeleton width={100} height={25} />
+                                )}
+                            </div>
+                            <div className="df hover-bg pd-10 bd-radius-5 cursor-pointer comment ">
+                                <Message size="20" color="currentColor" />
+                                {data ? (
+                                    <Link
+                                        to={`/post/${data?.ownerData?.name}/${data?.postData?.slugString}#comment`}
+                                        className="text-light hover-text pdl-10"
+                                    >
+                                        Add comment
+                                    </Link>
+                                ) : (
+                                    <Skeleton width={100} height={25} />
+                                )}
+                            </div>
+                        </div>
+                        <div className="right">
+                            {data?.postData ? (
+                                <div className="button-sm hover-button">
+                                    Save
+                                </div>
+                            ) : (
+                                ""
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </Link>
+        </PostDetailStyles>
     );
 }
 

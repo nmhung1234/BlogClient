@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
@@ -14,14 +14,15 @@ import PostPreview from "../../components/PostPreview";
 import Slider from "../../components/Slider";
 
 import { getListPostRequest } from "./../../action/post";
-import { NavigationItem } from "../../components/NavigationItem";
-
-import "./style.scss";
 import { CardContent } from "../../components/CardContent";
+import NavigationItem from "../../components/NavigationItem";
 
+// import "./style.scss";
+
+import { HomePageStyles } from "./styles";
 const Navigation = [
     {
-        icon: <Home2 size="25" color="currentColor"/>,
+        icon: <Home2 size="25" color="currentColor" />,
         content: "Trang chủ",
     },
     {
@@ -64,10 +65,9 @@ const MyTag = [
         content: "machinelearning",
     },
 ];
-function Home(props) {
+const HomePage = (props) => {
     const { listPost, getListPost } = props;
     const [listPostState, setListPostState] = React.useState([]);
-
     React.useEffect(() => {
         getListPost();
     }, []);
@@ -76,7 +76,7 @@ function Home(props) {
     }, [listPost]);
 
     return (
-        <div className="home-wrapper">
+        <HomePageStyles>
             <div className="sidebar-left mgt-20 mgr-15">
                 <div className="main-navigation">
                     {Navigation.map((item, index) => (
@@ -88,9 +88,7 @@ function Home(props) {
                     ))}
                 </div>
                 <div className="mytag">
-                    <h3 className="mg-10 mgt-20">
-                        Tag quan tâm
-                    </h3>
+                    <h3 className="mg-10 mgt-20">Tag quan tâm</h3>
                     {MyTag.map((item, index) => (
                         <NavigationItem
                             key={index}
@@ -133,11 +131,11 @@ function Home(props) {
                 <div className="news"></div>
                 <div className="challenge"></div>
             </div>
-        </div>
+        </HomePageStyles>
     );
-}
+};
 
-Home.propTypes = {
+HomePage.propTypes = {
     listPost: PropTypes.array,
     getListPost: PropTypes.func,
 };
@@ -155,4 +153,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

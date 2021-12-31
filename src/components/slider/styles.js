@@ -1,8 +1,11 @@
-@import './../../mixin';
-.category {
-    @include flexbox("space-between", "center");
+import styled from "styled-components";
+
+export const SliderStyles = styled.div`
+/* @include flexbox("space-between", "center"); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    // max-width: 1000px;
     user-select: none;
     .right {
         flex-direction: column;
@@ -22,17 +25,17 @@
             transition: all 0.3s ease-out;
         }
     }
-}
 
-@media only screen and (max-width: 1200px) {
-    .category {
-        width: 60%;
-        font-size: 14px;
+    @media only screen and (max-width: 1200px) {
+        .category {
+            width: 60%;
+            font-size: 14px;
+        }
     }
-}
-@media only screen and (max-width: 768px) {
-    .category {
-        width: 90%;
-        font-size: 14px;
+    @media only screen and (max-width: 768px) {
+        .category {
+            width: 90%;
+            font-size: 14px;
+        }
     }
-}
+`;

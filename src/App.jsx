@@ -1,8 +1,8 @@
 import React from "react";
-import "./App.scss";
 import Router from "./router";
 import { createBrowserHistory } from "history";
 // import 'antd/dist/antd.css';
+import "./App.scss";
 
 function App() {
     const customHistory = createBrowserHistory();

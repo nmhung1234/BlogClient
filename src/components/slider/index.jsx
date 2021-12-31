@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "./style.scss";
-function Slider(props) {
+// import "./style.scss";
+
+import { SliderStyles } from "./styles";
+
+const Slider = (props) => {
     const { data, getAction } = props;
 
     const [offsetLeft, setOffsetLeft] = React.useState();
     const [clientWidth, setClientWidth] = React.useState();
-    
+
     const handleClick = (e) => {
         setOffsetLeft(e.target.offsetLeft);
         setClientWidth(e.target.clientWidth);
@@ -15,7 +18,7 @@ function Slider(props) {
         getAction ? getAction(nameAction) : "";
     };
     return (
-        <div className="category mgb-10">
+        <SliderStyles className="mgb-10">
             <div className="right df">
                 <div className="select df">
                     {data?.map((ele, index) => (
@@ -35,9 +38,9 @@ function Slider(props) {
                     }}
                 ></div>
             </div>
-        </div>
+        </SliderStyles>
     );
-}
+};
 
 Slider.propTypes = {
     data: PropTypes.array.isRequired,

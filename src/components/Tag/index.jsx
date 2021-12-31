@@ -1,19 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./style.scss";
-function Tag(props) {
+import styled from "styled-components";
+// import "./style.scss";
+
+const TagStyle = styled.p`
+    width: fit-content;
+    display: inline-block;
+    padding-bottom: 3px;
+    background-color: ${(props => props.style.colorBG)};
+    color: ${(props => props.style.colorText)};
+`;
+export const Tag = (props) => {
     const { tag } = props;
     return (
-        <p
-            className="tag bd-radius-5 pdl-5 pdr-5 mg-5"
-            style={{
-                backgroundColor: `${tag.colorBG}`,
-                color: `${tag.colorText}`,
-                paddingBottom: "3px",
-            }}
-        >
+        <TagStyle className="bd-radius-5 pdl-5 pdr-5 mg-5" style={tag}>
             {`${tag.name}`}
-        </p>
+        </TagStyle>
     );
 }
 

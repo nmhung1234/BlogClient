@@ -1,15 +1,17 @@
-.comment-container {
+import styled from 'styled-components';
+
+export const CommentStyle = styled.div`
     width: 100%;
     background-color: var(--color-background-1);
     overflow: hidden;
     border-radius: 0 0 5px 5px;
     border-top: none;
     padding: 50px;
-
     .write-comment {
         width: 100%;
         .right {
-            @extend .write-comment;
+            width: 100%;
+            /* @extend .write-comment; */
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -42,4 +44,4 @@
             right: 20px;
         }
     }
-}
+`
