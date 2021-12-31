@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 // import { connect } from "react-redux";
-import { CardContent } from "../../components/CardContent";
+import CardContent from "../../components/CardContent";
 import Comment from "../../components/Comment";
 // import PropTypes from 'prop-types'
 import PostDetail from "../../components/PostDetail";
 import axios from "./../../utils/customAxios";
 // import "./style.scss";
-import {DetailPostPageStyles} from "./styles";
+import { DetailPostPageStyles } from "./styles";
 
 const DetailPostPage = (props) => {
     const slug = props.match.params.slugString;
@@ -16,7 +16,7 @@ const DetailPostPage = (props) => {
 
     React.useEffect(() => {
         axios
-            .get(`api/user/post/detail?username=${username}&slugString=${slug}`)
+            .get(`post/detail?username=${username}&slugString=${slug}`)
             .then((response) => {
                 setPostContent((pre) => response.data.data[0]);
             });

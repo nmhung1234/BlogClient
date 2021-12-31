@@ -1,18 +1,18 @@
 import axios from 'axios';
-import API_URL from './../constant/Config';
+import { API_URL_USER } from './../constant/Config';
 import { decodeJWT } from '.';
 
 // Step-1: Create a new Axios instance with a custom config.
 
 const customAxios = axios.create({
-    baseURL: API_URL,
+    baseURL: API_URL_USER,
     timeout: 30000,
 });
 // Step-2: Create request, response & error handlers
 const requestHandler = async (request) => {
     // Token will be dynamic so we can use any app-specific way to always
     // fetch the new token before making the call
-//    console.log(request);
+    //    console.log(request);
     let AUTH_TOKEN = localStorage.getItem('tk');
     if (AUTH_TOKEN) {
         const expired = decodeJWT(AUTH_TOKEN);
@@ -24,19 +24,19 @@ const requestHandler = async (request) => {
         } else {
             const refreshToken = localStorage.getItem('rtk');
             const data = { refreshToken: refreshToken }
-            await axios.post(`${API_URL}api/user/refreshToken`, data)
-            .then((res) => {
-                // console.log(res);
-                if (res.data.errorCode == (400 || 401)) {
-                    //domain client
-                    window.location.replace(import.meta.env.VITE_DOMAIN);
-                    localStorage.clear();
-                } else {
-                    localStorage.setItem('tk', res.data.data);
-                }
-            }).catch((err) => {
-//                console.log(err);
-            })
+            await axios.post(`${API_URL_USER}/refreshToken`, data)
+                .then((res) => {
+                    // console.log(res);
+                    if (res.data.errorCode == (400 || 401)) {
+                        //domain client
+                        window.location.replace(import.meta.env.VITE_DOMAIN);
+                        localStorage.clear();
+                    } else {
+                        localStorage.setItem('tk', res.data.data);
+                    }
+                }).catch((err) => {
+                    //                console.log(err);
+                })
             AUTH_TOKEN = localStorage.getItem('tk');
             request.headers.Authorization = AUTH_TOKEN;
             return request;

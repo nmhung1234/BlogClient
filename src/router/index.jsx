@@ -1,17 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import PublicRouter from "./publicRouter";
 import PrivateRouter from "./privateRouter";
-import { connect } from "react-redux";
 import Header from "../components/Header";
-import "./style.scss";
 import Toast from "../components/Toast";
-function Router(props) {
-    const { userData } = props;
+
+import "./style.scss";
+
+const Router = () => {
+    const userDataStore = useSelector((store) => store.auth);
     const [userDataState, setUserDataState] = React.useState();
     React.useEffect(() => {
-        setUserDataState(userData);
-    }, [userData]);
+        setUserDataState(userDataStore);
+    }, [userDataStore]);
     return (
         <>
             <Header />
@@ -25,15 +27,10 @@ function Router(props) {
             </div>
         </>
     );
-}
+};
 
 // index.propTypes = {
 
 // }
-const mapStateToProps = (state) => {
-    return {
-        userData: state.auth,
-    };
-};
 
-export default connect(mapStateToProps, null)(Router);
+export default Router;

@@ -2,11 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { TickCircle, InfoCircle, CloseCircle, Add } from "iconsax-react";
 import styled from "styled-components";
+
 const ToastList = [
     {
         status: "success",
         icon: TickCircle,
-        color: "#2BDE3F",
+        color: "#38A169",
     },
     {
         status: "info",
@@ -26,6 +27,8 @@ const ToastList = [
 ];
 const ToastStyles = styled.div`
     position: fixed;
+    top: -70px;
+    left: 10px;
     z-index: 9999;
     background-color: ${(props) => props.color};
     border-radius: 10px;
@@ -37,6 +40,8 @@ const ToastStyles = styled.div`
     padding-left: 45px;
     padding-top: 10px;
     text-transform: capitalize;
+    box-shadow: 0 0 10px #00000088; 
+    animation: showToast 6s ease-in-out;
 
     & .icon-status {
         position: absolute;
@@ -57,18 +62,35 @@ const ToastStyles = styled.div`
         text-overflow: ellipsis;
         word-break: break-word;
     }
+    @keyframes showToast {
+        0% {
+            top: -70px;
+        }
+        20% {
+            top: 10px;
+        }
+        80% {
+            top: 10px;
+        }
+        100% {
+            top: -70px;
+        }
+    }
 `;
 
 const Toast = () => {
     const toastStore = useSelector((state) => state.toast);
     const [showToast, setShowToast] = React.useState(false);
 
+    const handleCloseToast = () => {
+        setShowToast(false);
+    };
+
     React.useEffect(() => {
         setShowToast(true);
         setTimeout(() => {
             setShowToast(false);
-        }, 3000);
-        console.log(toastStore);
+        }, 6000);
     }, [toastStore]);
 
     let render = ToastList.map((toast) => {
@@ -81,7 +103,7 @@ const Toast = () => {
                         color="white"
                         variant="Bold"
                     />
-                    <Add className="icon-close" size="25" color="white" />
+                    <Add className="icon-close" size="25" color="white" onClick={handleCloseToast}/>
                     <h4>{toast.status}</h4>
                     <p>{toastStore.message}</p>
                 </ToastStyles>

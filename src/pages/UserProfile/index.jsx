@@ -1,23 +1,13 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import Profile from '../../components/Profile';
-import Header from './../../components/Header';
+import React from "react";
 
-export const UserProfile = (props) => {
+import Profile from "../../components/Profile";
+
+export const UserProfilePage = () => {
     return (
         <>
-            {/* <Header /> */}
             <Profile />
         </>
-    )
-}
+    );
+};
 
-const mapStateToProps = (state) => ({
-    
-})
-
-const mapDispatchToProps = {
-    
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)
+export default UserProfilePage;

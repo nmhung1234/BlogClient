@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Cake, Notepad2, Message, Hashtag } from "iconsax-react";
 import PostPreview from "./../PostPreview/index";
-// import "./style.scss";
+
 import { ProfileStyles } from "./styles";
-function Profile(props) {
+const Profile = () => {
     return (
         <ProfileStyles>
             <div className="bg"></div>

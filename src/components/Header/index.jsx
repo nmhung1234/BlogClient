@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Share, NotificationCircle, SearchStatus } from "iconsax-react";
 import LoginRegister from "./../Login_Register";
@@ -7,11 +7,12 @@ import LoginRegister from "./../Login_Register";
 import { logout } from "../../action/auth";
 import logoIcon from "./../../logo.svg";
 
-// import "./style.scss";
 import { HeaderStyle } from "./styles.js";
 
-function Header(props) {
-    const { userData, logoutRequest } = props;
+const Header = () => {
+    const userDataStore = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+
     const [actionState, setActionState] = React.useState(0);
     const [userDataState, setUserDataState] = React.useState();
     const num = React.useRef(1);
@@ -38,16 +39,17 @@ function Header(props) {
 
     // nếu có data thì set tên vào popup user
     React.useEffect(() => {
-        setUserDataState(userData);
-    }, [userData]);
+        setUserDataState(userDataStore);
+    }, [userDataStore]);
+
     const handleLogout = () => {
-        logoutRequest();
+        dispatch(logout());
     };
     return (
         <>
             <HeaderStyle>
                 <div className="wrapper">
-                    {userData?._id ? (
+                    {userDataStore?._id ? (
                         ""
                     ) : (
                         <LoginRegister actionProp={actionState} />
@@ -166,22 +168,9 @@ function Header(props) {
             </HeaderStyle>
         </>
     );
-}
+};
 
 // Header.propTypes = {
 
 // }
-const mapStateToProps = (state) => {
-    return {
-        userData: state.auth,
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        logoutRequest: () => {
-            dispatch(logout());
-        },
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

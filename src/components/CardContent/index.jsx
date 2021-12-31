@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import "./style.scss";
 import {CardContentStyle} from "./styles.js";
 
-export const CardContent = (props) => {
+const CardContent = (props) => {
     const { title } = props;
     return (
         <CardContentStyle>
@@ -51,3 +50,4 @@ export const CardContent = (props) => {
         </CardContentStyle>
     );
 };
+export default CardContent;

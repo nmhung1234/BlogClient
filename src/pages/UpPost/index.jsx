@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Select, Tooltip } from "antd";
+import { Select } from "antd";
 import MDEditor from "@uiw/react-md-editor";
 import { CloseCircle, ClipboardText } from "iconsax-react";
 
@@ -12,11 +12,14 @@ import Slider from "./../../components/Slider";
 import { upPostRequest } from "../../action/post";
 import { getAllTagRequest } from "../../action/tag";
 
-// import "./ant.scss";
+
+import { toastSuccess } from "../../action/toast";
 import "./style.scss";
 
-const UpPost = (props) => {
-    const { getAllTags, tagStore, createPostReq } = props;
+const UpPostPage = () => {
+    const TagStore = useSelector((store) => store.tag);
+    const dispatch = useDispatch();
+
     const [action, setAction] = React.useState("Chỉnh sửa");
     const [linkImgCover, setLinkImgCover] = React.useState("");
     const [titlePost, setTitlePost] = React.useState("");
@@ -26,11 +29,11 @@ const UpPost = (props) => {
     const [tagState, setTagState] = React.useState([]);
 
     React.useEffect(() => {
-        setTagState(tagStore);
-    }, [tagStore]);
+        setTagState(TagStore);
+    }, [TagStore]);
 
     React.useEffect(() => {
-        getAllTags();
+        dispatch(getAllTagRequest());
     }, []);
 
     const handleChange = (selectedItem) => {
@@ -56,10 +59,11 @@ const UpPost = (props) => {
             content: value,
             tags: selectedItems,
         };
-        createPostReq(data);
+        dispatch(upPostRequest(data));
     };
     const handleDeleteCover = () => {
         setLinkImgCover("");
+        dispatch(toastSuccess("Delete Cover Successfully"));
     };
     const OPTIONS = tagState.map((ele) => ele.name);
     const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
@@ -211,22 +215,4 @@ const UpPost = (props) => {
 //     props: PropTypes
 // }
 
-const mapStateToProps = (state) => {
-    return {
-        tagStore: state.tag,
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getAllTags: () => {
-            dispatch(getAllTagRequest());
-        },
-        createPostReq: (data) => {
-            dispatch(upPostRequest(data));
-        },
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UpPost);
-// export default UpPost;
+export default UpPostPage;

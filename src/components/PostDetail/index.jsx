@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MDEditor from "@uiw/react-md-editor";
+
 import Tag from "../Tag";
 import { showTime } from "./../../utils/index";
-// import "./style.scss";
+
 import { PostDetailStyles } from "./styles";
 
-function PostDetail(props) {
+const PostDetail = (props) => {
     const { data } = props;
     const [dataState, setDataState] = React.useState();
     let dataPost = dataState?.owner_post;

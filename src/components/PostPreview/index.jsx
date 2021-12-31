@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 import { Heart, Message } from "iconsax-react";
+
 import { showTime } from "../../utils";
 import Tag from "../Tag";
-// import "./style.scss";
 
 import { PostDetailStyles } from "./styles";
 
-function PostPreview(props) {
+const PostPreview = (props) => {
     const { data } = props;
     return (
         <PostDetailStyles className="border bd-radius-5 mgb-15">
@@ -17,7 +17,7 @@ function PostPreview(props) {
                 to={
                     data
                         ? `/post/${data?.ownerData?.name}/${data?.postData?.slugString}`
-                        : ""
+                        : "#"
                 }
             >
                 {data?.postData?.coverImg ? (
@@ -140,7 +140,6 @@ PostPreview.propTypes = {
         ownerData: PropTypes.object.isRequired,
         postData: PropTypes.object.isRequired,
     }),
-    // key2: PropTypes.number.isRequired,
 };
 
 // PostPreview.defaultProps = {

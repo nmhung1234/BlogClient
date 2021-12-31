@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import MDEditor from "@uiw/react-md-editor";
 import { InfoCircle, Message, Heart } from "iconsax-react";
-// import "./style.scss";
 import { CommentStyle } from "./styles";
 
 const Comment = () => {

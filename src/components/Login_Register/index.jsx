@@ -1,13 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { CloseCircle } from "iconsax-react";
+
 import { loginRequest } from "../../action/auth";
-// import "./style.scss";
+
 import { LoginRegisterStyle } from "./styles.js";
-function LoginRegister(props) {
-    const { actionProp, loginDispatch } = props;
+const LoginRegister = (props) => {
+    const { actionProp } = props;
+    const dispatch = useDispatch();
 
     const [actionState, setActionState] = React.useState("cancel");
     const [formValue, setFormValue] = React.useState({
@@ -45,24 +47,24 @@ function LoginRegister(props) {
         event.preventDefault();
         const formName = event.target.id;
         if (formName == "login") {
-            const formData = {
+            const payload = {
                 username: formValue.usernameLogin,
                 password: formValue.passwordLogin,
             };
-            loginDispatch(formData);
+            dispatch(loginRequest(payload));
         } else if (formName == "register") {
-            const formData = {
+            const payload = {
                 username: formValue.usernameRegister,
                 password: formValue.passwordRegister,
                 email: formValue.emailRegister,
             };
         } else if (formName == "recovery") {
-            const formData = {
+            const payload = {
                 email: formValue.emailRecovery,
             };
         }
     };
-    
+
     React.useEffect(() => {
         if (actionProp != 0) {
             setActionState("login");
@@ -78,7 +80,9 @@ function LoginRegister(props) {
     }, [actionState]);
     return (
         <>
-            <LoginRegisterStyle toggle={actionState == "cancel" ? "hide" : "login_Container"}>
+            <LoginRegisterStyle
+                toggle={actionState == "cancel" ? "hide" : "login_Container"}
+            >
                 <div className="login-dialog bd-radius-5 pd-20">
                     <CloseCircle
                         className="cancel-form"
@@ -354,15 +358,6 @@ function LoginRegister(props) {
         </>
     );
 }
-// const mapStateToProps = (state) => {}
-const mapDispatchToProps = (dispatch) => {
-    return {
-        loginDispatch: (data) => {
-            dispatch(loginRequest(data));
-        },
-    };
-};
-
 LoginRegister.propTypes = {};
 
-export default connect(null, mapDispatchToProps)(LoginRegister);
+export default LoginRegister;

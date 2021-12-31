@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-// import "./style.scss";
 
 const TagStyle = styled.p`
     width: fit-content;
@@ -10,7 +9,7 @@ const TagStyle = styled.p`
     background-color: ${(props => props.style.colorBG)};
     color: ${(props => props.style.colorText)};
 `;
-export const Tag = (props) => {
+const Tag = (props) => {
     const { tag } = props;
     return (
         <TagStyle className="bd-radius-5 pdl-5 pdr-5 mg-5" style={tag}>

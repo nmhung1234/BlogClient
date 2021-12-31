@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
     Home2,
     Save2,
@@ -14,7 +14,8 @@ import PostPreview from "../../components/PostPreview";
 import Slider from "../../components/Slider";
 
 import { getListPostRequest } from "./../../action/post";
-import { CardContent } from "../../components/CardContent";
+
+import CardContent from "../../components/CardContent";
 import NavigationItem from "../../components/NavigationItem";
 
 // import "./style.scss";
@@ -65,15 +66,20 @@ const MyTag = [
         content: "machinelearning",
     },
 ];
-const HomePage = (props) => {
-    const { listPost, getListPost } = props;
+
+const HomePage = () => {
+    const listPostStore = useSelector((store) => store.post);
+    const dispatch = useDispatch();
+
     const [listPostState, setListPostState] = React.useState([]);
+
     React.useEffect(() => {
-        getListPost();
+        dispatch(getListPostRequest());
     }, []);
+
     React.useEffect(() => {
-        setListPostState(listPost);
-    }, [listPost]);
+        setListPostState(listPostStore);
+    }, [listPostStore]);
 
     return (
         <HomePageStyles>
@@ -140,17 +146,4 @@ HomePage.propTypes = {
     getListPost: PropTypes.func,
 };
 
-const mapStateToProps = (state) => {
-    return {
-        listPost: state.post,
-    };
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getListPost: () => {
-            dispatch(getListPostRequest());
-        },
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default HomePage;
