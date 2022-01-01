@@ -93,10 +93,10 @@ const Toast = () => {
         }, 6000);
     }, [toastStore]);
 
-    let render = ToastList.map((toast) => {
+    let render = ToastList.map((toast, index) => {
         if (showToast && toastStore.type === toast.status) {
             return (
-                <ToastStyles color={toast.color}>
+                <ToastStyles color={toast.color} key={index}>
                     <toast.icon
                         className="icon-status"
                         size="25"
