@@ -1,12 +1,15 @@
-import * as Types from "./../../constant/Type";
 import axios from "./../../utils/customAxios";
+import * as Types from "./../../constant/Type";
 
-export const getListPostRequest = () => {
-    return (dispatch) => {
-        return axios.get('post?limit=5&page=1').then((res) => {
+export const getListPostRequest = () => (dispatch) => {
+    return axios.get('post?limit=5&page=1')
+        .then((res) => {
             dispatch(getListPost(res));
+            return res
         })
-    }
+        .catch((err) => {
+            return err
+        })
 }
 export const getListPost = (response) => {
     return {
@@ -15,12 +18,15 @@ export const getListPost = (response) => {
     }
 }
 
-export const upPostRequest = (data) => {
-    return (dispatch) => {
-        return axios.post('post', data).then((res) => {
+export const upPostRequest = (data) => (dispatch) => {
+    return axios.post('post', data)
+        .then((res) => {
             dispatch(upPost(res));
+            return res;
         })
-    }
+        .catch((err) => {
+            return err
+        })
 }
 export const upPost = (response) => {
     return {

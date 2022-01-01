@@ -1,13 +1,16 @@
-import * as Types from "./../../constant/Type";
 import axios from "./../../utils/customAxios";
+import * as Types from "./../../constant/Type";
 
-export const loginRequest = (data) => {
-    return (dispatch) => {
-        return axios.post('login', data).then((res) => {
+export const loginRequest = (data) => (dispatch) => {
+    return axios.post('login', data)
+        .then((res) => {
             dispatch(login(res));
         })
-    }
+        .catch((err) => {
+            return err;
+        })
 }
+
 export const login = (response) => {
     return {
         type: Types.LOGIN,

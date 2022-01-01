@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-import { MultiSelect } from "@mantine/core";
+import { MultiSelect, Loader } from "@mantine/core";
 import MDEditor from "@uiw/react-md-editor";
-import { CloseCircle, ClipboardText } from "iconsax-react";
+import { Add, ClipboardText } from "iconsax-react";
 
 import UploadButton from "../../components/UploadButton";
 import PostDetail from "./../../components/PostDetail";
@@ -12,21 +12,26 @@ import Slider from "./../../components/Slider";
 
 import { upPostRequest } from "../../action/post";
 import { getAllTagRequest } from "../../action/tag";
+import { toastError, toastSuccess } from "../../action/toast";
 
-import { toastSuccess } from "../../action/toast";
-import "./style.scss";
+// import "./style.scss";
+import { UpPostStyles } from "./styles";
 
 const UpPostPage = () => {
+    const history = useHistory();
     const TagStore = useSelector((store) => store.tag);
+    const UserDataStore = useSelector((store) => store.auth);
     const dispatch = useDispatch();
 
     const [action, setAction] = React.useState("Chỉnh sửa");
     const [linkImgCover, setLinkImgCover] = React.useState("");
     const [titlePost, setTitlePost] = React.useState("");
-    const [content, setContent] = React.useState("Nhập nội dung...");
-    const [linkImg, setLinkImg] = React.useState("");
     const [selectedItems, setSelectedItems] = React.useState([]);
     const [tagState, setTagState] = React.useState([]);
+    const [content, setContent] = React.useState("Nhập nội dung...");
+    const [linkImg, setLinkImg] = React.useState("");
+
+    const [upPostStatus, setUpPostStatus] = React.useState(false);
 
     React.useEffect(() => {
         setTagState(TagStore);
@@ -48,15 +53,30 @@ const UpPostPage = () => {
             }
         }
     };
-    const handleButtonUpPost = () => {
-        const data = {
-            owner_id: "610ab32f5e2bafb87ef87e6c",
-            title: titlePost,
-            coverImg: linkImgCover,
-            content: content,
-            tags: selectedItems,
-        };
-        dispatch(upPostRequest(data))
+    const handleUpPost = () => {
+        if (!upPostStatus && titlePost && titlePost) {
+            const data = {
+                owner_id: "610ab32f5e2bafb87ef87e6c",
+                title: titlePost,
+                coverImg: linkImgCover,
+                content: content,
+                tags: selectedItems,
+            };
+            setUpPostStatus(true);
+            dispatch(upPostRequest(data)).then((res) => {
+                if (res?.data?.success) {
+                    dispatch(toastSuccess("Up Post Successfully!"));
+                    setUpPostStatus(false);
+                    history.push(
+                        `/post/${UserDataStore.username}/${res.data.data.slugString}`
+                    );
+                } else {
+                    dispatch(toastError("Up Post Error"));
+                }
+            });
+        } else {
+            dispatch(toastError("Vui lòng điền nội dung cho bài viết!"));
+        }
     };
     const handleDeleteCover = () => {
         setLinkImgCover("");
@@ -64,24 +84,20 @@ const UpPostPage = () => {
     };
     const OPTIONS = tagState.map((ele) => ele.name);
     return (
-        <>
+        <UpPostStyles upPostStatus={upPostStatus}>
             <div>
                 <div className="nav-uppost">
-                    <div className="left">
-                        <Link to="/" className="pd-0 mg-0">
-                            {/* <img src={logoIcon} alt="Dev Việt Nam" /> */}
-                        </Link>
-                    </div>
                     <Slider
                         title={""}
                         data={["Chỉnh sửa", "Xem trước"]}
                         getAction={getAction}
                     />
-                    <CloseCircle
-                        size="25"
+                    <Add
+                        style={{ transform: "rotate(45deg)" }}
+                        size="50"
                         color="currentColor"
                         onClick={() => {
-                            history.back();
+                            history.goBack();
                         }}
                     />
                 </div>
@@ -135,7 +151,7 @@ const UpPostPage = () => {
                                 onChange={setSelectedItems}
                             />
                             {/* lấy link ảnh */}
-                            <div className="uploadButton df bd-radius-5">
+                            <div className="makeLinkImg df bd-radius-5">
                                 <UploadButton
                                     content={"Tải ảnh lên"}
                                     linkImgRes={getImgLink}
@@ -164,15 +180,23 @@ const UpPostPage = () => {
                             </div>
                         </div>
                         <div
-                            className="button-lg mgb-20"
+                            className="button-lg hover-button uppost-btn mgb-20"
                             style={
                                 action == "Chỉnh sửa"
                                     ? { display: "flex" }
                                     : { display: "none" }
                             }
-                            onClick={handleButtonUpPost}
+                            onClick={handleUpPost}
                         >
-                            Đăng
+                            {upPostStatus ? (
+                                <div className="df align-c">
+                                    <Loader color="gray" size="xs" />
+                                    &nbsp;{" "}
+                                </div>
+                            ) : (
+                                ""
+                            )}
+                            <span>Đăng bài viết</span>
                         </div>
                     </div>
                 </div>
@@ -199,7 +223,7 @@ const UpPostPage = () => {
                     }}
                 />
             </div>
-        </>
+        </UpPostStyles>
     );
 };
 

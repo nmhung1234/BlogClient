@@ -1,15 +1,17 @@
 import React from "react";
 import Router from "./router";
 import { createBrowserHistory } from "history";
-// import 'antd/dist/antd.css';
+import { NotificationsProvider } from "@mantine/notifications";
 import "./App.scss";
 
 function App() {
     const customHistory = createBrowserHistory();
     return (
-        <div className="App">
-            <Router history={customHistory} />
-        </div>
+        <NotificationsProvider position="top-right" zIndex={2077} limit={5}>
+            <div className="App">
+                <Router history={customHistory} />
+            </div>
+        </NotificationsProvider>
     );
 }
 

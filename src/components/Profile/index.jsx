@@ -33,15 +33,15 @@ const Profile = () => {
                 </div>
                 <div className="action pdt-10">
                     <div className="count-activity bd-radius-5 bg-post border pd-20 mgr-10">
-                        <div className="activity">
+                        <div className="activity hover-bg bd-radius-5">
                             <Notepad2 size="25" color="currentColor" />
                             <p className=" mgl-10">Đã đăng 2 bài viết</p>
                         </div>
-                        <div className="activity">
+                        <div className="activity hover-bg bd-radius-5">
                             <Message size="25" color="currentColor" />
                             <p className="mgl-10">Đã comment 16 bài</p>
                         </div>
-                        <div className="activity">
+                        <div className="activity hover-bg bd-radius-5">
                             <Hashtag size="25" color="currentColor" />
                             <p className="mgl-10">Theo dõi 9 #tag</p>
                         </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Skeleton from "react-loading-skeleton";
+import { Skeleton } from "@mantine/core";
+
 import { Link } from "react-router-dom";
 import { Heart, Message } from "iconsax-react";
 
@@ -32,7 +33,7 @@ const PostPreview = (props) => {
                         }}
                     ></div>
                 ) : (
-                    <Skeleton height={200} />
+                    <Skeleton height={200}/>
                 )}
                 <div className="infoAuthor mg-10 df">
                     {data?.ownerData?.avatar ? (
@@ -42,12 +43,7 @@ const PostPreview = (props) => {
                             alt=""
                         />
                     ) : (
-                        <Skeleton
-                            className="mgr-10"
-                            width={40}
-                            height={40}
-                            circle={true}
-                        />
+                        <Skeleton mr={10} height={40} radius="xl" circle />
                     )}
                     <div className="right">
                         <p
@@ -57,14 +53,22 @@ const PostPreview = (props) => {
                             {data?.ownerData?.name ? (
                                 data.ownerData.name
                             ) : (
-                                <Skeleton width={100} />
+                                <Skeleton
+                                    height={20}
+                                    width="100px"
+                                    radius="xl"
+                                />
                             )}
                         </p>
                         <p className="date text-light pdl-5">
                             {data?.postData?.createdAt ? (
                                 showTime(data.postData.createdAt)
                             ) : (
-                                <Skeleton width={100} />
+                                <Skeleton
+                                    height={10}
+                                    width="100px"
+                                    radius="xl"
+                                />
                             )}
                         </p>
                     </div>
@@ -74,7 +78,7 @@ const PostPreview = (props) => {
                         {data?.postData?.title ? (
                             data.postData.title
                         ) : (
-                            <Skeleton width={300} />
+                            <Skeleton height={30} mt={4} radius="xl" width="400px"/>
                         )}
                     </h1>
                     <div>
@@ -84,9 +88,9 @@ const PostPreview = (props) => {
                             })
                         ) : (
                             <>
-                                <Skeleton width={100} height={25} />{" "}
-                                <Skeleton width={100} height={25} />{" "}
-                                <Skeleton width={100} height={25} />
+                                <Skeleton height={15} mb={3} radius="xl" width="300px" />{" "}
+                                <Skeleton height={15} mb={3} radius="xl" width="400px" />{" "}
+                                <Skeleton height={15} mb={3} radius="xl" width="200px" />
                             </>
                         )}
                     </div>
@@ -102,7 +106,7 @@ const PostPreview = (props) => {
                                         reaction
                                     </p>
                                 ) : (
-                                    <Skeleton width={100} height={25} />
+                                    <Skeleton width={100} radius="xl" height={25} />
                                 )}
                             </div>
                             <div className="df hover-bg pd-10 bd-radius-5 cursor-pointer comment ">
@@ -115,7 +119,7 @@ const PostPreview = (props) => {
                                         Add comment
                                     </Link>
                                 ) : (
-                                    <Skeleton width={100} height={25} />
+                                    <Skeleton width={100} radius="xl" height={25} />
                                 )}
                             </div>
                         </div>
@@ -133,7 +137,7 @@ const PostPreview = (props) => {
             </Link>
         </PostDetailStyles>
     );
-}
+};
 
 PostPreview.propTypes = {
     data: PropTypes.shape({

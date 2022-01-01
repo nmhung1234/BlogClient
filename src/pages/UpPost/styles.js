@@ -1,9 +1,11 @@
-@import "./../../mixin";
+import styled from "styled-components";
+
+export const UpPostStyles = styled.div`
 .nav-uppost {
-    @include flexbox("space-evenly", "center");
-    .left {
-        @include flexbox("null", "center");
-    }
+    /* @include flexbox("space-evenly", "center"); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .uppost {
     width: 100%;
@@ -15,7 +17,10 @@
             margin-top: 30px;
             padding: 30px 50px;
             .editCover{
-                @include flexbox("flex-start", "center");
+                /* @include flexbox("flex-start", "center"); */
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
                 .cover-img img{
                     margin-right: 30px;
                     height: 100px;
@@ -26,7 +31,11 @@
                     background-color: red !important;
                 }
             }
-            @include flexbox("center", "flex-start");
+            /* @include flexbox("center", "flex-start"); */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
             .title-post {
                 border: none;
                 outline: none;
@@ -39,7 +48,7 @@
                 color: var(--text-default);
                 background-color: var(--color-background-1)
             }
-            .uploadButton {
+            .makeLinkImg {
                 width: 100%;
                 padding: 20px 0;
                 padding-left: 20px;
@@ -51,7 +60,9 @@
                     background-color: var(--color-background-3);
                 }
                 .copy {
-                    @include flexbox("null", "center");
+                    /* @include flexbox("null", "center"); */
+                    display: flex;
+                    align-items: center;
                 }
             }
             .content-post {
@@ -62,6 +73,18 @@
                 resize: none;
             }
         }
+        
+        .uppost-btn{
+            user-select: none;
+                ${props => {
+                if (props.upPostStatus) {
+                    return `
+                        filter: grayscale(1);
+                        cursor: not-allowed;
+                        `
+                    }
+                }}
+            }
     }
     .editor {
         min-width: 100% !important;
@@ -101,3 +124,5 @@
 .language-markdown{
     color: var(--text-default) !important;
 }
+
+`

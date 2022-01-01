@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { API_URL_USER } from './../constant/Config';
 import { decodeJWT } from '.';
 
 // Step-1: Create a new Axios instance with a custom config.
+const API_URL_USER = import.meta.env.VITE_API_URL_USER;
 
 const customAxios = axios.create({
     baseURL: API_URL_USER,
