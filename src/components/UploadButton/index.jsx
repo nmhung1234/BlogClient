@@ -1,53 +1,88 @@
-import React from "react";
-import { Upload, Button } from "antd";
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import { Loader } from "@mantine/core";
 import { useDispatch } from "react-redux";
-import { UploadOutlined } from "@ant-design/icons";
-import {API_URL_USER} from "./../../constant/Config";
+import { API_URL_USER } from "./../../constant/Config";
 
 import { toastError, toastSuccess } from "../../action/toast";
-import "./style.scss";
 
 const UploadButton = (props) => {
-    const dispatch = useDispatch();
-    const props2 = {
-        name: "file",
-        action: `${API_URL_USER}/upload`,
-        maxCount: 1,
-        onChange(info) {
-            console.log(info);
-            if (info.file.status !== "uploading") {
-                // console.log(info.file, info.fileList);
-            }
-            if (info.file.status === "done" && info.file.response.data) {
-                // console.log(info.file.response);
-                linkImgRes({ url: info.file.response.data, content });
-                dispatch(
-                    toastSuccess(`${info.file.name} file uploaded successfully`)
-                );
-            } else if (
-                info.file.status === "done" &&
-                !info.file.response.success
-            ) {
-                dispatch(toastError(`${info.file.name} file uploaded failed`));
-            }
-        },
-        progress: {
-            strokeColor: {
-                "0%": "#108ee9",
-                "100%": "#87d068",
-            },
-            strokeWidth: 3,
-            format: (percent) => `${parseFloat(percent.toFixed(2))}%`,
-        },
-    };
     const { content, linkImgRes } = props;
+    const dispatch = useDispatch();
+
+    const [imageData, setImageData] = useState();
+    const [currentImage, setCurrentImage] = useState();
+    const [percent, setPercent] = useState(0);
+    const refImg = useRef();
+    const handleTriggleFile = () => {
+        refImg.current.click();
+    };
+    const onImageChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            let img = event.target.files[0];
+            setCurrentImage(img);
+            const formData = new FormData();
+            // Update the formData object => binary data
+            formData.append("file", img, img.name);
+            // Details of the uploaded file
+            setImageData(formData);
+        }
+    };
+
+    useEffect(() => {
+        const config = {
+            onUploadProgress: (progressEvent) => {
+                let format = (
+                    (progressEvent.loaded / progressEvent.total) *
+                    100
+                ).toFixed(0);
+                console.log(format);
+                setPercent(format);
+            },
+        };
+        axios
+            .post(`${API_URL_USER}/upload`, imageData, config)
+            .then((res) => {
+                console.log(res);
+                linkImgRes({ url: res.data.data, content });
+                dispatch(
+                    toastSuccess(
+                        `${currentImage.name || ""} file uploaded successfully`
+                    )
+                );
+                setPercent(0);
+            })
+            .catch((error) => {
+                dispatch(
+                    toastError(
+                        `${currentImage.name || ""} file uploaded failed`
+                    )
+                );
+                setPercent(0);
+            });
+    }, [imageData]);
+
     return (
-        <Upload {...props2}>
-            <Button className="button-sm" icon={<UploadOutlined />}>
-                {content}
-            </Button>
-        </Upload>
+        <>
+            <div className="button-sm" onClick={handleTriggleFile}>
+                {percent == 0 ? (
+                    content
+                ) : (
+                    <div className="df align-c">
+                        <Loader color="gray" size="xs" />
+                        <span>&nbsp; Đang tải lên {percent} %</span>
+                    </div>
+                )}
+            </div>
+            <input
+                type="file"
+                name="myImage"
+                ref={refImg}
+                onChange={onImageChange}
+                style={{ display: "none" }}
+            />
+        </>
     );
-}
+};
 
 export default UploadButton;
