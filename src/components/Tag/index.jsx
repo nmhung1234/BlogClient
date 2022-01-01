@@ -12,7 +12,7 @@ const TagStyle = styled.p`
 const Tag = (props) => {
     const { tag } = props;
     return (
-        <TagStyle className="bd-radius-5 pdl-5 pdr-5 mg-5" style={tag}>
+        <TagStyle className="tag bd-radius-5 pdl-5 pdr-5 mg-5" style={tag}>
             {`${tag.name}`}
         </TagStyle>
     );

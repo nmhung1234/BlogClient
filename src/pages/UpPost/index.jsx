@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Select } from "antd";
+
+import { MultiSelect } from "@mantine/core";
 import MDEditor from "@uiw/react-md-editor";
 import { CloseCircle, ClipboardText } from "iconsax-react";
 
@@ -11,7 +12,6 @@ import Slider from "./../../components/Slider";
 
 import { upPostRequest } from "../../action/post";
 import { getAllTagRequest } from "../../action/tag";
-
 
 import { toastSuccess } from "../../action/toast";
 import "./style.scss";
@@ -23,7 +23,7 @@ const UpPostPage = () => {
     const [action, setAction] = React.useState("Chỉnh sửa");
     const [linkImgCover, setLinkImgCover] = React.useState("");
     const [titlePost, setTitlePost] = React.useState("");
-    const [value, setValue] = React.useState("Nhập nội dung...");
+    const [content, setContent] = React.useState("Nhập nội dung...");
     const [linkImg, setLinkImg] = React.useState("");
     const [selectedItems, setSelectedItems] = React.useState([]);
     const [tagState, setTagState] = React.useState([]);
@@ -36,9 +36,6 @@ const UpPostPage = () => {
         dispatch(getAllTagRequest());
     }, []);
 
-    const handleChange = (selectedItem) => {
-        setSelectedItems(() => selectedItem);
-    };
     const getAction = (action) => {
         setAction(action);
     };
@@ -56,17 +53,16 @@ const UpPostPage = () => {
             owner_id: "610ab32f5e2bafb87ef87e6c",
             title: titlePost,
             coverImg: linkImgCover,
-            content: value,
+            content: content,
             tags: selectedItems,
         };
-        dispatch(upPostRequest(data));
+        dispatch(upPostRequest(data))
     };
     const handleDeleteCover = () => {
         setLinkImgCover("");
         dispatch(toastSuccess("Delete Cover Successfully"));
     };
     const OPTIONS = tagState.map((ele) => ele.name);
-    const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
     return (
         <>
             <div>
@@ -126,22 +122,18 @@ const UpPostPage = () => {
                                 value={titlePost}
                                 onChange={(e) => setTitlePost(e.target.value)}
                             ></textarea>
-                            <Select
-                                mode="multiple"
-                                placeholder="#Hastag cho bài viết"
-                                value={selectedItems}
-                                onChange={handleChange}
+                            <MultiSelect
                                 style={{
                                     width: "100%",
                                     marginBottom: "50px",
                                 }}
-                            >
-                                {filteredOptions.map((item) => (
-                                    <Select.Option key={item} value={item}>
-                                        {item}
-                                    </Select.Option>
-                                ))}
-                            </Select>
+                                data={OPTIONS}
+                                searchable
+                                nothingFound="Nothing found"
+                                clearable
+                                placeholder="#Hastag cho bài viết"
+                                onChange={setSelectedItems}
+                            />
                             {/* lấy link ảnh */}
                             <div className="uploadButton df bd-radius-5">
                                 <UploadButton
@@ -164,8 +156,8 @@ const UpPostPage = () => {
                                 <MDEditor
                                     className="editor pd-10 mgt-20"
                                     preview={"edit"}
-                                    value={value}
-                                    onChange={setValue}
+                                    value={content}
+                                    onChange={setContent}
                                     hideToolbar={true}
                                     visiableDragbar={false}
                                 />
@@ -199,7 +191,7 @@ const UpPostPage = () => {
                         owner_post: {
                             title: titlePost,
                             coverImg: linkImgCover,
-                            content: value,
+                            content: content,
                             tags: selectedItems,
                             lastmodified: "2021-08-23T16:40:37.818Z",
                         },
