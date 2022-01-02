@@ -16,7 +16,7 @@ function PublicRouter() {
                 <Route exact path="/" component={HomePage} />
                 <Route
                     exact
-                    path="post/:username/:slugString"
+                    path="/post/:username/:slugString"
                     component={DetailPostPage}
                 />
                 <Route exact path="/login" component={LoginRegister} />
