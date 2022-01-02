@@ -79,10 +79,10 @@ const Header = () => {
                                         Đăng bài
                                     </div>
                                 </Link>
-                                <div className="nav-icon hover-bg">
+                                <div className="nav-icon hover-bg bd-cycle">
                                     <Share size="30" color="currentColor" />
                                 </div>
-                                <div className="nav-icon hover-bg">
+                                <div className="nav-icon hover-bg bd-cycle">
                                     <NotificationCircle
                                         size="30"
                                         color="currentColor"
@@ -130,7 +130,7 @@ const Header = () => {
                                                 Settings
                                             </p>
                                             <div className="darkmode pdl-10 bd-radius-5 hover-bg mg-0 pd-10 mgl-5 mgr-5 mgb-5">
-                                                Dark Mode
+                                                <span>Dark Mode</span>
                                                 <input
                                                     ref={darkmodeRef}
                                                     type="checkbox"

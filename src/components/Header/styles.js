@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const HeaderStyle = styled.div`
     width: 100%;
     background-color: var(--color-background-1);
+    transition: background var(--transition-time-default);
     border-bottom: 1px solid var(--border-color);
     .wrapper {
         display: flex;
@@ -28,6 +29,7 @@ export const HeaderStyle = styled.div`
                     padding: 10px;
                     width: 80%;
                     background-color: var(--color-background-2);
+                    transition: background var(--transition-time-default);
                 }
                 svg {
                     width: 35px;
@@ -56,7 +58,6 @@ export const HeaderStyle = styled.div`
                 justify-content:center;
                 align-items: center;
                 padding: 7px;
-                border-radius: 50px;
                 width: 40px;
                 height: 40px;
                 margin: 0 5px;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CommentStyle = styled.div`
     width: 100%;
     background-color: var(--color-background-1);
+    transition: background var(--transition-time-default);
     overflow: hidden;
     border-radius: 0 0 5px 5px;
     border-top: none;
@@ -31,17 +32,18 @@ export const CommentStyle = styled.div`
         }
     }
     .guest-comment-content {
-        font-size: 18px;
-        line-height: 27px;
+        /* font-size: 18px;
+        line-height: 27px; */
         text-align: left;
         font-family: "SegoeUI", Tahoma, Geneva, Verdana, sans-serif;
     }
     .guest-comment {
         position: relative;
         .action {
+            box-sizing: border-box;
             position: absolute;
-            top: 30px;
-            right: 20px;
+            top: 25px;
+            right: 10px;
         }
     }
 `

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {CardContentStyle} from "./styles.js";
+import { CardContentStyle } from "./styles.js";
 
 const CardContent = (props) => {
     const { title } = props;
@@ -14,36 +14,46 @@ const CardContent = (props) => {
             </div>
             <Link to={""}>
                 <div className="listitem hover-bg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Excepturi, dolores?
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Excepturi, dolores?
+                    </p>
                     <p className="button-tn">Mới</p>
                 </div>
             </Link>
             <Link to={""}>
                 <div className="listitem hover-bg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Excepturi, dolores?
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Excepturi, dolores?
+                    </p>
                     <p className="button-tn">Mới</p>
                 </div>
             </Link>
             <Link to={""}>
                 <div className="listitem hover-bg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Excepturi, dolores?
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Excepturi, dolores?
+                    </p>
                     <p className="button-tn">Mới</p>
                 </div>
             </Link>
             <Link to={""}>
                 <div className="listitem hover-bg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Excepturi, dolores?
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Excepturi, dolores?
+                    </p>
                     <p className="button-tn">Mới</p>
                 </div>
             </Link>
             <Link to={""}>
                 <div className="listitem hover-bg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Excepturi, dolores?
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Excepturi, dolores?
+                    </p>
                     <p className="button-tn">Mới</p>
                 </div>
             </Link>

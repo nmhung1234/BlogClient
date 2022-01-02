@@ -1,3 +1,53 @@
+/* css lib */
+:root {
+    --color-primary: #4150f5;
+    --color-primary-hover: #323ebe;
+    --color-primary-light: #dae5fc;
+    --color-secondary: #b5bdc4;
+
+    --color-text-default: #3d3d3d;
+    --color-text-default-light: #64707d;
+
+    --color-background-1: #fff;
+    --color-background-2: #f8f8f8;
+    --color-background-3: #dadbdb;
+
+    --border-color: #d7d9d9;
+
+    --border-radius: 5px;
+    --border-cycle: 100%;
+    --max-width-site: 1280px;
+
+    --height-avatar: 150px;
+    --border-avatar: 15px;
+
+    --transition-time-default: 0.5s;
+}
+html[data-theme="dark"] {
+    --color-primary: #4150f5;
+    --color-primary-hover: #1827d1;
+    --color-primary-light: #47587c;
+    --color-secondary: #b5bdc4;
+
+    --color-text-default: #a0aec0;
+    --color-text-default-light: #64707d;
+
+    --color-background-1: #1a202c;
+    --color-background-2: #2d3748;
+    --color-background-3: #414f68;
+
+    --border-color: #ffffff29;
+
+    --border-radius: 5px;
+    --border-cycle: 100%;
+    --max-width-site: 1280px;
+}
+
+@font-face {
+    font-family: "SegoeUI";
+    src: local("SegoeUI"), url("./assets/fonts/SVN-SegoeUI.ttf") format("ttf");
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +56,9 @@
 html {
     background-color: var(--color-background-2);
     font-family: "SegoeUI", Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text-default);
-    font-weight: 400;
+    color: var(--color-text-default);
+    font-size: 62.5%;
+    transition: background var(--transition-time-default);
 }
 body {
     margin: 0;
@@ -17,57 +68,49 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+p,
+span {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 400;
+}
+a {
+    color: var(--color-text-default);
+    text-decoration: none;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+h1 {
+    font-size: 3.2rem;
+    line-height: 4.8rem;
+    font-weight: 800;
+}
+h2 {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+}
+h3 {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+}
+h4 {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+h5 {
+    font-size: 1.3rem;
+    line-height: 2.4rem;
+}
+h6 {
+    font-size: 1rem;
+    line-height: 2.4rem;
+}
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
 
-/* css lib */
-:root {
-    --color-primary: #4150f5;
-    --color-primary-hover: #323ebe;
-    --color-primary-light: #dae5fc;
-    --color-secondary: #b5bdc4;
-
-    --text-default: #3d3d3d;
-    --text-default-light: #64707d;
-
-    --color-background-1: #fff;
-    --color-background-2: #f8f8f8;
-    --color-background-3: #dadbdb;
-
-    --border-color: #d7d9d9;
-
-    --border-radius: 5px;
-    --max-width-site: 1280px;
-
-    --height-avatar: 150px;
-    --border-avatar: 15px;
-}
-html[data-theme="dark"] {
-    --color-primary: #4150f5;
-    --color-primary-hover: #1827d1;
-    --color-primary-light: #47587c;
-    --color-secondary: #b5bdc4;
-
-    --text-default: #a0aec0;
-    --text-default-light: #64707d;
-
-    --color-background-1: #1a202c;
-    --color-background-2: #2d3748;
-    --color-background-3: #414f68;
-
-    --border-color: #ffffff29;
-
-    --border-radius: 5px;
-    --max-width-site: 1280px;
-}
-
-@font-face {
-    font-family: "SegoeUI";
-    src: local("SegoeUI"), url("./assets/fonts/SVN-SegoeUI.ttf") format("ttf");
-}
 // icon
 .icon-sm {
     width: 20px;
@@ -92,7 +135,7 @@ html[data-theme="dark"] {
 }
 // text
 .text-light {
-    color: var(--text-default-light);
+    color: var(--color-text-default-light);
 }
 .text-center {
     text-align: center;
@@ -131,7 +174,7 @@ button {
     line-height: 24px;
 }
 .button-tn {
-    background: var(--color-primary);
+    background-color: var(--color-primary);
     margin: 5px 0;
     padding: 3px 5px;
     font-size: 12px;
@@ -144,6 +187,9 @@ button {
 }
 .border {
     border: 1px solid var(--border-color);
+}
+.bd-cycle {
+    border-radius: var(--border-cycle);
 }
 
 //hover
@@ -167,7 +213,7 @@ button {
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     outline: none;
-    color: var(--text-default);
+    color: var(--color-text-default);
 }
 .input:focus {
     box-shadow: 2px 2px var(--color-primary);
@@ -188,10 +234,6 @@ button {
     cursor: pointer;
 }
 
-a {
-    color: var(--text-default);
-    text-decoration: none;
-}
 /* class nesscesary */
 .df {
     display: flex;
@@ -381,4 +423,13 @@ a {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: currentColor;
+}
+
+.wmde-markdown {
+    font-size: 2rem !important;
+    line-height: 3rem !important;
+    p {
+        font-size: 2rem !important;
+        line-height: 3rem !important;
+    }
 }

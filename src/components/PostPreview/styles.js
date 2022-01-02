@@ -10,6 +10,7 @@ export const PostDetailStyles = styled.div`
     justify-content: flex-start;
     flex-direction: column;
     background-color: var(--color-background-1);
+    transition: background var(--transition-time-default);
     box-sizing: content-box;
     .infoAuthor {
         text-align: left;

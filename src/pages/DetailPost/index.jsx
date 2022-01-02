@@ -45,10 +45,12 @@ const DetailPostPage = (props) => {
                             Theo dõi
                         </div>
                         <div className="description mg-20">
-                            JavaScript developer & bloger Lorem ipsum, dolor sit
-                            amet consectetur adipisicing elit. Cupiditate neque
-                            modi illum minima at aliquam animi sunt et
-                            voluptatum nam?
+                            <p>
+                                JavaScript developer & bloger Lorem ipsum, dolor
+                                sit amet consectetur adipisicing elit.
+                                Cupiditate neque modi illum minima at aliquam
+                                animi sunt et voluptatum nam?
+                            </p>
                         </div>
                         <div className="join-time pdl-20">
                             <h4>Đã tham gia</h4>

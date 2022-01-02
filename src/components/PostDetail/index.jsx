@@ -23,7 +23,26 @@ const PostDetail = (props) => {
                 ""
             )}
             <div className="body">
-                <div className="title pdb-20">{dataPost?.title}</div>
+                <div className="authorInfo pdb-20">
+                    <div className="df align-c">
+                        <img
+                            className="avatar mgl-0"
+                            src="https://picsum.photos/800/600"
+                            alt=""
+                        />
+                        <div>
+                            <h4 className="name bd-radius-5 hover-bg pdl-5 cursor-pointer">
+                                {dataState?.username}
+                            </h4>
+                            <div className="time pdl-5 text-light">
+                                {showTime(dataPost?.lastmodified)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="pdb-20">
+                    <h1 className="title">{dataPost?.title}</h1>
+                </div>
                 {dataState?.tags.map((elem, index) =>
                     typeof elem != "object" ? (
                         <Tag key={index} tag={{ name: elem }} />
@@ -31,21 +50,7 @@ const PostDetail = (props) => {
                         <Tag key={index} tag={elem} />
                     )
                 )}
-                <div className="authorInfo mgt-20 pdb-20 df align-c">
-                    <div className="df align-c">
-                        <img
-                            className="avatar mgl-0"
-                            src="https://picsum.photos/800/600"
-                            alt=""
-                        />
-                        <h4 className="name bd-radius-5 hover-bg pd-5 cursor-pointer">
-                            {dataState?.username}
-                        </h4>
-                    </div>
-                    <div className="time pdl-10 text-light">
-                        {showTime(dataPost?.lastmodified)}
-                    </div>
-                </div>
+
                 <div className="content">
                     <MDEditor.Markdown source={dataPost?.content} />
                 </div>
@@ -53,7 +58,7 @@ const PostDetail = (props) => {
             </div>
         </PostDetailStyles>
     );
-}
+};
 
 PostDetail.propTypes = {
     data: PropTypes.shape({

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const UpPostStyles = styled.div`
 .nav-uppost {
-    /* @include flexbox("space-evenly", "center"); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,8 +15,8 @@ export const UpPostStyles = styled.div`
         .write-space {
             margin-top: 30px;
             padding: 30px 50px;
+            transition: background var(--transition-time-default);
             .editCover{
-                /* @include flexbox("flex-start", "center"); */
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
@@ -31,7 +30,6 @@ export const UpPostStyles = styled.div`
                     background-color: red !important;
                 }
             }
-            /* @include flexbox("center", "flex-start"); */
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -45,7 +43,7 @@ export const UpPostStyles = styled.div`
                 font-weight: bold;
                 resize: none;
                 overflow: hidden;
-                color: var(--text-default);
+                color: var(--color-text-default);
                 background-color: var(--color-background-1)
             }
             .makeLinkImg {
@@ -60,7 +58,6 @@ export const UpPostStyles = styled.div`
                     background-color: var(--color-background-3);
                 }
                 .copy {
-                    /* @include flexbox("null", "center"); */
                     display: flex;
                     align-items: center;
                 }
@@ -77,13 +74,13 @@ export const UpPostStyles = styled.div`
         .uppost-btn{
             user-select: none;
                 ${props => {
-                if (props.upPostStatus) {
-                    return `
+        if (props.upPostStatus) {
+            return `
                         filter: grayscale(1);
                         cursor: not-allowed;
                         `
-                    }
-                }}
+        }
+    }}
             }
     }
     .editor {
@@ -122,7 +119,7 @@ export const UpPostStyles = styled.div`
     height: fit-content !important;
 }
 .language-markdown{
-    color: var(--text-default) !important;
+    color: var(--color-text-default) !important;
 }
 
 `

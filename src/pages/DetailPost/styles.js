@@ -20,7 +20,8 @@ export const DetailPostPageStyles = styled.div`
         .short-profile {
             position: relative;
             overflow: hidden;
-            background: var(--color-background-1);
+            background-color: var(--color-background-1);
+            transition: background var(--transition-time-default);
             .bubble {
                 height: 40px;
                 width: 100%;

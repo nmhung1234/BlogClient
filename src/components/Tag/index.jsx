@@ -6,8 +6,15 @@ const TagStyle = styled.p`
     width: fit-content;
     display: inline-block;
     padding-bottom: 3px;
-    background-color: ${(props => props.style.colorBG)};
-    color: ${(props => props.style.colorText)};
+    background-color: ${(props) => props.style.colorBG};
+    color: ${(props) => props.style.colorText};
+    border: 2px solid rgba(0, 0, 0, 0);
+    transition: all 0.5s;
+    &:hover {
+        background-color: ${(props) => props.style.colorText};
+        color: ${(props) => props.style.colorBG};
+        border: 2px solid rgba(0, 0, 0, 0.3);
+    }
 `;
 const Tag = (props) => {
     const { tag } = props;
@@ -16,7 +23,7 @@ const Tag = (props) => {
             {`${tag.name}`}
         </TagStyle>
     );
-}
+};
 
 Tag.propTypes = {
     tag: PropTypes.shape({

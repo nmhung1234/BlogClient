@@ -52,7 +52,7 @@ export const LoginRegisterStyle = styled.div`
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: var(--color-background-1);
-        transition: all 0.5s linear;
+        transition: background var(--transition-time-default);
         .cancel-form {
             align-self: flex-start;
             &:hover {

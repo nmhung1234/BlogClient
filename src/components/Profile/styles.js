@@ -9,7 +9,6 @@ export const ProfileStyles = styled.div`
         border-radius: 0 0 10px 10px;
     }
     .container {
-        /* @include flexbox("null", "center"); */
         display: flex;
         align-items: center;
         width: 100%;
@@ -18,15 +17,14 @@ export const ProfileStyles = styled.div`
         .profile {
             width: 70%;
             height: fit-content;
-            /* @include flexbox("center", "center"); */
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             position: relative;
             background-color: var(--color-background-1);
+            transition: background var(--transition-time-default);
             .user-avatar {
-                /* @include flexbox("center", "center"); */\
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -35,7 +33,7 @@ export const ProfileStyles = styled.div`
                 width: 150px;
                 height: 150px;
                 border-radius: 75px;
-                background: black;
+                background-color: black;
                 overflow: hidden;
                 margin: 0;
                 position: absolute;
@@ -47,7 +45,6 @@ export const ProfileStyles = styled.div`
                 }
             }
             .describe {
-                /* @include flexbox("null", "center"); */
                 display: flex;
                 align-items: center;
                 padding-top: 75px;
@@ -55,7 +52,6 @@ export const ProfileStyles = styled.div`
                     font-size: 18px;
                     line-height: 27px;
                     max-width: 60%;
-                    /* @include text-truncate(3); */
                     display:-webkit-box;
                     -webkit-line-clamp:3;
                     -webkit-box-orient: vertical;
@@ -64,7 +60,6 @@ export const ProfileStyles = styled.div`
                     word-break: break-word;
                 }
                 .birth {
-                    /* @include flexbox("null", "center"); */
                     display: flex;
                     align-items: center;
                 }
@@ -75,14 +70,14 @@ export const ProfileStyles = styled.div`
             text-align: left;
             white-space: nowrap;
             height: min-content;
+            background-color: var(--color-background-1);
+            transition: background var(--transition-time-default);
         }
         .action {
             width: 70%;
-            /* @include flexbox("center", "null"); */
             display: flex;
             justify-content: center;
             .activity {
-                /* @include flexbox("null", "center"); */
                 display: flex;
                 align-items: center;
                 padding: 10px;

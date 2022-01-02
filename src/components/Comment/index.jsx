@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import MDEditor from "@uiw/react-md-editor";
-import { InfoCircle, Message, Heart } from "iconsax-react";
+import { InfoCircle, Message, Heart, More } from "iconsax-react";
+
 import { CommentStyle } from "./styles";
 
 const Comment = () => {
@@ -27,9 +29,12 @@ const Comment = () => {
                             type="text"
                             placeholder="Thêm bình luận ..."
                         />
-                        <div className="noti df mgt-5">
-                            <InfoCircle size="20" color="currentColor" />
-                            <span className="mgl-5">
+                        <div className="noti df mgt-5 align-c">
+                            <InfoCircle size="18" color="currentColor" />
+                            <span
+                                className="mgl-5"
+                                style={{ fontSize: "13px" }}
+                            >
                                 Hỗ trợ cú pháp markdown
                             </span>
                         </div>
@@ -40,23 +45,32 @@ const Comment = () => {
                 <div className="guest-comment df pdt-20 fd-c">
                     <div className="df">
                         <img
-                            className="avatar mgl-0"
+                            className="avatar mgl-0 mgt-15"
                             src="https://picsum.photos/800/600"
                             alt=""
                         />
                         <div className="right pdl-5">
                             <div className="right-wrapper df df-c border bd-radius-5 pd-20 fd-c align-fs">
-                                <div className="guest-info">
-                                    nmhung{" "}
+                                <div className="guest-info df">
+                                    <Link to="#">
+                                        <h4 className="hover-bg pdl-5 pdr-5 bd-radius-5">
+                                            nmhung
+                                        </h4>
+                                    </Link>
                                     <span className="text-light">
-                                        • 12 thg 8
+                                        &nbsp;•&nbsp;
                                     </span>
+                                    <span className="text-light">12 thg 8</span>
                                 </div>
                                 <MDEditor.Markdown
                                     className="editor pd-10 guest-comment-content"
                                     source={stringDemo}
                                 />
-                                <p className="action text-light">•••</p>
+                                <More
+                                    className="action hover-bg bd-cycle pd-5"
+                                    size="30"
+                                    color="currentColor"
+                                />
                             </div>
                             <div className="df">
                                 <div className="df align-c hover-bg pd-5 mg-10 bd-radius-5 cursor-pointer">
@@ -78,23 +92,34 @@ const Comment = () => {
                             style={{ paddingLeft: "40px" }}
                         >
                             <img
-                                className="avatar mgl-0"
+                                className="avatar mgl-0 mgt-15"
                                 src="https://picsum.photos/800/600"
                                 alt=""
                             />
                             <div className="right pdl-5">
                                 <div className="df df-c border bd-radius-5 pd-20 fd-c align-fs">
-                                    <div className="guest-info">
-                                        nmhung{" "}
+                                    <div className="guest-info df">
+                                        <Link to="#">
+                                            <h4 className="hover-bg pdl-5 pdr-5 bd-radius-5">
+                                                nmhung
+                                            </h4>
+                                        </Link>
                                         <span className="text-light">
-                                            • 12 thg 8
+                                            &nbsp;•&nbsp;
+                                        </span>
+                                        <span className="text-light">
+                                            12 thg 8
                                         </span>
                                     </div>
                                     <MDEditor.Markdown
                                         className="editor pd-10 guest-comment-content"
                                         source={stringDemo}
                                     />
-                                    <p className="action">•••</p>
+                                    <More
+                                        className="action hover-bg bd-cycle pd-5"
+                                        size="30"
+                                        color="currentColor"
+                                    />
                                 </div>
                                 <div className="df">
                                     <div className="df align-c hover-bg pd-5 mg-10 bd-radius-5 cursor-pointer">

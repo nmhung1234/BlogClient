@@ -5,6 +5,7 @@ export const CardContentStyle = styled.div`
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     background-color: var(--color-background-1);
+    transition: background var(--transition-time-default);
     width: 100%;
     .header {
         padding: 15px;
@@ -22,5 +23,8 @@ export const CardContentStyle = styled.div`
     .listitem {
         padding: 20px 20px 10px 20px;
         border-bottom: 1px solid var(--border-color);
+        .button-tn{
+            line-height: 20px;
+        }
     }
 `
