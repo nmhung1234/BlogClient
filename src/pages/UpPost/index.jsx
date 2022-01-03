@@ -8,7 +8,7 @@ import { Add, ClipboardText } from "iconsax-react";
 
 import UploadButton from "../../components/UploadButton";
 import PostDetail from "./../../components/PostDetail";
-import Slider from "../../components/Slider";
+import Slider from "../../components/Slider/index";
 
 import { upPostRequest } from "../../action/post";
 import { getAllTagRequest } from "../../action/tag";

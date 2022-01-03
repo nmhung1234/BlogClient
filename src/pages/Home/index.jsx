@@ -11,7 +11,7 @@ import {
 } from "iconsax-react";
 
 import PostPreview from "../../components/PostPreview";
-import Slider from "../../components/Slider";
+import Slider from "../../components/Slider/index";
 
 import { getListPostRequest } from "./../../action/post";
 
