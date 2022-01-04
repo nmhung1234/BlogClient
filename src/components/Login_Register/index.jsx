@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { CloseCircle } from "iconsax-react";
 
 import { loginRequest } from "../../action/auth";
 
 import { LoginRegisterStyle } from "./styles.js";
+
 const LoginRegister = (props) => {
     const { actionProp } = props;
     const dispatch = useDispatch();
@@ -51,7 +52,10 @@ const LoginRegister = (props) => {
                 username: formValue.usernameLogin,
                 password: formValue.passwordLogin,
             };
-            dispatch(loginRequest(payload));
+            dispatch(loginRequest(payload)).then(response =>{
+                setActionState("cancel");
+                document.body.style.overflow = "scroll";
+            });
         } else if (formName == "register") {
             const payload = {
                 username: formValue.usernameRegister,
@@ -75,7 +79,7 @@ const LoginRegister = (props) => {
         if (actionState !== "cancel") {
             document.body.style.overflow = "hidden";
         } else {
-            document.body.style.overflow = "auto";
+            document.body.style.overflow = "scroll";
         }
     }, [actionState]);
     return (

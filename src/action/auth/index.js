@@ -5,6 +5,7 @@ export const loginRequest = (data) => (dispatch) => {
     return axios.post('login', data)
         .then((res) => {
             dispatch(login(res));
+            return res;
         })
         .catch((err) => {
             return err;

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { MultiSelect, Loader } from "@mantine/core";
 import MDEditor from "@uiw/react-md-editor";
