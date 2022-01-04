@@ -1,6 +1,7 @@
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
-export const REGISTER = "REGISTER";
+export const REGISTER_ACCOUNT = "REGISTER_ACCOUNT";
+export const VERIFY_ACCOUNT = "VERIFY_ACCOUNT";
 export const RECOVERY = "RECOVERY";
 
 export const GET_USER_DATA = "GET_USER_DATA";
