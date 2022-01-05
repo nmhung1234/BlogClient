@@ -19,17 +19,9 @@ export const PostDetailStyles = styled.div`
         }
         .content {
             margin-top: 32px;
-            /* .wmde-markdown {
-            font-size: 2rem !important;
-            line-height: 3rem !important;
-            p {
-                font-size: 2rem !important;
-                line-height: 3rem !important;
-            } */
             img {
                 margin: 20px 0;
             }
-        /* } */
         }
     }
     .authorInfo {
@@ -39,6 +31,9 @@ export const PostDetailStyles = styled.div`
             font-weight: 200;
             font-size: 12px;
             line-height:18px;
+        }
+        .name{
+            width: fit-content;
         }
     }
 `;

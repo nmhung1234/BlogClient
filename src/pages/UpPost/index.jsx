@@ -93,6 +93,7 @@ const UpPostPage = () => {
                         getAction={getAction}
                     />
                     <Add
+                        className="hover-bg avatar"
                         style={{ transform: "rotate(45deg)" }}
                         size="50"
                         color="currentColor"

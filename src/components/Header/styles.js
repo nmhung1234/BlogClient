@@ -9,9 +9,10 @@ export const HeaderStyle = styled.div`
         display: flex;
         justify-content: space-between;
         height: 56px;
-        width: 80%;
+        width: 100%;
         margin: 0 auto;
         position: relative;
+        padding:0 10px;
         max-width: var(--max-width-site);
         .left {
             width: 40%;
@@ -66,6 +67,9 @@ export const HeaderStyle = styled.div`
                 position: relative;
                 overflow: hidden;
                 height: 40px;
+                & .avatar{
+                    margin-right: 0;
+                }
             }
             .avatar-relative:hover {
                 overflow: visible;

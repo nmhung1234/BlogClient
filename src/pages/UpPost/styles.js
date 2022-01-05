@@ -13,7 +13,7 @@ export const UpPostStyles = styled.div`
         max-width: 1000px;
         margin: 0 auto;
         .write-space {
-            margin-top: 30px;
+            margin-top: 20px;
             padding: 30px 50px;
             transition: background var(--transition-time-default);
             .editCover{

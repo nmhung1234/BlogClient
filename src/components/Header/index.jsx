@@ -75,7 +75,7 @@ const Header = () => {
                         {localStorage.getItem("tk") ? (
                             <>
                                 <Link to={"/new"}>
-                                    <div className="button-lg hover-button mgr-10">
+                                    <div className="button-lg button-outline mgr-10">
                                         Đăng bài
                                     </div>
                                 </Link>
@@ -98,9 +98,9 @@ const Header = () => {
                                         <Link
                                             to={`/user/${userDataState?.username}`}
                                         >
-                                            <div className="name bdb-2 hover-text">
-                                                <div className="pd-10 bd-radius-5 hover-bg mg-5">
-                                                    <h4 className="displayName pdl-10">
+                                            <div className="name bdb-2">
+                                                <div className="pd-10 bd-radius-5 hover-bg hover-text mg-5">
+                                                    <h4 className="displayName pdl-10 ">
                                                         {userDataState?.name}
                                                     </h4>
                                                     <p className="userName pdl-10">

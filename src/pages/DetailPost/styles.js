@@ -7,16 +7,19 @@ export const DetailPostPageStyles = styled.div`
     align-items: flex-start;
     margin: 0 auto;
     width: 100%;
+    padding: 0 10px;
     margin-top: 15px;
     .detail-post {
         width: 70%;
         align-items: center;
         flex-direction: column;
+        flex: 1;
     }
     .author-info {
         width: 30%;
         height: min-content;
-        margin: 0 15px;
+        margin-left: 15px;
+        
         .short-profile {
             position: relative;
             overflow: hidden;

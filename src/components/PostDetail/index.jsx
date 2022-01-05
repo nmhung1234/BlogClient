@@ -31,7 +31,7 @@ const PostDetail = (props) => {
                             alt=""
                         />
                         <div>
-                            <h4 className="name bd-radius-5 hover-bg pdl-5 cursor-pointer">
+                            <h4 className="name bd-radius-5 hover-bg pdl-5 pdr-5 cursor-pointer">
                                 {dataState?.username}
                             </h4>
                             <div className="time pdl-5 text-light">
