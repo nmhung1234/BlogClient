@@ -3,7 +3,7 @@ import moment from "moment";
 import "moment/locale/vi.js";
 moment.locale('vi');
 
-export const showTime = (dateISO) => {
+export const timeDetails = (dateISO) => {
     const dateFormat = new Date(dateISO);
     const year = dateFormat.getFullYear();
     const month = dateFormat.getMonth();
@@ -12,11 +12,23 @@ export const showTime = (dateISO) => {
     const minnute = dateFormat.getMinutes();
     const second = dateFormat.getSeconds();
 
+    return {
+        year,
+        month,
+        date,
+        hour,
+        minnute,
+        second
+    }
+}
+export const showTime = (dateISO) => {
+    const { year, month, date, hour, minnute, second } = timeDetails(dateISO);
     const compareHours = moment([year, month, date, hour, minnute, second]).locale("vi")
         .startOf("hours")
         .fromNow();
     return `${date} Thg ${month + 1} (${compareHours})`;
 }
+
 
 export const slug = (str) => {
     //Đổi chữ hoa thành chữ thường
