@@ -30,7 +30,7 @@ const PrivateRouter = () => {
                 <Route exact path="/new" component={UpPostPage} />
                 <Route
                     exact
-                    path="/post/:username/:slugString"
+                    path="/post/:username/:slug"
                     component={DetailPostPage}
                 />
                 <Route

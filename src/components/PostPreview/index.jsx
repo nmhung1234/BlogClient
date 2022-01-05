@@ -17,7 +17,7 @@ const PostPreview = (props) => {
             <Link
                 to={
                     data
-                        ? `/post/${data?.ownerData?.name}/${data?.postData?.slugString}`
+                        ? `/post/${data?.ownerData?.name}/${data?.postData?.slug}`
                         : "#"
                 }
             >
@@ -113,7 +113,7 @@ const PostPreview = (props) => {
                                 <Message size="20" color="currentColor" />
                                 {data ? (
                                     <Link
-                                        to={`/post/${data?.ownerData?.name}/${data?.postData?.slugString}#comment`}
+                                        to={`/post/${data?.ownerData?.name}/${data?.postData?.slug}#comment`}
                                         className="text-light hover-text pdl-10"
                                     >
                                         Add comment
@@ -185,7 +185,7 @@ PostPreview.propTypes = {
 //             ],
 //             "createdAt": "2021-08-19T14:18:03.134Z",
 //             "lastmodified": "2021-08-19T14:18:03.134Z",
-//             "slugString": "du-lich-kham-pha-q2szl"
+//             "slug": "du-lich-kham-pha-q2szl"
 //         },
 //         "ownerData": {
 //             "_id": "610ab32f5e2bafb87ef87e6c",

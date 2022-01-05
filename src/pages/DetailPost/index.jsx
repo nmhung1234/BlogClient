@@ -11,12 +11,12 @@ import { DetailPostPageStyles } from "./styles";
 
 const DetailPostPage = () => {
     const params = useParams();
-    const { username, slugString } = params;
+    const { username, slug } = params;
     const [postContent, setPostContent] = React.useState();
 
     React.useEffect(() => {
         axios
-            .get(`/post/detail?username=${username}&slugString=${slugString}`)
+            .get(`/post/detail?username=${username}&slug=${slug}`)
             .then((response) => {
                 setPostContent((pre) => response.data.data[0]);
             });

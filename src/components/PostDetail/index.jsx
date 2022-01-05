@@ -84,7 +84,7 @@ PostDetail.propTypes = {
             tags: PropTypes.array,
             createdAt: PropTypes.string.isRequired,
             lastmodified: PropTypes.string.isRequired,
-            slugString: PropTypes.string.isRequired,
+            slug: PropTypes.string.isRequired,
         }),
         tags: PropTypes.array.isRequired,
     }),
@@ -113,7 +113,7 @@ PostDetail.defaultProps = {
             tags: ["#react", "#nodejs", "#javascript"],
             createdAt: "2021-08-23T16:40:37.818Z",
             lastmodified: "2021-08-23T16:40:37.818Z",
-            slugString: "lai-tets-tiep-xemt8",
+            slug: "lai-tets-tiep-xemt8",
         },
         tags: [
             {

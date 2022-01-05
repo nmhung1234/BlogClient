@@ -68,7 +68,7 @@ const UpPostPage = () => {
                     dispatch(toastSuccess("Up Post Successfully!"));
                     setUpPostStatus(false);
                     history.push(
-                        `/post/${UserDataStore.username}/${res.data.data.slugString}`
+                        `/post/${UserDataStore.username}/${res.data.data.slug}`
                     );
                 } else {
                     dispatch(toastError("Up Post Error"));
