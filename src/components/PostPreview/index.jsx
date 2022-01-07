@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Skeleton } from "@mantine/core";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Heart, Message } from "iconsax-react";
 
 import { showTime } from "../../utils";
@@ -10,30 +10,31 @@ import Tag from "../Tag";
 
 import { PostDetailStyles } from "./styles";
 
-const PostPreview = (props) => {
-    const { data } = props;
+const PostPreview = ({ data }) => {
+    const history = useHistory();
+
+    const handleCommentRedirect = () => {
+        history.push(`/post/${data?.ownerData?.name}/${data?.slug}#comment`);
+    };
+
     return (
         <PostDetailStyles className="border bd-radius-5 mgb-15">
             <Link
-                to={
-                    data
-                        ? `/post/${data?.ownerData?.name}/${data?.postData?.slug}`
-                        : "#"
-                }
+                to={data ? `/post/${data?.ownerData?.name}/${data?.slug}` : "#"}
             >
-                {data?.postData?.coverImg ? (
+                {data?.coverImg ? (
                     <div
                         style={{
                             width: "100%",
                             height: "200px",
                             borderRadius: "5px 5px 0 0",
-                            backgroundImage: `url("${data?.postData?.coverImg}")`,
+                            backgroundImage: `url("${data?.coverImg}")`,
                             backgroundSize: "cover",
                             opacity: "98%",
                         }}
                     ></div>
                 ) : (
-                    <Skeleton height={200}/>
+                    <Skeleton height={200} />
                 )}
                 <div className="infoAuthor mg-10 df">
                     {data?.ownerData?.avatar ? (
@@ -61,8 +62,8 @@ const PostPreview = (props) => {
                             )}
                         </p>
                         <p className="date text-light pdl-5">
-                            {data?.postData?.createdAt ? (
-                                showTime(data.postData.createdAt)
+                            {data?.createdAt ? (
+                                showTime(data?.createdAt)
                             ) : (
                                 <Skeleton
                                     height={10}
@@ -75,22 +76,42 @@ const PostPreview = (props) => {
                 </div>
                 <div className="body fd-r mgt-10 mgr-20 mgb-20">
                     <h1 className=" mgb-20 cursor-pointer">
-                        {data?.postData?.title ? (
-                            data.postData.title
+                        {data?.title ? (
+                            data?.title
                         ) : (
-                            <Skeleton height={30} mt={4} radius="xl" width="400px"/>
+                            <Skeleton
+                                height={30}
+                                mt={4}
+                                radius="xl"
+                                width="400px"
+                            />
                         )}
                     </h1>
                     <div>
                         {data?.tags ? (
-                            data.tags?.map((tag, index) => {
+                            data?.tags.map((tag, index) => {
                                 return <Tag key={index} tag={tag} />;
                             })
                         ) : (
                             <>
-                                <Skeleton height={15} mb={3} radius="xl" width="300px" />{" "}
-                                <Skeleton height={15} mb={3} radius="xl" width="400px" />{" "}
-                                <Skeleton height={15} mb={3} radius="xl" width="200px" />
+                                <Skeleton
+                                    height={15}
+                                    mb={3}
+                                    radius="xl"
+                                    width="300px"
+                                />{" "}
+                                <Skeleton
+                                    height={15}
+                                    mb={3}
+                                    radius="xl"
+                                    width="400px"
+                                />{" "}
+                                <Skeleton
+                                    height={15}
+                                    mb={3}
+                                    radius="xl"
+                                    width="200px"
+                                />
                             </>
                         )}
                     </div>
@@ -100,31 +121,36 @@ const PostPreview = (props) => {
                                 <Heart size="20" color="currentColor" />
                                 {data ? (
                                     <p className="text-light hover-text pdl-10">
-                                        {data?.postData?.like
-                                            ? data.postData.like
-                                            : 0}{" "}
-                                        reaction
+                                        {data?.like ? data?.like : 0} reaction
                                     </p>
                                 ) : (
-                                    <Skeleton width={100} radius="xl" height={25} />
+                                    <Skeleton
+                                        width={100}
+                                        radius="xl"
+                                        height={25}
+                                    />
                                 )}
                             </div>
                             <div className="df hover-bg pd-10 bd-radius-5 cursor-pointer comment ">
                                 <Message size="20" color="currentColor" />
                                 {data ? (
-                                    <Link
-                                        to={`/post/${data?.ownerData?.name}/${data?.postData?.slug}#comment`}
+                                    <div
                                         className="text-light hover-text pdl-10"
+                                        onClick={handleCommentRedirect}
                                     >
                                         Add comment
-                                    </Link>
+                                    </div>
                                 ) : (
-                                    <Skeleton width={100} radius="xl" height={25} />
+                                    <Skeleton
+                                        width={100}
+                                        radius="xl"
+                                        height={25}
+                                    />
                                 )}
                             </div>
                         </div>
                         <div className="right">
-                            {data?.postData ? (
+                            {data ? (
                                 <div className="button-sm hover-button">
                                     Save
                                 </div>
@@ -142,64 +168,18 @@ const PostPreview = (props) => {
 PostPreview.propTypes = {
     data: PropTypes.shape({
         ownerData: PropTypes.object.isRequired,
-        postData: PropTypes.object.isRequired,
+        owner_id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        coverImg: PropTypes.string.isRequired,
+        content: PropTypes.string.isRequired,
+        comments: PropTypes.array.isRequired,
+        like: PropTypes.number.isRequired,
+        views: PropTypes.number.isRequired,
+        tags: PropTypes.array.isRequired,
+        createdAt: PropTypes.string.isRequired,
+        slug: PropTypes.string.isRequired,
+        lastModified: PropTypes.string.isRequired,
     }),
 };
-
-// PostPreview.defaultProps = {
-//     data: {
-//         "tags": [
-//             {
-//                 "_id": "61149fa4f9e0d0e18a826ba1",
-//                 "name": "#javascript",
-//                 "colorBG": "#F7E018",
-//                 "colorText": "#000"
-//             },
-//             {
-//                 "_id": "6114a049f9e0d0e18a826ba3",
-//                 "name": "#nodejs",
-//                 "colorBG": "#8BBF3D",
-//                 "colorText": "#fff"
-//             },
-//             {
-//                 "_id": "6114bdf4f9e0d0e18a826baa",
-//                 "name": "#reactjs",
-//                 "colorBG": "#2A2C2E",
-//                 "colorText": "#61DAFB"
-//             }
-//         ],
-//         "postData": {
-//             "_id": "611e681b468749bda6521fa1",
-//             "owner_id": "610ab32f5e2bafb87ef87e6c",
-//             "title": "🚌🛺 Du lịch khám phá",
-//             "coverImg": "http://res.cloudinary.com/nmhung/image/upload/e_blur:50,q_80/v1629382557/puuxs6fefqzaj6vcasuk.png",
-//             "content": "Đây là nội dùng demo vì thế nên không có gì nhé! hihiihihi\n![alt](http://res.cloudinary.com/nmhung/image/upload/e_blur:50,q_80/v1629382598/ppm81cwmafctipet8f1e.jpg)\nmjsbjbjsbfksbfksks",
-//             "comments": {},
-//             "like": 0,
-//             "views": 0,
-//             "tags": [
-//                 "#javascript",
-//                 "#nodejs",
-//                 "#reactjs",
-//                 "#react"
-//             ],
-//             "createdAt": "2021-08-19T14:18:03.134Z",
-//             "lastmodified": "2021-08-19T14:18:03.134Z",
-//             "slug": "du-lich-kham-pha-q2szl"
-//         },
-//         "ownerData": {
-//             "_id": "610ab32f5e2bafb87ef87e6c",
-//             "email": "nmhung@gmail.com",
-//             "username": "nmhung",
-//             "name": "nmhung",
-//             "sex": 0,
-//             "description": "",
-//             "favoriteTopic": null,
-//             "avatar": null,
-//             "type": 1,
-//             "createdAt": "2021-08-04T15:33:03.284Z"
-//         }
-//     }
-// }
 
 export default PostPreview;

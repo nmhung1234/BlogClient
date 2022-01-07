@@ -7,7 +7,7 @@ export const timeDetails = (dateISO) => {
     const dateFormat = new Date(dateISO);
     const year = dateFormat.getFullYear();
     const month = dateFormat.getMonth();
-    const date = dateFormat.getDate();
+    const day = dateFormat.getDate();
     const hour = dateFormat.getHours();
     const minnute = dateFormat.getMinutes();
     const second = dateFormat.getSeconds();
@@ -15,18 +15,18 @@ export const timeDetails = (dateISO) => {
     return {
         year,
         month,
-        date,
+        day,
         hour,
         minnute,
         second
     }
 }
 export const showTime = (dateISO) => {
-    const { year, month, date, hour, minnute, second } = timeDetails(dateISO);
-    const compareHours = moment([year, month, date, hour, minnute, second]).locale("vi")
+    const { year, month, day, hour, minnute, second } = timeDetails(dateISO);
+    const compareHours = moment([year, month, day, hour, minnute, second]).locale("vi")
         .startOf("hours")
         .fromNow();
-    return `${date} Thg ${month + 1} (${compareHours})`;
+    return `${day} Thg ${month + 1} (${compareHours})`;
 }
 
 

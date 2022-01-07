@@ -10,28 +10,36 @@ export const UserProfilePage = () => {
     const userStore = useSelector((store) => store.auth);
     const [activitiesState, setActivitiesState] = React.useState({});
     const [userDataState, setUserDataState] = React.useState();
+    const [postPublishedPreviewState, setPostPublishedPreviewState] =
+        React.useState();
 
     React.useEffect(() => {
-        axios
-            .get(
-                `${VITE_API_URL_USER}/activities?username=${userStore.username}`
-            )
-            .then((res) => {
-                setActivitiesState(res.data.data);
-            });
         setUserDataState((pre) => ({
             ...userStore,
             timeFormatted: timeDetails(userStore.createdAt),
         }));
-        console.log('userStore', userDataState);
-        
     }, [userStore]);
 
-    React.useEffect(() => {}, []);
+    React.useEffect(() => {
+        const getActivities = axios.get(
+            `${VITE_API_URL_USER}/activities?username=${userStore.username}`
+        );
+        const getMyPosh = axios.get(
+            `${VITE_API_URL_USER}/my-post-published?username=${userStore.username}&page=1&limit=5`
+        );
+        Promise.all([getActivities, getMyPosh]).then((res) => {
+            setActivitiesState(res[0].data.data);
+            setPostPublishedPreviewState(res[1].data.data);
+        });
+    }, [userStore]);
 
     return (
         <>
-            <Profile userData={userDataState} activities={activitiesState} />
+            <Profile
+                userData={userDataState}
+                activities={activitiesState}
+                postPublish={postPublishedPreviewState}
+            />
         </>
     );
 };

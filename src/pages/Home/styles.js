@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const HomePageStyles = styled.div`
-/* @include flexbox("center", ""); */
     display: flex;
     justify-content: center;
     width: 100%;
@@ -9,11 +8,19 @@ export const HomePageStyles = styled.div`
     .sidebar-left {
         width: 20%;
         max-width: 250px;
-        & .mytag h3 {
-            /* @include flexbox("flex-start", "center"); */
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
+        & .mytag {
+            ${props => {       
+                if (props.showTag) {
+                    return `display: block;`
+                } else {
+                    return `display: none;`
+                }
+            }}
+            h3 {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
         }
     }
     .homepage {
@@ -29,7 +36,6 @@ export const HomePageStyles = styled.div`
             background-color: var(--color-background-1);
             padding: 20px;
             border: 1px solid var(--border-color);
-            // margin: 15px;
         }
     }
 `;

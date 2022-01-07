@@ -40,10 +40,12 @@ export const ProfileStyles = styled.div`
                     margin: 0;
                     position: absolute;
                     top: -75px;
+                    border: 7px solid black;
                     img {
-                        height: calc(var(--height-avatar) - var(--border-avatar));
+                        height: 105%;
                         object-fit: cover;
                         border-radius: inherit;
+                        box-sizing: content-box;
                     }
                 }
                 .describe {

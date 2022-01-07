@@ -5,7 +5,7 @@ import PostPreview from "./../PostPreview/index";
 
 import { ProfileStyles } from "./styles";
 
-const Profile = ({ userData, activities }) => {
+const Profile = ({ userData, activities, postPublish }) => {
     return (
         <ProfileStyles>
             <div className="container fd-c">
@@ -25,8 +25,10 @@ const Profile = ({ userData, activities }) => {
                             <div className="birth">
                                 <Cake size="25" color="currentColor" />
                                 <p className="mg-20 mgl-10 text-light">
-                                    Đã tham gia ngày {userData?.timeFormatted?.date} tháng{" "}
-                                    {userData?.timeFormatted?.month}, {userData?.timeFormatted?.year}
+                                    Đã tham gia ngày{" "}
+                                    {userData?.timeFormatted?.day} tháng{" "}
+                                    {userData?.timeFormatted?.month},{" "}
+                                    {userData?.timeFormatted?.year}
                                 </p>
                             </div>
                         </div>
@@ -52,12 +54,12 @@ const Profile = ({ userData, activities }) => {
                         </div>
                     </div>
                     <div className="post-list">
-                        <PostPreview />
-                        <PostPreview />
-                        <PostPreview />
-                        <PostPreview />
-                        <PostPreview />
-                        <PostPreview />
+                        {postPublish?.map((post, index) => (
+                            <PostPreview
+                                key={index}
+                                data={{ ownerData: userData, ...post }}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

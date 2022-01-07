@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import {
     Home2,
@@ -17,8 +16,6 @@ import { getListPostRequest } from "./../../action/post";
 
 import CardContent from "../../components/CardContent";
 import NavigationItem from "../../components/NavigationItem";
-
-// import "./style.scss";
 
 import { HomePageStyles } from "./styles";
 const Navigation = [
@@ -44,31 +41,10 @@ const Navigation = [
     },
 ];
 
-const MyTag = [
-    {
-        icon: <Hashtag size="20" color="currentColor" />,
-        content: "javaScript",
-    },
-    {
-        icon: <Hashtag size="20" color="currentColor" />,
-        content: "Nodejs",
-    },
-    {
-        icon: <Hashtag size="20" color="currentColor" />,
-        content: "electron",
-    },
-    {
-        icon: <Hashtag size="20" color="currentColor" />,
-        content: "python",
-    },
-    {
-        icon: <Hashtag size="20" color="currentColor" />,
-        content: "machinelearning",
-    },
-];
-
 const HomePage = () => {
     const listPostStore = useSelector((store) => store.post);
+    const userDataStore = useSelector((store) => store.auth);
+
     const dispatch = useDispatch();
 
     const [listPostState, setListPostState] = React.useState([]);
@@ -82,7 +58,7 @@ const HomePage = () => {
     }, [listPostStore]);
 
     return (
-        <HomePageStyles>
+        <HomePageStyles showTag={userDataStore.favoriteTopic ? true : false}>
             <div className="sidebar-left mgt-20 mgr-15">
                 <div className="main-navigation">
                     {Navigation.map((item, index) => (
@@ -95,11 +71,11 @@ const HomePage = () => {
                 </div>
                 <div className="mytag">
                     <h3 className="mg-10 mgt-20">Tag quan tâm</h3>
-                    {MyTag.map((item, index) => (
+                    {userDataStore?.favoriteTopic?.map((item, index) => (
                         <NavigationItem
                             key={index}
-                            icon={item.icon}
-                            content={item.content}
+                            icon={<Hashtag size="20" color="currentColor" />}
+                            content={item.slice(1, item.length)}
                         />
                     ))}
                 </div>
@@ -139,11 +115,6 @@ const HomePage = () => {
             </div>
         </HomePageStyles>
     );
-};
-
-HomePage.propTypes = {
-    listPost: PropTypes.array,
-    getListPost: PropTypes.func,
 };
 
 export default HomePage;

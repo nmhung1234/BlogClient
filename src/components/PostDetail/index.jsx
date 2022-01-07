@@ -7,8 +7,7 @@ import { showTime } from "./../../utils/index";
 
 import { PostDetailStyles } from "./styles";
 
-const PostDetail = (props) => {
-    const { data } = props;
+const PostDetail = ({ data }) => {
     const [dataState, setDataState] = React.useState();
     let dataPost = dataState?.owner_post;
     React.useEffect(() => {
@@ -35,7 +34,7 @@ const PostDetail = (props) => {
                                 {dataState?.username}
                             </h4>
                             <div className="time pdl-5 text-light">
-                                {showTime(dataPost?.lastmodified)}
+                                {showTime(dataPost?.lastModified)}
                             </div>
                         </div>
                     </div>
