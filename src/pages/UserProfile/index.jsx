@@ -22,10 +22,10 @@ export const UserProfilePage = () => {
 
     React.useEffect(() => {
         const getActivities = axios.get(
-            `${VITE_API_URL_USER}/activities?username=${userStore.username}`
+            `${VITE_API_URL_USER}/activities?id=${userStore._id}`
         );
         const getMyPosh = axios.get(
-            `${VITE_API_URL_USER}/my-post-published?username=${userStore.username}&page=1&limit=5`
+            `${VITE_API_URL_USER}/my-post-published?id=${userStore._id}&page=1&limit=5`
         );
         Promise.all([getActivities, getMyPosh]).then((res) => {
             setActivitiesState(res[0].data.data);
@@ -38,7 +38,7 @@ export const UserProfilePage = () => {
             <Profile
                 userData={userDataState}
                 activities={activitiesState}
-                postPublish={postPublishedPreviewState}
+                postPublished={postPublishedPreviewState}
             />
         </>
     );

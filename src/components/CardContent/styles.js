@@ -19,6 +19,7 @@ export const CardContentStyle = styled.div`
     }
     .seeall {
         color: var(--color-primary);
+        white-space: nowrap;
     }
     .listitem {
         padding: 20px 20px 10px 20px;

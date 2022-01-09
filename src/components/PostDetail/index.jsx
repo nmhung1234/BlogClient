@@ -31,7 +31,7 @@ const PostDetail = ({ data }) => {
                         />
                         <div>
                             <h4 className="name bd-radius-5 hover-bg pdl-5 pdr-5 cursor-pointer">
-                                {dataState?.username}
+                                {dataState?.name}
                             </h4>
                             <div className="time pdl-5 text-light">
                                 {showTime(dataPost?.lastModified)}
@@ -42,7 +42,7 @@ const PostDetail = ({ data }) => {
                 <div className="pdb-20">
                     <h1 className="title">{dataPost?.title}</h1>
                 </div>
-                {dataState?.tags.map((elem, index) =>
+                {dataPost?.tags.map((elem, index) =>
                     typeof elem != "object" ? (
                         <Tag key={index} tag={{ name: elem }} />
                     ) : (
@@ -82,10 +82,9 @@ PostDetail.propTypes = {
             views: 0,
             tags: PropTypes.array,
             createdAt: PropTypes.string.isRequired,
-            lastmodified: PropTypes.string.isRequired,
+            lastModified: PropTypes.string.isRequired,
             slug: PropTypes.string.isRequired,
         }),
-        tags: PropTypes.array.isRequired,
     }),
 };
 PostDetail.defaultProps = {
@@ -109,19 +108,18 @@ PostDetail.defaultProps = {
             comments: {},
             like: 0,
             views: 0,
-            tags: ["#react", "#nodejs", "#javascript"],
+            tags: [
+                {
+                    _id: "61149fa4f9e0d0e18a826ba1",
+                    name: "#javascript",
+                    colorBG: "#F7E018",
+                    colorText: "#000",
+                },
+            ],
             createdAt: "2021-08-23T16:40:37.818Z",
             lastmodified: "2021-08-23T16:40:37.818Z",
             slug: "lai-tets-tiep-xemt8",
         },
-        tags: [
-            {
-                _id: "61149fa4f9e0d0e18a826ba1",
-                name: "#javascript",
-                colorBG: "#F7E018",
-                colorText: "#000",
-            },
-        ],
     },
 };
 

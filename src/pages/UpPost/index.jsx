@@ -14,14 +14,13 @@ import { upPostRequest } from "../../action/post";
 import { getAllTagRequest } from "../../action/tag";
 import { toastError, toastSuccess } from "../../action/toast";
 
-// import "./style.scss";
 import { UpPostStyles } from "./styles";
 
 const UpPostPage = () => {
     const history = useHistory();
-    const TagStore = useSelector((store) => store.tag);
-    const UserDataStore = useSelector((store) => store.auth);
     const dispatch = useDispatch();
+    const TagStore = useSelector((store) => store.tag);
+    const userDataStore = useSelector((store) => store.auth);
 
     const [action, setAction] = React.useState("Chỉnh sửa");
     const [linkImgCover, setLinkImgCover] = React.useState("");
@@ -56,7 +55,7 @@ const UpPostPage = () => {
     const handleUpPost = () => {
         if (!upPostStatus && titlePost && titlePost) {
             const data = {
-                owner_id: "610ab32f5e2bafb87ef87e6c",
+                owner_id: userDataStore._id,
                 title: titlePost,
                 coverImg: linkImgCover,
                 content: content,
@@ -65,13 +64,13 @@ const UpPostPage = () => {
             setUpPostStatus(true);
             dispatch(upPostRequest(data)).then((res) => {
                 if (res?.data?.success) {
-                    dispatch(toastSuccess("Up Post Successfully!"));
+                    dispatch(toastSuccess("Đăng bài viết thành công!"));
                     setUpPostStatus(false);
                     history.push(
-                        `/post/${UserDataStore.username}/${res.data.data.slug}`
+                        `/post/${userDataStore.username}/${res.data.data.slug}`
                     );
                 } else {
-                    dispatch(toastError("Up Post Error"));
+                    dispatch(toastError("Lỗi khi đăng bài viết!"));
                 }
             });
         } else {
@@ -80,7 +79,7 @@ const UpPostPage = () => {
     };
     const handleDeleteCover = () => {
         setLinkImgCover("");
-        dispatch(toastSuccess("Delete Cover Successfully"));
+        dispatch(toastSuccess("Xóa ảnh bìa thành công!"));
     };
     const OPTIONS = tagState.map((ele) => ele.name);
     return (
@@ -212,24 +211,20 @@ const UpPostPage = () => {
             >
                 <PostDetail
                     data={{
-                        username: "nmhung",
+                        name: userDataStore.name,
+                        createdAt: new Date().toISOString(),
                         owner_post: {
                             title: titlePost,
                             coverImg: linkImgCover,
                             content: content,
                             tags: selectedItems,
-                            lastmodified: "2021-08-23T16:40:37.818Z",
+                            lastModified: new Date().toISOString(),
                         },
-                        tags: selectedItems,
                     }}
                 />
             </div>
         </UpPostStyles>
     );
 };
-
-// UpPost.propTypes = {
-//     props: PropTypes
-// }
 
 export default UpPostPage;

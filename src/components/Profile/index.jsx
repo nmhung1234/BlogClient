@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { Cake, Notepad2, Message, Hashtag } from "iconsax-react";
 import PostPreview from "./../PostPreview/index";
 
 import { ProfileStyles } from "./styles";
 
-const Profile = ({ userData, activities, postPublish }) => {
+const Profile = ({ userData, activities, postPublished }) => {
     return (
         <ProfileStyles>
             <div className="container fd-c">
@@ -18,7 +19,7 @@ const Profile = ({ userData, activities, postPublish }) => {
                             Chỉnh sửa
                         </div>
                         <div className="describe fd-c pdb-20">
-                            <h1 className="name mg-20">{userData?.username}</h1>
+                            <h1 className="name mg-20">{userData?.name}</h1>
                             <p className="description mgb-10">
                                 {userData?.description}
                             </p>
@@ -49,12 +50,12 @@ const Profile = ({ userData, activities, postPublish }) => {
                         <div className="activity hover-bg bd-radius-5">
                             <Hashtag size="25" color="currentColor" />
                             <p className="mgl-10">
-                                Theo dõi {activities?.tagFollowing?.length} #tag
+                                Theo dõi {userData?.favoriteTopic?.length} #tag
                             </p>
                         </div>
                     </div>
                     <div className="post-list">
-                        {postPublish?.map((post, index) => (
+                        {postPublished?.map((post, index) => (
                             <PostPreview
                                 key={index}
                                 data={{ ownerData: userData, ...post }}
@@ -67,6 +68,10 @@ const Profile = ({ userData, activities, postPublish }) => {
     );
 };
 
-Profile.propTypes = {};
+Profile.propTypes = {
+    userData: PropTypes.object.isRequired,
+    activities: PropTypes.object.isRequired,
+    postPublished: PropTypes.array.isRequired,
+};
 
 export default Profile;

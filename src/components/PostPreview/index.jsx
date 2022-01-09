@@ -14,13 +14,13 @@ const PostPreview = ({ data }) => {
     const history = useHistory();
 
     const handleCommentRedirect = () => {
-        history.push(`/post/${data?.ownerData?.name}/${data?.slug}#comment`);
+        history.push(`/post/${data?.ownerData?.username}/${data?.slug}#comment`);
     };
 
     return (
         <PostDetailStyles className="border bd-radius-5 mgb-15">
             <Link
-                to={data ? `/post/${data?.ownerData?.name}/${data?.slug}` : "#"}
+                to={data ? `/post/${data?.ownerData?.username}/${data?.slug}` : "#"}
             >
                 {data?.coverImg ? (
                     <div
@@ -49,7 +49,7 @@ const PostPreview = ({ data }) => {
                     <div className="right">
                         <p
                             className="bd-radius-5 hover-bg pd-5"
-                            style={{ width: "min-content", fontWeight: "500" }}
+                            style={{ width: "fit-content", fontWeight: "500" }}
                         >
                             {data?.ownerData?.name ? (
                                 data.ownerData.name

@@ -1,7 +1,7 @@
 import React from "react";
 // import PropTypes from 'prop-types'
 import axios from "./../../utils/customAxios";
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 
 import CardContent from "../../components/CardContent";
 import Comment from "../../components/Comment";
@@ -12,6 +12,7 @@ import { timeDetails } from "../../utils";
 
 const DetailPostPage = () => {
     const params = useParams();
+    const history = useHistory();
     const { username, slug } = params;
     const [postContent, setPostContent] = React.useState();
 
@@ -19,7 +20,11 @@ const DetailPostPage = () => {
         axios
             .get(`/post/detail?username=${username}&slug=${slug}`)
             .then((response) => {
-                setPostContent((pre) => response.data.data[0]);
+                if (response.data.success) {
+                    setPostContent((pre) => response.data.data[0]);
+                } else {
+                    history.push("/404");
+                }
             });
     }, []);
     return (
@@ -39,7 +44,7 @@ const DetailPostPage = () => {
                     <div className="bubble"></div>
                     <div className="info">
                         <img src={postContent?.avatar} />
-                        <h2>{postContent?.username}</h2>
+                        <h2>{postContent?.name}</h2>
                     </div>
                     <div className="follow-btn button-lg hover-button mgl-20 mgr-20 text-center">
                         Theo dõi
@@ -61,6 +66,5 @@ const DetailPostPage = () => {
         </DetailPostPageStyles>
     );
 };
-
 
 export default DetailPostPage;
