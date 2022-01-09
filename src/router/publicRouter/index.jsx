@@ -7,7 +7,7 @@ const DetailPostPage = React.lazy(() => import("../../pages/DetailPost"));
 const LoginRegister = React.lazy(() =>
     import("../../components/Login_Register")
 );
-const NotFound = React.lazy(() => import("../../components/NotFound"));
+const NotFound = React.lazy(() => import("../../pages/NotFound"));
 
 function PublicRouter() {
     return (

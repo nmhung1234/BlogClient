@@ -8,7 +8,7 @@ const UpPostPage = React.lazy(() => import("../../pages/UpPost"));
 const UserProfilePage = React.lazy(() => import("../../pages/UserProfile"));
 const DetailPostPage = React.lazy(() => import("../../pages/DetailPost"));
 const HomePage = React.lazy(() => import("../../pages/Home"));
-const NotFound = React.lazy(() => import("../../components/NotFound"));
+const NotFound = React.lazy(() => import("../../pages/NotFound"));
 
 import Loading from "../../components/Loading";
 
