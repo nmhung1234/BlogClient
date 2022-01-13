@@ -1,7 +1,8 @@
 import jwt_decode from "jwt-decode";
-import moment from "moment";
-import "moment/locale/vi.js";
-moment.locale('vi');
+// import moment from "moment";
+// import "moment/locale/vi.js";
+// moment.locale('vi');
+import moment from 'moment/min/moment-with-locales';
 
 export const timeDetails = (dateISO) => {
     const dateFormat = new Date(dateISO);
@@ -22,8 +23,9 @@ export const timeDetails = (dateISO) => {
     }
 }
 export const showTime = (dateISO) => {
+    moment.locale('vi');
     const { year, month, day, hour, minnute, second } = timeDetails(dateISO);
-    const compareHours = moment([year, month, day, hour, minnute, second]).locale("vi")
+    const compareHours = moment([year, month, day, hour, minnute, second])
         .startOf("hours")
         .fromNow();
     return `${day} Thg ${month + 1} (${compareHours})`;
