@@ -1,13 +1,13 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Loading from "../../components/Loading";
 
 const HomePage = React.lazy(() => import("../../pages/Home"));
 const DetailPostPage = React.lazy(() => import("../../pages/DetailPost"));
 const LoginRegister = React.lazy(() =>
-    import("../../components/Login_Register")
+import("../../components/Login_Register")
 );
 const NotFound = React.lazy(() => import("../../pages/NotFound"));
+import Loading from "../../components/Loading";
 
 function PublicRouter() {
     return (

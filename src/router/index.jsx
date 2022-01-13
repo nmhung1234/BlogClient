@@ -1,17 +1,18 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { useNotifications } from "@mantine/notifications";
 import { CheckIcon, Cross1Icon } from "@modulz/radix-icons";
 
-import PublicRouter from "./publicRouter";
-import PrivateRouter from "./privateRouter";
-import useNetwork from "../hook";
-
+const PrivateRouter = React.lazy(() => import("./privateRouter"));
+const PublicRouter = React.lazy(() => import("./publicRouter"));
+import Loading from "../components/Loading";
 import Header from "../components/Header";
 
+import useNetwork from "../hook";
+
 import { toastError, toastSuccess } from "../action/toast";
-import "./style.scss";
+import { RouterWrapperStyle } from "./styles";
+
 const ToastList = [
     {
         type: "success",
@@ -79,13 +80,15 @@ const Router = () => {
     return (
         <>
             <Header />
-            <div className="Router-wrapper">
-                {localStorage.getItem("tk") ? (
-                    <PrivateRouter />
-                ) : (
-                    <PublicRouter />
-                )}
-            </div>
+            <RouterWrapperStyle>
+                <React.Suspense fallback={<Loading />}>
+                    {localStorage.getItem("tk") ? (
+                        <PrivateRouter />
+                    ) : (
+                        <PublicRouter />
+                    )}
+                </React.Suspense>
+            </RouterWrapperStyle>
         </>
     );
 };
